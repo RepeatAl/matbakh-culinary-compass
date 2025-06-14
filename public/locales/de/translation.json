@@ -26,8 +26,17 @@
   },
   "languages": {
     "de": "Deutsch",
-    "en": "English",
-    "es": "Español",
-    "fr": "Français"
+    "en": "Englisch",
+    "es": "Spanisch",
+    "fr": "Französisch"
+  },
+  "navigation": {
+    "home": "Startseite",
+    "about": "Über uns",
+    "recipes": "Rezepte",
+    "nutrition": "Ernährung",
+    "restaurants": "Restaurants",
+    "contact": "Kontakt",
+    "sidebarHeader": "Menü"
   }
 }

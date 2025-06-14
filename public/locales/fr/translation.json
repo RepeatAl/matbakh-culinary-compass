@@ -29,5 +29,14 @@
     "en": "Anglais",
     "es": "Espagnol",
     "fr": "Français"
+  },
+  "navigation": {
+    "home": "Accueil",
+    "about": "À Propos",
+    "recipes": "Recettes",
+    "nutrition": "Nutrition",
+    "restaurants": "Restaurants",
+    "contact": "Contact",
+    "sidebarHeader": "Menu"
   }
 }
