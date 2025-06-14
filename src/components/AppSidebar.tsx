@@ -1,20 +1,21 @@
 
 import React from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
-import { Home, Info, BookOpenText, Leaf, Store, Mail, PanelLeft } from 'lucide-react';
+import { Home, Info, BookOpenText, Leaf, Store, Mail, LogIn, LogOut } from 'lucide-react';
 import {
   Sidebar,
   SidebarContent,
   SidebarHeader,
+  SidebarFooter,
   SidebarGroup,
   SidebarGroupLabel,
   SidebarMenu,
   SidebarMenuItem,
   SidebarMenuButton,
-  SidebarTrigger,
 } from "@/components/ui/sidebar";
-import { Button } from "@/components/ui/button"; // Import Button for the trigger
+import { useAuth } from '@/contexts/AuthContext';
+import { supabase } from '@/integrations/supabase/client';
 
 const navItems = [
   { to: '/', labelKey: 'navigation.home', Icon: Home },
@@ -28,6 +29,13 @@ const navItems = [
 export const AppSidebar: React.FC = () => {
   const { t } = useTranslation();
   const location = useLocation();
+  const navigate = useNavigate();
+  const { user, session } = useAuth();
+
+  const handleLogout = async () => {
+    await supabase.auth.signOut();
+    navigate('/');
+  };
 
   return (
     <Sidebar>
@@ -59,6 +67,31 @@ export const AppSidebar: React.FC = () => {
           </SidebarMenu>
         </SidebarGroup>
       </SidebarContent>
+      <SidebarFooter>
+        <SidebarMenu>
+          {session ? (
+            <SidebarMenuItem>
+              <SidebarMenuButton onClick={handleLogout} tooltip={t('navigation.logout', 'Logout')}>
+                <LogOut className="h-4 w-4" />
+                <span>{t('navigation.logout', 'Logout')}</span>
+              </SidebarMenuButton>
+            </SidebarMenuItem>
+          ) : (
+            <SidebarMenuItem>
+              <SidebarMenuButton
+                asChild
+                isActive={location.pathname === '/auth'}
+                tooltip={t('navigation.login', 'Login')}
+              >
+                <Link to="/auth">
+                  <LogIn className="h-4 w-4" />
+                  <span>{t('navigation.login', 'Login')}</span>
+                </Link>
+              </SidebarMenuButton>
+            </SidebarMenuItem>
+          )}
+        </SidebarMenu>
+      </SidebarFooter>
     </Sidebar>
   );
 };
