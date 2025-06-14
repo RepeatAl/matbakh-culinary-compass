@@ -1,0 +1,33 @@
+
+{
+  "appTitle": "Matbakh",
+  "welcome": {
+    "title": "Willkommen bei Matbakh!",
+    "subtitle": "Deine Küche, neu gedacht."
+  },
+  "valueProposition": {
+    "title": "Entdecke, was Matbakh für dich tun kann:"
+  },
+  "forSingles": {
+    "title": "Für Singles & Kochbegeisterte:",
+    "point1": "Beeindrucke bei deinem nächsten Date mit perfekten Rezepten, die auf deine Bedürfnisse zugeschnitten sind.",
+    "point2": "Erstelle mühelos saisonale und nachhaltige Wochen- oder Monatspläne – stressfrei und köstlich.",
+    "point3": "Nie wieder die Frage 'Was koche ich heute?' – Matbakh inspiriert dich täglich neu."
+  },
+  "forGastronomes": {
+    "title": "Für Gastronomen & Profis:",
+    "point1": "Baue spielerisch und Schritt für Schritt eine solide Ressourcenplanung auf – ganz ohne komplizierte ERP-Systeme.",
+    "point2": "Optimiere deine Warenwirtschaft KI-gestützt und passe sie flexibel an reale Bedingungen an – spare Zeit und reduziere Abfall.",
+    "point3": "Konzentriere dich auf das, was du liebst: Kochen und deine Gäste begeistern. Matbakh kümmert sich um den Rest."
+  },
+  "languageSwitcher": {
+    "label": "Sprache wählen:",
+    "selectedLabel": "Ausgewählte Sprache:"
+  },
+  "languages": {
+    "de": "Deutsch",
+    "en": "English",
+    "es": "Español",
+    "fr": "Français"
+  }
+}
