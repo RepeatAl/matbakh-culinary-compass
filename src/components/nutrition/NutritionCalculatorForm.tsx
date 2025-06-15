@@ -76,7 +76,7 @@ async function fetchNutritionCalc(input: NutritionInput) {
 
 // ---------- COMPONENT ----------
 export function NutritionCalculatorForm() {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   const {
     control,
     register,
@@ -125,7 +125,11 @@ export function NutritionCalculatorForm() {
               {t("nutrition.calc.units.label")}
               <Select onValueChange={field.onChange} value={field.value}>
                 <SelectTrigger>
-                  <SelectValue placeholder={t("nutrition.calc.units.placeholder")} />
+                  <SelectValue placeholder={t("nutrition.calc.units.placeholder")}>
+                    {field.value === "metric"
+                      ? t("nutrition.calc.units.metric")
+                      : t("nutrition.calc.units.imperial")}
+                  </SelectValue>
                 </SelectTrigger>
                 <SelectContent>
                   <SelectItem value="metric">{t("nutrition.calc.units.metric")}</SelectItem>
@@ -145,7 +149,9 @@ export function NutritionCalculatorForm() {
               {t("nutrition.calc.gender.label")}
               <Select value={field.value} onValueChange={field.onChange}>
                 <SelectTrigger>
-                  <SelectValue placeholder={t("nutrition.calc.gender.placeholder")} />
+                  <SelectValue placeholder={t("nutrition.calc.gender.placeholder")}>
+                    {t(`nutrition.calc.gender.${field.value}`)}
+                  </SelectValue>
                 </SelectTrigger>
                 <SelectContent>
                   {GENDER_OPTIONS.map(opt => (
@@ -171,7 +177,9 @@ export function NutritionCalculatorForm() {
               {t("nutrition.calc.activity.label")}
               <Select value={field.value} onValueChange={field.onChange}>
                 <SelectTrigger>
-                  <SelectValue placeholder={t("nutrition.calc.activity.placeholder")} />
+                  <SelectValue placeholder={t("nutrition.calc.activity.placeholder")}>
+                    {t(`nutrition.calc.activity.${field.value}`)}
+                  </SelectValue>
                 </SelectTrigger>
                 <SelectContent>
                   {ACTIVITY_OPTIONS.map(opt => (
