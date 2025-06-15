@@ -1,9 +1,8 @@
-
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import { SidebarProvider, SidebarTrigger, SidebarInset } from "@/components/ui/sidebar";
 import { AppSidebar } from "@/components/AppSidebar";
 import Index from "./pages/Index";
@@ -46,13 +45,8 @@ const App = () => (
                     <Route path="/" element={<Index />} />
                     <Route path="/about" element={<AboutPage />} />
                     <Route path="/recipes" element={<RecipesPage />} />
-                    <Route path="/nutrition" element={<NutritionPage />} />
-                    <Route path="/restaurants" element={<RestaurantsPage />} />
-                    <Route path="/contact" element={<ContactPage />} />
-                    <Route path="/auth" element={<AuthPage />} />
-                    {/* NEU: */}
                     <Route
-                      path="/my-recipes"
+                      path="/recipes/my"
                       element={
                         <PrivateRoute>
                           <MyRecipes />
@@ -67,7 +61,12 @@ const App = () => (
                         </PrivateRoute>
                       }
                     />
-                    {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
+                    {/* Alt-URL Redirect für Bookmarks */}
+                    <Route path="/my-recipes" element={<Navigate to="/recipes/my" replace />} />
+                    <Route path="/nutrition" element={<NutritionPage />} />
+                    <Route path="/restaurants" element={<RestaurantsPage />} />
+                    <Route path="/contact" element={<ContactPage />} />
+                    <Route path="/auth" element={<AuthPage />} />
                     <Route path="*" element={<NotFound />} />
                   </Routes>
                 </div>

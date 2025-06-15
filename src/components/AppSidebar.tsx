@@ -1,7 +1,8 @@
+
 import React from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
-import { Home, Info, BookOpenText, Leaf, Store, Mail, LogIn, LogOut } from 'lucide-react';
+import { Home, Info, BookOpenText, Leaf, Store, Mail, LogIn, LogOut, Calendar } from 'lucide-react';
 import {
   Sidebar,
   SidebarContent,
@@ -15,20 +16,6 @@ import {
 } from "@/components/ui/sidebar";
 import { useAuth } from '@/contexts/AuthContext';
 import { supabase } from '@/integrations/supabase/client';
-
-const navItems = [
-  { to: '/', labelKey: 'navigation.home', Icon: Home },
-  { to: '/about', labelKey: 'navigation.about', Icon: Info },
-  { to: '/recipes', labelKey: 'navigation.recipes', Icon: BookOpenText },
-  { to: '/nutrition', labelKey: 'navigation.nutrition', Icon: Leaf },
-  { to: '/restaurants', labelKey: 'navigation.restaurants', Icon: Store },
-  { to: '/contact', labelKey: 'navigation.contact', Icon: Mail },
-];
-
-const extraItems = [
-  { to: '/my-recipes', labelKey: 'navigation.myRecipes', Icon: BookOpenText },
-  { to: '/meal-plan', labelKey: 'navigation.mealPlan', Icon: Leaf },
-];
 
 export const AppSidebar: React.FC = () => {
   const { t } = useTranslation();
@@ -50,36 +37,115 @@ export const AppSidebar: React.FC = () => {
         <SidebarGroup>
           <SidebarGroupLabel>{t('navigation.sidebarHeader')}</SidebarGroupLabel>
           <SidebarMenu>
-            {navItems.map((item) => (
-              <SidebarMenuItem key={item.to}>
+            <SidebarMenuItem>
+              <SidebarMenuButton
+                asChild
+                isActive={location.pathname === '/'}
+                tooltip={t('navigation.home')}
+              >
+                <Link to="/">
+                  <Home className="h-4 w-4" />
+                  <span>{t('navigation.home')}</span>
+                </Link>
+              </SidebarMenuButton>
+            </SidebarMenuItem>
+            <SidebarMenuItem>
+              <SidebarMenuButton
+                asChild
+                isActive={location.pathname === '/about'}
+                tooltip={t('navigation.about')}
+              >
+                <Link to="/about">
+                  <Info className="h-4 w-4" />
+                  <span>{t('navigation.about')}</span>
+                </Link>
+              </SidebarMenuButton>
+            </SidebarMenuItem>
+            {/* Rezepte-Gruppe mit Unterpunkten */}
+            <SidebarGroupLabel className="mt-4">{t('navigation.recipes')}</SidebarGroupLabel>
+            <SidebarMenu>
+              <SidebarMenuItem>
                 <SidebarMenuButton
                   asChild
-                  isActive={location.pathname === item.to}
-                  tooltip={t(item.labelKey)}
+                  isActive={location.pathname === '/recipes'}
+                  tooltip={t('navigation.recipes')}
                 >
-                  <Link to={item.to}>
-                    <item.Icon className="h-4 w-4" />
-                    <span>{t(item.labelKey)}</span>
+                  <Link to="/recipes">
+                    <BookOpenText className="h-4 w-4" />
+                    <span>{t('navigation.allRecipes', 'Alle Rezepte')}</span>
                   </Link>
                 </SidebarMenuButton>
               </SidebarMenuItem>
-            ))}
-            {/* NEU: Weitere Items nur bei aktiver Session */}
-            {session &&
-              extraItems.map((item) => (
-                <SidebarMenuItem key={item.to}>
+              {session && (
+                <SidebarMenuItem>
                   <SidebarMenuButton
                     asChild
-                    isActive={location.pathname === item.to}
-                    tooltip={t(item.labelKey)}
+                    isActive={location.pathname === '/recipes/my'}
+                    tooltip={t('navigation.myRecipes')}
                   >
-                    <Link to={item.to}>
-                      <item.Icon className="h-4 w-4" />
-                      <span>{t(item.labelKey)}</span>
+                    <Link to="/recipes/my">
+                      <BookOpenText className="h-4 w-4" />
+                      <span>{t('navigation.myRecipes', 'Meine Rezepte')}</span>
                     </Link>
                   </SidebarMenuButton>
                 </SidebarMenuItem>
-              ))}
+              )}
+            </SidebarMenu>
+            {/* Wochenplan separat */}
+            <SidebarGroupLabel className="mt-4">{t('navigation.mealPlan')}</SidebarGroupLabel>
+            <SidebarMenu>
+              {session && (
+                <SidebarMenuItem>
+                  <SidebarMenuButton
+                    asChild
+                    isActive={location.pathname === '/meal-plan'}
+                    tooltip={t('navigation.mealPlan')}
+                  >
+                    <Link to="/meal-plan">
+                      <Calendar className="h-4 w-4" />
+                      <span>{t('navigation.mealPlan', 'Mein Wochenplan')}</span>
+                    </Link>
+                  </SidebarMenuButton>
+                </SidebarMenuItem>
+              )}
+            </SidebarMenu>
+            {/* ... weitere bestehende Links, z.B. Nutrition, Restaurants, Contact ... */}
+            <SidebarMenuItem>
+              <SidebarMenuButton
+                asChild
+                isActive={location.pathname === '/nutrition'}
+                tooltip={t('navigation.nutrition')}
+              >
+                <Link to="/nutrition">
+                  <Leaf className="h-4 w-4" />
+                  <span>{t('navigation.nutrition')}</span>
+                </Link>
+              </SidebarMenuButton>
+            </SidebarMenuItem>
+            <SidebarMenuItem>
+              <SidebarMenuButton
+                asChild
+                isActive={location.pathname === '/restaurants'}
+                tooltip={t('navigation.restaurants')}
+              >
+                <Link to="/restaurants">
+                  <Store className="h-4 w-4" />
+                  <span>{t('navigation.restaurants')}</span>
+                </Link>
+              </SidebarMenuButton>
+            </SidebarMenuItem>
+            <SidebarMenuItem>
+              <SidebarMenuButton
+                asChild
+                isActive={location.pathname === '/contact'}
+                tooltip={t('navigation.contact')}
+              >
+                <Link to="/contact">
+                  <Mail className="h-4 w-4" />
+                  <span>{t('navigation.contact')}</span>
+                </Link>
+              </SidebarMenuButton>
+            </SidebarMenuItem>
           </SidebarMenu>
         </SidebarGroup>
       </SidebarContent>
