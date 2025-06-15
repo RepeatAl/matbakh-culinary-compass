@@ -1,3 +1,4 @@
+
 import React, { useState, useMemo } from "react";
 import { useQuery } from "@tanstack/react-query";
 import { RestaurantMap } from "@/components/map/RestaurantMap";
@@ -5,17 +6,8 @@ import { SearchForm, SearchParams } from "@/components/discover/SearchForm";
 import { ResultsGrid } from "@/components/discover/ResultsGrid";
 import { PaginationControls } from "@/components/discover/PaginationControls";
 
-// Typen für die Search-Params
-interface SearchParams {
-  location: string;
-  q?: string;
-  cuisine?: string;
-  price_level?: number;
-  open_now?: boolean;
-  exclude_allergens?: string[];
-  page: number;
-  pageSize: number;
-}
+// REMOVE: interface SearchParams { ... }
+// The SearchParams interface is now only imported, not redeclared in this file
 
 // Meta-Antwort von der Edge Function
 interface Meta {
