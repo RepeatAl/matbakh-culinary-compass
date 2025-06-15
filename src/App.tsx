@@ -1,3 +1,4 @@
+
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
@@ -99,6 +100,12 @@ const App = () => (
         style={{ background: "#2B373B" }}
         buttonStyle={{ color: "#4e503b", fontSize: "13px" }}
         expires={150}
+        onAccept={() => {
+          localStorage.setItem("matbakh_consent_thirdparty", "true");
+        }}
+        onDecline={() => {
+          localStorage.setItem("matbakh_consent_thirdparty", "false");
+        }}
       >
         Diese Seite verwendet Google Maps, um Restaurants in deiner Nähe anzuzeigen.
         Wenn du zustimmst, werden externe Skripte geladen.
