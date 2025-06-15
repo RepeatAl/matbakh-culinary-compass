@@ -5,10 +5,32 @@ import NutritionInfoTiles from "@/components/nutrition/NutritionInfoTiles";
 import SaisonToggle from "@/components/nutrition/SaisonToggle";
 import { NutritionCalculatorForm } from "@/components/nutrition/NutritionCalculatorForm";
 import { useNavigate } from "react-router-dom";
+import { useAuth } from "@/contexts/AuthContext";
+import { UserProfileFilters } from "@/components/nutrition/UserProfileFilters";
+import { useFoods } from "@/hooks/useFoods";
+import { useUserNutritionProfile } from "@/hooks/useUserNutritionProfile";
 
 const NutritionPage = () => {
   const { t } = useTranslation();
   const navigate = useNavigate();
+  const { user } = useAuth();
+  const { data: foods = [] } = useFoods();
+  const { data: profile } = useUserNutritionProfile();
+
+  // Foods filtern: Allergene entfernen, disliked_foods entfernen, favorite_foods highlighten (erstmal simple: Filtern)
+  let filteredFoods = foods;
+  if (profile) {
+    const exclude = new Set([
+      ...(profile.allergies || []), 
+      ...(profile.disliked_foods || [])
+    ].map((s) => s?.toLowerCase()));
+    filteredFoods = foods.filter(f => !exclude.has(f.slug.toLowerCase()) && !exclude.has(f.name?.de?.toLowerCase?.()));
+  }
+
+  // Empfehlungen (Lieblingslebensmittel besonders hervorheben)
+  const favoriteFoodObjs = profile?.favorite_foods
+    ? foods.filter(f => profile.favorite_foods.includes(f.slug))
+    : [];
 
   return (
     <div className="container mx-auto px-4 py-8 max-w-3xl">
@@ -21,6 +43,27 @@ const NutritionPage = () => {
         <p className="mt-2 text-xs text-destructive">{t("nutrition.disclaimer")}</p>
       </div>
 
+      {/* Personalisierte Filteranzeige (nur für eingeloggte User) */}
+      {user && <UserProfileFilters />}
+
+      {/* Empfehlungen */}
+      {user && (
+        <div className="mb-8">
+          <h2 className="text-lg font-semibold mb-2">{t("nutrition.personalization.recommendations", "Empfohlene Lebensmittel für dich")}</h2>
+          {favoriteFoodObjs.length > 0 ? (
+            <ul className="flex flex-wrap gap-3">
+              {favoriteFoodObjs.map(f => (
+                <li key={f.slug} className="px-3 py-1 bg-green-100 text-green-900 rounded">
+                  {f.name?.[t("lng", "de")] ?? f.name?.de ?? f.slug}
+                </li>
+              ))}
+            </ul>
+          ) : (
+            <span className="text-muted-foreground text-sm">{t("nutrition.personalization.noFavorites", "Trage Lieblingslebensmittel in deinem Profil ein, um personalisierte Empfehlungen zu bekommen.")}</span>
+          )}
+        </div>
+      )}
+
       {/* Infokacheln */}
       <NutritionInfoTiles />
 
@@ -29,7 +72,7 @@ const NutritionPage = () => {
         <SaisonToggle />
       </div>
 
-      {/* Demo-Calculator (prominent platziert, eigene Card, als Demo gelabelt) */}
+      {/* Demo-Calculator */}
       <div className="my-10">
         <div className="mb-2 text-center">
           <span className="inline-block rounded px-3 py-1 bg-secondary text-xs font-medium mb-2">
