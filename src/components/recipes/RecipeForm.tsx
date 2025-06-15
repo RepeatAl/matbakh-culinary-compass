@@ -1,4 +1,3 @@
-
 import { useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
@@ -208,7 +207,7 @@ export default function RecipeForm({ open, onOpenChange, existing, onSaved }: Re
             <FormItem>
               <FormLabel>{t("myRecipes.ingredients")}</FormLabel>
               <FormControl>
-                <IngredientFields control={form.control} />
+                <IngredientFields />
               </FormControl>
             </FormItem>
             <FormItem>
