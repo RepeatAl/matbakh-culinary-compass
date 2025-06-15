@@ -78,5 +78,72 @@
     "en": "English",
     "es": "Spanish",
     "fr": "French"
+  },
+  "nutrition": {
+    "calc": {
+      "title": "Nutrition Calculator",
+      "units": {
+        "label": "Units",
+        "placeholder": "Select units",
+        "metric": "Metric (kg, cm)",
+        "imperial": "Imperial (lbs, inch)",
+        "hintWeight": "Please enter your weight in pounds (lbs).",
+        "hintHeight": "Please enter your height in inches (in)."
+      },
+      "gender": {
+        "label": "Gender",
+        "placeholder": "Choose gender",
+        "male": "Male",
+        "female": "Female",
+        "other": "Other"
+      },
+      "activity": {
+        "label": "Activity level",
+        "placeholder": "Select level",
+        "sedentary": "Sedentary (little/no exercise)",
+        "light": "Lightly active (1–3x/week)",
+        "moderate": "Moderately active (3–5x/week)",
+        "active": "Active (daily sports)",
+        "very_active": "Very active (hard training daily)",
+      },
+      "weight": {
+        "label": "Weight (kg)",
+        "lbs": "Weight (lbs)",
+        "placeholder": "e.g. 70"
+      },
+      "height": {
+        "label": "Height (cm)",
+        "in": "Height (in)",
+        "placeholder": "e.g. 175"
+      },
+      "age": {
+        "label": "Age",
+        "placeholder": "Enter your age"
+      },
+      "submit": "Calculate",
+      "sending": "Calculating ...",
+      "error": {
+        "weight": "Please enter a valid weight.",
+        "height": "Please enter a valid height.",
+        "age": "Please enter a valid age.",
+        "gender": "Please select gender.",
+        "activity": "Please select activity.",
+        "units": "Please select units.",
+        "fallback": "Error while calculating.",
+      },
+      "demo": {
+        "hint": "Demo: Quick calculator for calories and macros – anonymous & no sign up"
+      },
+      "result": {
+        "title": "Your result",
+        "bmr": "Basal Metabolic Rate (BMR): {{value}} kcal",
+        "tdee": "Total Daily Energy Expenditure (TDEE): {{value}} kcal",
+        "macros": "Macronutrient distribution per day",
+        "macroCarbs": "Carbohydrates",
+        "macroProtein": "Protein",
+        "macroFat": "Fat",
+        "units": "Values in {{units}} per day"
+      }
+    }
   }
 }

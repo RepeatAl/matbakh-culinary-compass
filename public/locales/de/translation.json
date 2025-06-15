@@ -78,5 +78,72 @@
     "en": "Englisch",
     "es": "Spanisch",
     "fr": "Französisch"
+  },
+  "nutrition": {
+    "calc": {
+      "title": "Nährwertrechner",
+      "units": {
+        "label": "Einheit",
+        "placeholder": "Wähle Einheit",
+        "metric": "Metrisch (kg, cm)",
+        "imperial": "Imperial (lbs, inch)",
+        "hintWeight": "Bitte Gewicht in Pfund (lbs) eingeben.",
+        "hintHeight": "Bitte Größe in Zoll (inch) eingeben.",
+      },
+      "gender": {
+        "label": "Geschlecht",
+        "placeholder": "Geschlecht wählen",
+        "male": "Männlich",
+        "female": "Weiblich",
+        "other": "Divers",
+      },
+      "activity": {
+        "label": "Aktivitätsniveau",
+        "placeholder": "Niveau wählen",
+        "sedentary": "Sitzend (kaum Bewegung)",
+        "light": "Leicht aktiv (gelegentliche Bewegung)",
+        "moderate": "Mäßig aktiv (Sport 1–3x/Woche)",
+        "active": "Aktiv (Sport 3–5x/Woche)",
+        "very_active": "Sehr aktiv (tägliches Training)",
+      },
+      "weight": {
+        "label": "Gewicht (kg)",
+        "lbs": "Gewicht (lbs)",
+        "placeholder": "z.B. 70"
+      },
+      "height": {
+        "label": "Größe (cm)",
+        "in": "Größe (inch)",
+        "placeholder": "z.B. 175"
+      },
+      "age": {
+        "label": "Alter",
+        "placeholder": "Alter eingeben"
+      },
+      "submit": "Berechnen",
+      "sending": "Berechne ...",
+      "error": {
+        "weight": "Bitte Gewicht korrekt eingeben.",
+        "height": "Bitte Größe korrekt eingeben.",
+        "age": "Bitte Alter korrekt angeben.",
+        "gender": "Bitte Geschlecht wählen.",
+        "activity": "Bitte Aktivitätsniveau wählen.",
+        "units": "Bitte Einheit wählen.",
+        "fallback": "Fehler bei der Berechnung.",
+      },
+      "demo": {
+        "hint": "Demo: Schnellrechner für Kalorien und Makros – anonym & ohne Registrierung"
+      },
+      "result": {
+        "title": "Dein Ergebnis",
+        "bmr": "Grundumsatz (BMR): {{value}} kcal",
+        "tdee": "Tagesbedarf (TDEE): {{value}} kcal",
+        "macros": "Makronährstoffverteilung pro Tag",
+        "macroCarbs": "Kohlenhydrate",
+        "macroProtein": "Protein",
+        "macroFat": "Fett",
+        "units": "Angaben in {{units}} pro Tag"
+      }
+    }
   }
 }

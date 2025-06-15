@@ -78,5 +78,72 @@
     "en": "Inglés",
     "es": "Español",
     "fr": "Francés"
+  },
+  "nutrition": {
+    "calc": {
+      "title": "Calculadora Nutricional",
+      "units": {
+        "label": "Unidades",
+        "placeholder": "Selecciona unidades",
+        "metric": "Métrico (kg, cm)",
+        "imperial": "Imperial (lbs, pulgadas)",
+        "hintWeight": "Ingresa tu peso en libras (lbs).",
+        "hintHeight": "Ingresa tu altura en pulgadas (in)."
+      },
+      "gender": {
+        "label": "Género",
+        "placeholder": "Selecciona género",
+        "male": "Masculino",
+        "female": "Femenino",
+        "other": "Otro"
+      },
+      "activity": {
+        "label": "Nivel de actividad",
+        "placeholder": "Selecciona nivel",
+        "sedentary": "Sedentario (sin ejercicio)",
+        "light": "Actividad ligera (1–3x/semana)",
+        "moderate": "Actividad moderada (3–5x/semana)",
+        "active": "Activo (deporte diario)",
+        "very_active": "Muy activo (entrenamiento duro diario)"
+      },
+      "weight": {
+        "label": "Peso (kg)",
+        "lbs": "Peso (lbs)",
+        "placeholder": "ej. 70"
+      },
+      "height": {
+        "label": "Altura (cm)",
+        "in": "Altura (pulgadas)",
+        "placeholder": "ej. 175"
+      },
+      "age": {
+        "label": "Edad",
+        "placeholder": "Introduce tu edad"
+      },
+      "submit": "Calcular",
+      "sending": "Calculando ...",
+      "error": {
+        "weight": "Por favor introduce un peso válido.",
+        "height": "Por favor introduce una altura válida.",
+        "age": "Por favor introduce una edad válida.",
+        "gender": "Por favor selecciona género.",
+        "activity": "Por favor selecciona nivel de actividad.",
+        "units": "Por favor selecciona unidades.",
+        "fallback": "Error al calcular.",
+      },
+      "demo": {
+        "hint": "Demo: Calculadora rápida de calorías y macros – anónima y sin registro"
+      },
+      "result": {
+        "title": "Tu resultado",
+        "bmr": "Tasa metabólica basal (BMR): {{value}} kcal",
+        "tdee": "Gasto energético diario (TDEE): {{value}} kcal",
+        "macros": "Distribución de macronutrientes por día",
+        "macroCarbs": "Carbohidratos",
+        "macroProtein": "Proteínas",
+        "macroFat": "Grasas",
+        "units": "Valores en {{units}} por día"
+      }
+    }
   }
 }

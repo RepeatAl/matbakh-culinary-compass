@@ -78,5 +78,72 @@
     "en": "Anglais",
     "es": "Espagnol",
     "fr": "Français"
+  },
+  "nutrition": {
+    "calc": {
+      "title": "Calculateur nutritionnel",
+      "units": {
+        "label": "Unités",
+        "placeholder": "Sélectionnez l'unité",
+        "metric": "Métrique (kg, cm)",
+        "imperial": "Impérial (lbs, pouces)",
+        "hintWeight": "Veuillez saisir votre poids en livres (lbs).",
+        "hintHeight": "Veuillez saisir votre taille en pouces (in)."
+      },
+      "gender": {
+        "label": "Genre",
+        "placeholder": "Sélectionnez le genre",
+        "male": "Homme",
+        "female": "Femme",
+        "other": "Autre"
+      },
+      "activity": {
+        "label": "Niveau d'activité",
+        "placeholder": "Sélectionnez le niveau",
+        "sedentary": "Sédentaire (peu d’exercice)",
+        "light": "Légèrement actif (1–3x/semaine)",
+        "moderate": "Modérément actif (3–5x/semaine)",
+        "active": "Actif (sport quotidien)",
+        "very_active": "Très actif (entraînement quotidien intense)"
+      },
+      "weight": {
+        "label": "Poids (kg)",
+        "lbs": "Poids (lbs)",
+        "placeholder": "ex. 70"
+      },
+      "height": {
+        "label": "Taille (cm)",
+        "in": "Taille (pouces)",
+        "placeholder": "ex. 175"
+      },
+      "age": {
+        "label": "Âge",
+        "placeholder": "Saisissez votre âge"
+      },
+      "submit": "Calculer",
+      "sending": "Calcul en cours ...",
+      "error": {
+        "weight": "Veuillez entrer un poids valide.",
+        "height": "Veuillez entrer une taille valide.",
+        "age": "Veuillez entrer un âge valide.",
+        "gender": "Veuillez sélectionner le genre.",
+        "activity": "Veuillez sélectionner le niveau d’activité.",
+        "units": "Veuillez sélectionner l’unité.",
+        "fallback": "Erreur lors du calcul.",
+      },
+      "demo": {
+        "hint": "Démo : calculateur rapide de calories et macronutriments – anonyme et sans inscription"
+      },
+      "result": {
+        "title": "Votre résultat",
+        "bmr": "Métabolisme de base (BMR) : {{value}} kcal",
+        "tdee": "Dépense énergétique totale (TDEE) : {{value}} kcal",
+        "macros": "Répartition des macronutriments par jour",
+        "macroCarbs": "Glucides",
+        "macroProtein": "Protéines",
+        "macroFat": "Lipides",
+        "units": "Données en {{units}} par jour"
+      }
+    }
   }
 }
