@@ -148,6 +148,11 @@
         "title": "Proteína y saciedad",
         "desc": "La proteína ayuda a mantener los músculos y la sensación de saciedad."
       }
+    },
+    "recommendations": {
+      "title": "Alimentos recomendados",
+      "noData": "Por favor, introduce tus datos de perfil para ver recomendaciones.",
+      "seeAll": "Ver todas las recomendaciones"
     }
   }
 }

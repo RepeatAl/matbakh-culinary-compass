@@ -1,4 +1,3 @@
-
 import { useTranslation } from 'react-i18next';
 import { Button } from "@/components/ui/button";
 import NutritionInfoTiles from "@/components/nutrition/NutritionInfoTiles";
@@ -9,6 +8,7 @@ import { useAuth } from "@/contexts/AuthContext";
 import { UserProfileFilters } from "@/components/nutrition/UserProfileFilters";
 import { useFoods } from "@/hooks/useFoods";
 import { useUserNutritionProfile } from "@/hooks/useUserNutritionProfile";
+import { NutritionProfileMultiselect } from "@/components/nutrition/NutritionProfileMultiselect";
 
 const NutritionPage = () => {
   const { t } = useTranslation();
@@ -17,17 +17,18 @@ const NutritionPage = () => {
   const { data: foods = [] } = useFoods();
   const { data: profile } = useUserNutritionProfile();
 
-  // Foods filtern: Allergene entfernen, disliked_foods entfernen, favorite_foods highlighten (erstmal simple: Filtern)
+  // Filter: Allergene & disliked
   let filteredFoods = foods;
   if (profile) {
+    // Set für Allergene und dislikes (nur slugs)
     const exclude = new Set([
-      ...(profile.allergies || []), 
-      ...(profile.disliked_foods || [])
+      ...(profile.allergies || []),
+      ...(profile.disliked_foods || []),
     ].map((s) => s?.toLowerCase()));
-    filteredFoods = foods.filter(f => !exclude.has(f.slug.toLowerCase()) && !exclude.has(f.name?.de?.toLowerCase?.()));
+    filteredFoods = foods.filter(f => !exclude.has(f.slug.toLowerCase()));
   }
 
-  // Empfehlungen (Lieblingslebensmittel besonders hervorheben)
+  // Empfehlungen: zuerst Lieblingslebensmittel (favorite_foods) im Vordergrund
   const favoriteFoodObjs = profile?.favorite_foods
     ? foods.filter(f => profile.favorite_foods.includes(f.slug))
     : [];
@@ -43,26 +44,38 @@ const NutritionPage = () => {
         <p className="mt-2 text-xs text-destructive">{t("nutrition.disclaimer")}</p>
       </div>
 
-      {/* Personalisierte Filteranzeige (nur für eingeloggte User) */}
-      {user && <UserProfileFilters />}
+      {/* Profil Multiselect-Filter */}
+      {user && <NutritionProfileMultiselect />}
 
       {/* Empfehlungen */}
-      {user && (
-        <div className="mb-8">
-          <h2 className="text-lg font-semibold mb-2">{t("nutrition.personalization.recommendations", "Empfohlene Lebensmittel für dich")}</h2>
-          {favoriteFoodObjs.length > 0 ? (
-            <ul className="flex flex-wrap gap-3">
-              {favoriteFoodObjs.map(f => (
-                <li key={f.slug} className="px-3 py-1 bg-green-100 text-green-900 rounded">
-                  {f.name?.[t("lng", "de")] ?? f.name?.de ?? f.slug}
-                </li>
-              ))}
-            </ul>
-          ) : (
-            <span className="text-muted-foreground text-sm">{t("nutrition.personalization.noFavorites", "Trage Lieblingslebensmittel in deinem Profil ein, um personalisierte Empfehlungen zu bekommen.")}</span>
-          )}
-        </div>
-      )}
+      <div className="mb-8">
+        <h2 className="text-lg font-semibold mb-2">{t("nutrition.recommendations.title")}</h2>
+        {profile ? (
+          <div>
+            {favoriteFoodObjs.length > 0 || filteredFoods.length > 0 ? (
+              <ul className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                {favoriteFoodObjs.map(f => (
+                  <li key={f.slug} className="flex items-center gap-2 px-3 py-2 bg-green-100 text-green-900 rounded shadow">
+                    <span>★</span>
+                    <span>{f.name?.[t("lng", "de")] ?? f.name?.de ?? f.slug}</span>
+                  </li>
+                ))}
+                {filteredFoods
+                  .filter(f => !profile.favorite_foods?.includes(f.slug))
+                  .map(f => (
+                    <li key={f.slug} className="px-3 py-2 bg-muted text-foreground rounded">{f.name?.[t("lng", "de")] ?? f.name?.de ?? f.slug}</li>
+                  ))}
+              </ul>
+            ) : (
+              <span className="text-muted-foreground text-sm">{t("nutrition.recommendations.noData")}</span>
+            )}
+          </div>
+        ) : (
+          <span className="text-muted-foreground text-sm">{t("nutrition.recommendations.noData")}</span>
+        )}
+        {/* Optional: Alle Empfehlungen anzeigen */}
+        {/* <Button className="mt-3">{t("nutrition.recommendations.seeAll")}</Button> */}
+      </div>
 
       {/* Infokacheln */}
       <NutritionInfoTiles />

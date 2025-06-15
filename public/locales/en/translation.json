@@ -153,6 +153,11 @@
         "title": "Protein & Satiety",
         "desc": "Protein helps maintain muscle and keeps you feeling full longer."
       }
+    },
+    "recommendations": {
+      "title": "Recommended Foods",
+      "noData": "Please enter your profile details to see recommendations.",
+      "seeAll": "See all recommendations"
     }
   }
 }

@@ -148,6 +148,11 @@
         "title": "Protéines & Satiété",
         "desc": "Les protéines contribuent au maintien des muscles et à une longue sensation de satiété."
       }
+    },
+    "recommendations": {
+      "title": "Aliments recommandés",
+      "noData": "Veuillez saisir vos informations de profil pour afficher les recommandations.",
+      "seeAll": "Voir toutes les recommandations"
     }
   }
 }
