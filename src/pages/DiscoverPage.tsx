@@ -13,6 +13,7 @@ import { Label } from "@/components/ui/label";
 import { Button } from "@/components/ui/button";
 import {
   Pagination,
+  PaginationContent,
 } from "@/components/ui/pagination";
 import { Select } from "@/components/ui/select";
 import { Checkbox } from "@/components/ui/checkbox";
