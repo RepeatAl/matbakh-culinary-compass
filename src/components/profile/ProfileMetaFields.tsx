@@ -15,23 +15,25 @@ export function ProfileMetaFields() {
   return (
     <div className="space-y-4">
       <div>
+        <label htmlFor="first_name" className="block text-sm font-medium mb-1">Vorname</label>
         <Input
-          label="Vorname"
+          id="first_name"
           placeholder="Vorname"
           {...register("first_name", { required: true })}
         />
         {errors.first_name && <span className="text-destructive text-xs">Vorname ist erforderlich</span>}
       </div>
       <div>
+        <label htmlFor="last_name" className="block text-sm font-medium mb-1">Nachname</label>
         <Input
-          label="Nachname"
+          id="last_name"
           placeholder="Nachname"
           {...register("last_name", { required: true })}
         />
         {errors.last_name && <span className="text-destructive text-xs">Nachname ist erforderlich</span>}
       </div>
       <div>
-        <label htmlFor="language" className="block text-sm font-medium">Sprache</label>
+        <label htmlFor="language" className="block text-sm font-medium mb-1">Sprache</label>
         <select
           id="language"
           className="block w-full border rounded-md px-3 py-2 bg-background"
