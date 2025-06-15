@@ -42,11 +42,11 @@ export const AppSidebar: React.FC = () => {
                 <SidebarMenuButton
                   asChild
                   isActive={location.pathname === '/profile'}
-                  tooltip={t('navigation.profile', 'Mein Profil')}
+                  tooltip={t('navigation.profile')}
                 >
                   <Link to="/profile">
                     <span className="w-4 h-4 border rounded-full mr-2 bg-gray-200 inline-block" />
-                    <span>{t('navigation.profile', 'Mein Profil')}</span>
+                    <span>{t('navigation.profile')}</span>
                   </Link>
                 </SidebarMenuButton>
               </SidebarMenuItem>
@@ -86,7 +86,7 @@ export const AppSidebar: React.FC = () => {
                 >
                   <Link to="/recipes">
                     <BookOpenText className="h-4 w-4" />
-                    <span>{t('navigation.allRecipes', 'Alle Rezepte')}</span>
+                    <span>{t('navigation.allRecipes')}</span>
                   </Link>
                 </SidebarMenuButton>
               </SidebarMenuItem>
@@ -99,7 +99,7 @@ export const AppSidebar: React.FC = () => {
                   >
                     <Link to="/recipes/my">
                       <BookOpenText className="h-4 w-4" />
-                      <span>{t('navigation.myRecipes', 'Meine Rezepte')}</span>
+                      <span>{t('navigation.myRecipes')}</span>
                     </Link>
                   </SidebarMenuButton>
                 </SidebarMenuItem>
@@ -117,7 +117,7 @@ export const AppSidebar: React.FC = () => {
                   >
                     <Link to="/meal-plan">
                       <Calendar className="h-4 w-4" />
-                      <span>{t('navigation.mealPlan', 'Mein Wochenplan')}</span>
+                      <span>{t('navigation.mealPlan')}</span>
                     </Link>
                   </SidebarMenuButton>
                 </SidebarMenuItem>
@@ -167,9 +167,9 @@ export const AppSidebar: React.FC = () => {
         <SidebarMenu>
           {session ? (
             <SidebarMenuItem>
-              <SidebarMenuButton onClick={handleLogout} tooltip={t('navigation.logout', 'Logout')}>
+              <SidebarMenuButton onClick={handleLogout} tooltip={t('navigation.logout')}>
                 <LogOut className="h-4 w-4" />
-                <span>{t('navigation.logout', 'Logout')}</span>
+                <span>{t('navigation.logout')}</span>
               </SidebarMenuButton>
             </SidebarMenuItem>
           ) : (
@@ -177,11 +177,11 @@ export const AppSidebar: React.FC = () => {
               <SidebarMenuButton
                 asChild
                 isActive={location.pathname === '/auth'}
-                tooltip={t('navigation.login', 'Login')}
+                tooltip={t('navigation.login')}
               >
                 <Link to="/auth">
                   <LogIn className="h-4 w-4" />
-                  <span>{t('navigation.login', 'Login')}</span>
+                  <span>{t('navigation.login')}</span>
                 </Link>
               </SidebarMenuButton>
             </SidebarMenuItem>

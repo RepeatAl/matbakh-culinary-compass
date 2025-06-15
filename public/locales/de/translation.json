@@ -33,12 +33,16 @@
     "home": "Startseite",
     "about": "Über uns",
     "recipes": "Rezepte",
+    "myRecipes": "Meine Rezepte",
+    "allRecipes": "Alle Rezepte",
+    "mealPlan": "Mein Wochenplan",
     "nutrition": "Ernährung",
     "restaurants": "Restaurants",
     "contact": "Kontakt",
-    "sidebarHeader": "Menü",
-    "myRecipes": "Meine Rezepte",
-    "mealPlan": "Mein Wochenplan"
+    "profile": "Mein Profil",
+    "logout": "Logout",
+    "login": "Login",
+    "sidebarHeader": "Menü"
   },
   "myRecipes": {
     "title": "Meine Rezepte",

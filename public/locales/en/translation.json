@@ -33,12 +33,16 @@
     "home": "Home",
     "about": "About Us",
     "recipes": "Recipes",
+    "myRecipes": "My Recipes",
+    "allRecipes": "All Recipes",
+    "mealPlan": "My Meal Plan",
     "nutrition": "Nutrition",
     "restaurants": "Restaurants",
     "contact": "Contact",
-    "sidebarHeader": "Menu",
-    "myRecipes": "My Recipes",
-    "mealPlan": "My Meal Plan"
+    "profile": "My Profile",
+    "logout": "Logout",
+    "login": "Login",
+    "sidebarHeader": "Menu"
   },
   "myRecipes": {
     "title": "My Recipes",
