@@ -1,5 +1,20 @@
-
 {
+  "appTitle": "Matbakh",
+  "navigation": {
+    "sidebarHeader": "Navigation",
+    "profile": "Mon Profil",
+    "home": "Accueil",
+    "about": "À propos de Matbakh",
+    "recipes": "Recettes",
+    "allRecipes": "Toutes les recettes",
+    "myRecipes": "Mes recettes",
+    "mealPlan": "Plan de la semaine",
+    "nutrition": "Nutrition",
+    "restaurants": "Restaurants",
+    "contact": "Contact",
+    "login": "Connexion",
+    "logout": "Déconnexion"
+  },
   "profile": {
     "title": "Mon Profil",
     "save": "Enregistrer",
