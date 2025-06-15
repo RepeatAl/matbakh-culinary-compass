@@ -97,18 +97,8 @@ export function NutritionCalculatorForm() {
     },
     mode: "onBlur"
   });
-
   const currUnits = watch("units");
 
-  React.useEffect(() => {
-    // Wir wandeln bei units-Wechsel die Werte um (optisch, nicht im Backend), so dass der Nutzer sinnvoll weiterarbeiten kann.
-    // WENN der Wert nicht im "defaultUnits" ist, konvertieren wir:
-    // (Bsp: war metric & units=imperial: rechne kg/cm -> lbs/in)
-    // (Dies ist rein für bessere UX. Alternativ auch statisch lassen und nur Placeholders ändern.)
-    // - Für Demo: keine automatische Umrechnung, nur Placeholder/Label ändern.
-  }, [currUnits]); // Placeholder effect: hier könnte man noch das aktuelle Feld neu setzen.
-
-  // Mutation-Setup (mit isPending, isError, error, data)
   const mutation = useMutation<any, Error, NutritionInput>({
     mutationFn: fetchNutritionCalc,
   });
@@ -135,7 +125,7 @@ export function NutritionCalculatorForm() {
               {t("nutrition.calc.units.label")}
               <Select onValueChange={field.onChange} value={field.value}>
                 <SelectTrigger>
-                  <SelectValue placeholder={t("nutrition.calc.units.placeholder")}/>
+                  <SelectValue placeholder={t("nutrition.calc.units.placeholder")} />
                 </SelectTrigger>
                 <SelectContent>
                   <SelectItem value="metric">{t("nutrition.calc.units.metric")}</SelectItem>
@@ -152,7 +142,7 @@ export function NutritionCalculatorForm() {
           control={control}
           render={({ field }) => (
             <label className="block text-sm font-medium">
-              {t("nutrition.calc.gender")}
+              {t("nutrition.calc.gender.label")}
               <Select value={field.value} onValueChange={field.onChange}>
                 <SelectTrigger>
                   <SelectValue placeholder={t("nutrition.calc.gender.placeholder")} />
@@ -178,7 +168,7 @@ export function NutritionCalculatorForm() {
           control={control}
           render={({ field }) => (
             <label className="block text-sm font-medium">
-              {t("nutrition.calc.activity")}
+              {t("nutrition.calc.activity.label")}
               <Select value={field.value} onValueChange={field.onChange}>
                 <SelectTrigger>
                   <SelectValue placeholder={t("nutrition.calc.activity.placeholder")} />
@@ -200,7 +190,7 @@ export function NutritionCalculatorForm() {
 
         {/* GEWICHT */}
         <label className="block text-sm font-medium">
-          {currUnits === "imperial" ? t("nutrition.calc.weight.lbs") : t("nutrition.calc.weight")}
+          {currUnits === "imperial" ? t("nutrition.calc.weight.lbs") : t("nutrition.calc.weight.label")}
           <Input
             type="number"
             step="any"
@@ -208,7 +198,7 @@ export function NutritionCalculatorForm() {
             min={currUnits === "metric" ? 20 : 40}
             max={currUnits === "metric" ? 250 : 550}
             disabled={mutation.isPending}
-            placeholder={currUnits === "imperial" ? "154" : "70"}
+            placeholder={currUnits === "imperial" ? "154" : t("nutrition.calc.weight.placeholder")}
           />
           {errors.weight && (
             <span className="text-xs text-destructive">{t(errors.weight.message as string)}</span>
@@ -222,7 +212,7 @@ export function NutritionCalculatorForm() {
 
         {/* GRÖßE */}
         <label className="block text-sm font-medium">
-          {currUnits === "imperial" ? t("nutrition.calc.height.in") : t("nutrition.calc.height")}
+          {currUnits === "imperial" ? t("nutrition.calc.height.in") : t("nutrition.calc.height.label")}
           <Input
             type="number"
             step="any"
@@ -230,7 +220,7 @@ export function NutritionCalculatorForm() {
             min={currUnits === "metric" ? 100 : 39}
             max={currUnits === "metric" ? 250 : 98}
             disabled={mutation.isPending}
-            placeholder={currUnits === "imperial" ? "69" : "175"}
+            placeholder={currUnits === "imperial" ? "69" : t("nutrition.calc.height.placeholder")}
           />
           {errors.height && (
             <span className="text-xs text-destructive">{t(errors.height.message as string)}</span>
@@ -244,14 +234,14 @@ export function NutritionCalculatorForm() {
 
         {/* ALTER */}
         <label className="block text-sm font-medium">
-          {t("nutrition.calc.age")}
+          {t("nutrition.calc.age.label")}
           <Input
             type="number"
             {...register("age", { valueAsNumber: true })}
             min={5}
             max={120}
             disabled={mutation.isPending}
-            placeholder="30"
+            placeholder={t("nutrition.calc.age.placeholder")}
           />
           {errors.age && (
             <span className="text-xs text-destructive">{t(errors.age.message as string)}</span>
