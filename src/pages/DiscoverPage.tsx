@@ -241,14 +241,62 @@ export default function DiscoverPage() {
       {/* Pagination */}
       {data?.meta && (
         <div className="mt-6 flex justify-center">
-          <Pagination
-            page={data.meta.page}
-            total={data.meta.total}
-            pageSize={data.meta.pageSize}
-            onPageChange={(newPage: number) => {
-              setForm((f) => ({ ...f, page: newPage }));
-            }}
-          />
+          <Pagination>
+            <PaginationContent>
+              {/* Previous */}
+              <li>
+                <button
+                  className="px-3 py-1 rounded hover:bg-accent"
+                  disabled={data.meta.page === 1}
+                  onClick={() => {
+                    if (data.meta.page > 1) {
+                      setForm((f) => ({ ...f, page: data.meta.page - 1 }));
+                    }
+                  }}
+                >
+                  &lt;
+                </button>
+              </li>
+              {/* Page numbers */}
+              {Array.from(
+                { length: Math.ceil(data.meta.total / data.meta.pageSize) },
+                (_, i) => (
+                  <li key={i}>
+                    <button
+                      className={`px-3 py-1 rounded ${
+                        data.meta.page === i + 1
+                          ? "bg-primary text-white"
+                          : "hover:bg-accent"
+                      }`}
+                      onClick={() => setForm((f) => ({ ...f, page: i + 1 }))}
+                    >
+                      {i + 1}
+                    </button>
+                  </li>
+                )
+              )}
+              {/* Next */}
+              <li>
+                <button
+                  className="px-3 py-1 rounded hover:bg-accent"
+                  disabled={
+                    data.meta.page ===
+                    Math.ceil(data.meta.total / data.meta.pageSize)
+                  }
+                  onClick={() => {
+                    if (
+                      data.meta.page <
+                      Math.ceil(data.meta.total / data.meta.pageSize)
+                    ) {
+                      setForm((f) => ({ ...f, page: data.meta.page + 1 }));
+                    }
+                  }}
+                >
+                  &gt;
+                </button>
+              </li>
+            </PaginationContent>
+          </Pagination>
         </div>
       )}
     </div>
