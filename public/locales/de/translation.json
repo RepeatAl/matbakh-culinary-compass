@@ -91,6 +91,12 @@
       "body": "Berechne deinen ungefähren Kalorienbedarf auf Basis weniger Angaben. Dies ist nur eine Orientierungshilfe und ersetzt keine individuelle medizinische Beratung."
     },
     "disclaimer": "ACHTUNG: Dies ist keine Gesundheits- oder Ernährungsberatung. Konsultiere bei Unsicherheiten einen Arzt.",
+    "tiles": {
+      "fresh": { "title": "Frisch & Natürlich", "desc": "Unverarbeitete, regionale Lebensmittel liefern maximale Nährstoffe und Geschmack." },
+      "energy": { "title": "Energie & Balance", "desc": "Die richtige Kalorienzufuhr ist die Basis für Leistungsfähigkeit und Wohlbefinden." },
+      "variety": { "title": "Vielfalt genießen", "desc": "Abwechslungsreiche Ernährung unterstützt deine Gesundheit und vermeidet Mangelerscheinungen." },
+      "protein": { "title": "Protein & Sättigung", "desc": "Eiweiß trägt zum Muskelerhalt und einer langanhaltenden Sättigung bei." }
+    },
     "calc": {
       "title": "Berechne Kalorienbedarf",
       "weight": { "label": "Gewicht (kg)", "placeholder": "z.B. 70", "lbs": "Gewicht (lbs)" },
@@ -144,12 +150,6 @@
         "hint": "Teste den Nährstoffrechner mit Demo-Daten. Für präzise Ergebnisse bitte auf 'Mein Profil' die eigenen Daten eintragen."
       }
     },
-    "tiles": {
-      "fresh": { "title": "Frisch & Natürlich", "desc": "Unverarbeitete, regionale Lebensmittel liefern maximale Nährstoffe und Geschmack." },
-      "energy": { "title": "Energie & Balance", "desc": "Die richtige Kalorienzufuhr ist die Basis für Leistungsfähigkeit und Wohlbefinden." },
-      "variety": { "title": "Vielfalt genießen", "desc": "Abwechslungsreiche Ernährung unterstützt deine Gesundheit und vermeidet Mangelerscheinungen." },
-      "protein": { "title": "Protein & Sättigung", "desc": "Eiweiß trägt zum Muskelerhalt und einer langanhaltenden Sättigung bei." }
-    },
     "recommendations": {
       "title": "Empfohlene Lebensmittel",
       "noData": "Bitte erst Profil­angaben vornehmen, um Empfehlungen zu sehen.",
@@ -172,18 +172,6 @@
       "favorite_foods_label": "Lieblingslebensmittel",
       "disliked_foods_label": "Nicht gerne essen",
       "goals_label": "Ernährungsziele"
-    }
-  },
-  "nutrition": {
-    "calc": {
-      "demo": {
-        "hint": "Teste den Nährstoffrechner mit Demo-Daten. Für präzise Ergebnisse gehe bitte auf 'Mein Profil' und gib deine Daten ein."
-      }
-    },
-    "season": {
-      "wholeyear": "Ganzjährig",
-      "seasonal": "Saisonal",
-      "info": "Wechsle zwischen ganzjährigen und saisonalen Empfehlungen."
     }
   }
 }

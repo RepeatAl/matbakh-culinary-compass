@@ -91,6 +91,12 @@
       "body": "Estimate your ideal calorie intake with just a few details. This is a rough orientation and does not replace medical advice."
     },
     "disclaimer": "NOTE: This is not medical or dietary advice. Please consult your doctor if in doubt.",
+    "tiles": {
+      "fresh": { "title": "Fresh & Natural", "desc": "Unprocessed, local foods provide maximum nutrients and flavor." },
+      "energy": { "title": "Energy & Balance", "desc": "The right amount of calories forms the foundation for energy and well-being." },
+      "variety": { "title": "Enjoy Variety", "desc": "A varied diet supports your health and helps prevent deficiencies." },
+      "protein": { "title": "Protein & Satiety", "desc": "Protein helps maintain muscle and keeps you feeling full longer." }
+    },
     "calc": {
       "title": "Calculate Calorie Needs",
       "weight": { "label": "Weight (kg)", "placeholder": "e.g. 70", "lbs": "Weight (lbs)" },
@@ -144,12 +150,6 @@
         "hint": "Try out the nutrition calculator with demo data. For accurate results, please enter your details in 'My Profile'."
       }
     },
-    "tiles": {
-      "fresh": { "title": "Fresh & Natural", "desc": "Unprocessed, local foods provide maximum nutrients and flavor." },
-      "energy": { "title": "Energy & Balance", "desc": "The right amount of calories forms the foundation for energy and well-being." },
-      "variety": { "title": "Enjoy Variety", "desc": "A varied diet supports your health and helps prevent deficiencies." },
-      "protein": { "title": "Protein & Satiety", "desc": "Protein helps maintain muscle and keeps you feeling full longer." }
-    },
     "recommendations": {
       "title": "Recommended Foods",
       "noData": "Please enter your profile details to see recommendations.",
@@ -172,18 +172,6 @@
       "favorite_foods_label": "Favorite Foods",
       "disliked_foods_label": "Disliked Foods",
       "goals_label": "Nutrition Goals"
-    }
-  },
-  "nutrition": {
-    "calc": {
-      "demo": {
-        "hint": "Try out the nutrition calculator with demo data. For accurate results, please enter your details in 'My Profile'."
-      }
-    },
-    "season": {
-      "wholeyear": "Whole Year",
-      "seasonal": "Seasonal",
-      "info": "Switch between whole-year and seasonal recommendations."
     }
   }
 }

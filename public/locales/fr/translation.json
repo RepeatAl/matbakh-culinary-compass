@@ -87,6 +87,12 @@
       "body": "Estimez vos besoins caloriques idéaux en quelques étapes simples. Il s'agit d'une estimation et cela ne remplace pas l'avis médical individuel."
     },
     "disclaimer": "REMARQUE : Ceci n'est pas un avis médical ou diététique. Veuillez consulter votre médecin en cas de doute.",
+    "tiles": {
+      "fresh": { "title": "Frais et naturel", "desc": "Des aliments locaux et non transformés fournissent un maximum de nutriments et de saveur." },
+      "energy": { "title": "Énergie & Équilibre", "desc": "Un apport calorique adapté est la base de l'énergie et du bien-être." },
+      "variety": { "title": "Le plaisir de la variété", "desc": "Une alimentation variée soutient la santé et évite les carences." },
+      "protein": { "title": "Protéines & Satiété", "desc": "Les protéines contribuent au maintien des muscles et à une longue sensation de satiété." }
+    },
     "calc": {
       "title": "Calculer les besoins caloriques",
       "weight": { "label": "Poids (kg)", "placeholder": "ex. 70", "lbs": "Poids (lbs)" },
@@ -140,12 +146,6 @@
         "hint": "Essayez la calculatrice nutritionnelle avec des données de démonstration. Pour des résultats précis, remplissez vos données dans 'Mon Profil'."
       }
     },
-    "tiles": {
-      "fresh": { "title": "Frais et naturel", "desc": "Des aliments locaux et non transformés fournissent un maximum de nutriments et de saveur." },
-      "energy": { "title": "Énergie & Équilibre", "desc": "Un apport calorique adapté est la base de l'énergie et du bien-être." },
-      "variety": { "title": "Le plaisir de la variété", "desc": "Une alimentation variée soutient la santé et évite les carences." },
-      "protein": { "title": "Protéines & Satiété", "desc": "Les protéines contribuent au maintien des muscles et à une longue sensation de satiété." }
-    },
     "recommendations": {
       "title": "Aliments recommandés",
       "noData": "Veuillez saisir vos informations de profil pour afficher les recommandations.",
@@ -168,18 +168,6 @@
       "favorite_foods_label": "Aliments préférés",
       "disliked_foods_label": "Aliments non appréciés",
       "goals_label": "Objectifs nutritionnels"
-    }
-  },
-  "nutrition": {
-    "calc": {
-      "demo": {
-        "hint": "Essayez la calculatrice nutritionnelle avec des données de démonstration. Pour des résultats précis, remplissez vos données dans 'Mon Profil'."
-      }
-    },
-    "season": {
-      "wholeyear": "Toute l'année",
-      "seasonal": "Saisonnier",
-      "info": "Passez des recommandations annuelles à saisonnières."
     }
   }
 }

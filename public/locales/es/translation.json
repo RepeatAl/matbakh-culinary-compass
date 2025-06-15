@@ -87,6 +87,12 @@
       "body": "Estima tu ingesta ideal de calorías con solo algunos datos. Esta es una orientación aproximada y no reemplaza el consejo médico individual."
     },
     "disclaimer": "NOTA: Esto no es un consejo médico o nutricional. Consulta a tu médico si tienes dudas.",
+    "tiles": {
+      "fresh": { "title": "Fresco y Natural", "desc": "Los alimentos locales y sin procesar proporcionan el máximo de nutrientes y sabor." },
+      "energy": { "title": "Energía y Equilibrio", "desc": "La ingesta calórica adecuada es la base para la energía y el bienestar." },
+      "variety": { "title": "Disfrutar de la variedad", "desc": "Una dieta variada apoya tu salud y previene deficiencias." },
+      "protein": { "title": "Proteína y saciedad", "desc": "La proteína ayuda a mantener los músculos y la sensación de saciedad." }
+    },
     "calc": {
       "title": "Calcular necesidades calóricas",
       "weight": { "label": "Peso (kg)", "placeholder": "ej. 70", "lbs": "Peso (lbs)" },
@@ -139,12 +145,6 @@
       "demo": {
         "hint": "Prueba la calculadora de nutrición con datos de demostración. Para resultados precisos, completa tus datos en 'Mi Perfil'."
       }
-    },
-    "tiles": {
-      "fresh": { "title": "Fresco y Natural", "desc": "Los alimentos locales y sin procesar proporcionan el máximo de nutrientes y sabor." },
-      "energy": { "title": "Energía y Equilibrio", "desc": "La ingesta calórica adecuada es la base para la energía y el bienestar." },
-      "variety": { "title": "Disfrutar de la variedad", "desc": "Una dieta variada apoya tu salud y previene deficiencias." },
-      "protein": { "title": "Proteína y saciedad", "desc": "La proteína ayuda a mantener los músculos y la sensación de saciedad." }
     },
     "recommendations": {
       "title": "Alimentos recomendados",
