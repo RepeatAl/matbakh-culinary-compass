@@ -6,11 +6,12 @@ import { Tables } from "@/integrations/supabase/types";
 import { Button } from "@/components/ui/button";
 import { useToast } from "@/hooks/use-toast";
 import RecipeForm from "@/components/recipes/RecipeForm";
+import { useAuth } from "@/contexts/AuthContext";
 
 export default function MyRecipes() {
   const { t } = useTranslation();
-  const { user } = supabase.auth.getUser();
   const { toast } = useToast();
+  const { user } = useAuth(); // KORREKT: User-Objekt aus Provider
   const [recipes, setRecipes] = useState<Tables<"recipes">[]>([]);
   const [isOpen, setIsOpen] = useState(false);
   const [editRecipe, setEditRecipe] = useState<Tables<"recipes"> | null>(null);
@@ -18,9 +19,11 @@ export default function MyRecipes() {
 
   const fetchRecipes = async () => {
     setLoading(true);
+    if (!user) return;
     const { data, error } = await supabase
       .from("recipes")
       .select("*")
+      .eq("user_id", user.id)
       .order("created_at", { ascending: false });
     if (error) {
       toast({ title: t("myRecipes.errorLoading"), description: error.message, variant: "destructive" });
@@ -31,7 +34,8 @@ export default function MyRecipes() {
 
   useEffect(() => {
     fetchRecipes();
-  }, []);
+    // eslint-disable-next-line
+  }, [user]);
 
   const handleEdit = (recipe: Tables<"recipes">) => {
     setEditRecipe(recipe);

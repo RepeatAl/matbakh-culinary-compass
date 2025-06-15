@@ -1,6 +1,6 @@
 
 import { useEffect } from "react";
-import { useForm, useFieldArray } from "react-hook-form";
+import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
@@ -11,6 +11,7 @@ import { useToast } from "@/hooks/use-toast";
 import { supabase } from "@/integrations/supabase/client";
 import { useTranslation } from "react-i18next";
 import { Tables } from "@/integrations/supabase/types";
+import { useAuth } from "@/contexts/AuthContext";
 
 const recipeSchema = z.object({
   title: z.string().min(2),
@@ -40,6 +41,7 @@ type FormValues = z.infer<typeof recipeSchema>;
 export default function RecipeForm({ open, onOpenChange, existing, onSaved }: RecipeFormProps) {
   const { t } = useTranslation();
   const { toast } = useToast();
+  const { user } = useAuth();
 
   const form = useForm<FormValues>({
     resolver: zodResolver(recipeSchema),
@@ -54,7 +56,7 @@ export default function RecipeForm({ open, onOpenChange, existing, onSaved }: Re
     },
   });
 
-  // Für edit: Lade Zutaten, wenn bestehend
+  // Zutaten für Edit-Form nachladen
   useEffect(() => {
     if (existing) {
       form.reset({
@@ -66,7 +68,6 @@ export default function RecipeForm({ open, onOpenChange, existing, onSaved }: Re
         publish: existing.publish ?? false,
         ingredients: [],
       });
-      // Ingredients nachladen
       supabase
         .from("ingredients")
         .select("*")
@@ -82,6 +83,10 @@ export default function RecipeForm({ open, onOpenChange, existing, onSaved }: Re
 
   // Submit
   async function onSubmit(values: FormValues) {
+    if (!user) {
+      toast({ title: t("myRecipes.errorSave"), description: "Not logged in", variant: "destructive" });
+      return;
+    }
     let recipeId = existing?.id;
     let result;
     if (existing) {
@@ -98,10 +103,15 @@ export default function RecipeForm({ open, onOpenChange, existing, onSaved }: Re
         .eq("id", recipeId)
         .select()
         .single();
+      if (result.error) {
+        toast({ title: t("myRecipes.errorSave"), description: result.error.message, variant: "destructive" });
+        return;
+      }
     } else {
       const { data, error } = await supabase
         .from("recipes")
         .insert({
+          user_id: user.id,
           title: values.title,
           description: values.description,
           prep_minutes: values.prep_minutes,
@@ -119,17 +129,18 @@ export default function RecipeForm({ open, onOpenChange, existing, onSaved }: Re
       recipeId = data.id;
     }
 
-    // Zutaten syncen
+    // Zutaten syncen: alte löschen, neue einfügen
     if (recipeId) {
-      // Bestehende Zutaten löschen, neue einfügen
       await supabase.from("ingredients").delete().eq("recipe_id", recipeId);
       if (values.ingredients.length > 0) {
-        await supabase.from("ingredients").insert(
-          values.ingredients.map((i) => ({
-            ...i,
-            recipe_id: recipeId,
-          }))
-        );
+        // Jede Zutat braucht name (string), quantity (number), unit (string|undefined), und recipe_id
+        const ingrPayload = values.ingredients.map((i) => ({
+          recipe_id: recipeId,
+          name: i.name,
+          quantity: i.quantity,
+          unit: i.unit,
+        }));
+        await supabase.from("ingredients").insert(ingrPayload);
       }
     }
     toast({ title: t("myRecipes.successSave") });

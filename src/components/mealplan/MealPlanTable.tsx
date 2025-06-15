@@ -64,7 +64,12 @@ export default function MealPlanTable({ mealPlan }: { mealPlan: Tables<"meal_pla
       } else {
         res = await supabase
           .from("meal_plan_items")
-          .insert({ meal_plan_id: mealPlan.id, weekday: cell.day, meal: cell.meal, recipe_id: selected })
+          .insert({
+            meal_plan_id: mealPlan.id,
+            weekday: cell.day as Enums<"weekday_short">,
+            meal: cell.meal as Enums<"meal_type">,
+            recipe_id: selected,
+          })
           .select();
       }
     } else if (exist) {
