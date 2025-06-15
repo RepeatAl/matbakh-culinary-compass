@@ -158,16 +158,44 @@
     }
   },
   "profile": {
-    "title": "Mi Perfil",
-    "save": "Guardar",
-    "saved": "Perfil guardado",
-    "save_failed": "No se pudo guardar el perfil.",
-    "loading": "Cargando datos personales ...",
-    "health": {
-      "allergies_label": "Alergias",
-      "favorite_foods_label": "Alimentos favoritos",
-      "disliked_foods_label": "Comidas que no te gustan",
-      "goals_label": "Objetivos nutricionales"
+    "allergies": {
+      "label": "Alergias",
+      "gluten": "Gluten",
+      "lactose": "Lactosa",
+      "nuts": "Frutos secos",
+      "soy": "Soja",
+      "eggs": "Huevos",
+      "fish": "Pescado",
+      "shellfish": "Mariscos",
+      "sesame": "Sésamo",
+      "peanut": "Cacahuetes",
+      "nightshades": "Solanáceas",
+      "histamine": "Histamina"
+    },
+    "favorite_foods": {
+      "label": "Alimentos favoritos"
+    },
+    "disliked_foods": {
+      "label": "Comidas no preferidas"
+    },
+    "goals": {
+      "label": "Objetivos nutricionales",
+      "weight_loss": "Perder peso",
+      "weight_maintenance": "Mantener peso",
+      "muscle_gain": "Ganar músculo",
+      "high_protein": "Alto en proteínas",
+      "low_carb": "Bajo en carbohidratos",
+      "vegan": "Vegano",
+      "vegetarian": "Vegetariano",
+      "keto": "Keto",
+      "paleo": "Paleo",
+      "diabetic_friendly": "Apto para diabéticos",
+      "heart_health": "Salud del corazón",
+      "gut_health": "Salud intestinal",
+      "anti_inflammatory": "Antiinflamatorio",
+      "sustainable_eating": "Alimentación sostenible",
+      "flexitarian": "Flexitariano",
+      "other": "Otro"
     }
   }
 }

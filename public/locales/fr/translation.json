@@ -33,12 +33,16 @@
     "home": "Accueil",
     "about": "À Propos",
     "recipes": "Recettes",
+    "myRecipes": "Mes Recettes",
+    "allRecipes": "Alle Rezepte",
+    "mealPlan": "Mon Plan de Semaine",
     "nutrition": "Nutrition",
     "restaurants": "Restaurants",
     "contact": "Contact",
-    "sidebarHeader": "Menu",
-    "myRecipes": "Mes Recettes",
-    "mealPlan": "Mon Plan de Semaine"
+    "profile": "Mon Profil",
+    "logout": "Logout",
+    "login": "Login",
+    "sidebarHeader": "Menu"
   },
   "myRecipes": {
     "title": "Mes Recettes",
@@ -101,7 +105,8 @@
       "gender": {
         "label": "Genre",
         "placeholder": "Choisir le genre",
-        "male": "Homme", "female": "Femme", "other": "Autre"
+        "male": "Homme", "female": "Femme",
+        "other": "Autre"
       },
       "activity": {
         "label": "Niveau d'activité",
@@ -168,6 +173,47 @@
       "favorite_foods_label": "Aliments préférés",
       "disliked_foods_label": "Aliments non appréciés",
       "goals_label": "Objectifs nutritionnels"
+    }
+  },
+  "profile": {
+    "allergies": {
+      "label": "Allergies",
+      "gluten": "Gluten",
+      "lactose": "Lactose",
+      "nuts": "Fruits à coque",
+      "soy": "Soja",
+      "eggs": "Oeufs",
+      "fish": "Poisson",
+      "shellfish": "Fruits de mer",
+      "sesame": "Sésame",
+      "peanut": "Arachide",
+      "nightshades": "Solanacées",
+      "histamine": "Histamine"
+    },
+    "favorite_foods": {
+      "label": "Aliments préférés"
+    },
+    "disliked_foods": {
+      "label": "Aliments non appréciés"
+    },
+    "goals": {
+      "label": "Objectifs nutritionnels",
+      "weight_loss": "Perte de poids",
+      "weight_maintenance": "Maintien du poids",
+      "muscle_gain": "Prise de muscle",
+      "high_protein": "Riche en protéines",
+      "low_carb": "Faible en glucides",
+      "vegan": "Vegan",
+      "vegetarian": "Végétarien",
+      "keto": "Keto",
+      "paleo": "Paleo",
+      "diabetic_friendly": "Adapté aux diabétiques",
+      "heart_health": "Santé cardiaque",
+      "gut_health": "Santé intestinale",
+      "anti_inflammatory": "Anti-inflammatoire",
+      "sustainable_eating": "Alimentation durable",
+      "flexitarian": "Flexitarien",
+      "other": "Autre"
     }
   }
 }

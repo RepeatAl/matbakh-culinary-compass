@@ -162,16 +162,44 @@
     }
   },
   "profile": {
-    "title": "My Profile",
-    "save": "Save",
-    "saved": "Profile saved",
-    "save_failed": "Could not save profile.",
-    "loading": "Loading personal data ...",
-    "health": {
-      "allergies_label": "Allergies",
-      "favorite_foods_label": "Favorite Foods",
-      "disliked_foods_label": "Disliked Foods",
-      "goals_label": "Nutrition Goals"
+    "allergies": {
+      "label": "Allergies",
+      "gluten": "Gluten",
+      "lactose": "Lactose",
+      "nuts": "Nuts",
+      "soy": "Soy",
+      "eggs": "Eggs",
+      "fish": "Fish",
+      "shellfish": "Shellfish",
+      "sesame": "Sesame",
+      "peanut": "Peanut",
+      "nightshades": "Nightshades",
+      "histamine": "Histamine"
+    },
+    "favorite_foods": {
+      "label": "Favorite Foods"
+    },
+    "disliked_foods": {
+      "label": "Disliked Foods"
+    },
+    "goals": {
+      "label": "Nutrition Goals",
+      "weight_loss": "Weight Loss",
+      "weight_maintenance": "Weight Maintenance",
+      "muscle_gain": "Muscle Gain",
+      "high_protein": "High Protein",
+      "low_carb": "Low Carb",
+      "vegan": "Vegan",
+      "vegetarian": "Vegetarian",
+      "keto": "Keto",
+      "paleo": "Paleo",
+      "diabetic_friendly": "Diabetic Friendly",
+      "heart_health": "Heart Health",
+      "gut_health": "Gut Health",
+      "anti_inflammatory": "Anti-Inflammatory",
+      "sustainable_eating": "Sustainable Eating",
+      "flexitarian": "Flexitarian",
+      "other": "Other"
     }
   }
 }

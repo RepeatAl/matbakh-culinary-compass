@@ -1,4 +1,3 @@
-
 {
   "appTitle": "Matbakh",
   "welcome": {
@@ -163,16 +162,44 @@
     }
   },
   "profile": {
-    "title": "Mein Profil",
-    "save": "Speichern",
-    "saved": "Profil gespeichert",
-    "save_failed": "Profil konnte nicht gespeichert werden.",
-    "loading": "Lade persönliche Daten ...",
-    "health": {
-      "allergies_label": "Allergien",
-      "favorite_foods_label": "Lieblingslebensmittel",
-      "disliked_foods_label": "Nicht gerne essen",
-      "goals_label": "Ernährungsziele"
+    "allergies": {
+      "label": "Allergien",
+      "gluten": "Gluten",
+      "lactose": "Laktose",
+      "nuts": "Nüsse",
+      "soy": "Soja",
+      "eggs": "Eier",
+      "fish": "Fisch",
+      "shellfish": "Schalentiere",
+      "sesame": "Sesam",
+      "peanut": "Erdnüsse",
+      "nightshades": "Nachtschattengewächse",
+      "histamine": "Histamin"
+    },
+    "favorite_foods": {
+      "label": "Lieblingslebensmittel"
+    },
+    "disliked_foods": {
+      "label": "Nicht gern gegessene Lebensmittel"
+    },
+    "goals": {
+      "label": "Ernährungsziele",
+      "weight_loss": "Abnehmen",
+      "weight_maintenance": "Gewicht halten",
+      "muscle_gain": "Muskelaufbau",
+      "high_protein": "Proteinreich",
+      "low_carb": "Kohlenhydratarm",
+      "vegan": "Vegan",
+      "vegetarian": "Vegetarisch",
+      "keto": "Keto",
+      "paleo": "Paleo",
+      "diabetic_friendly": "Diabetikerfreundlich",
+      "heart_health": "Herzgesund",
+      "gut_health": "Darmgesund",
+      "anti_inflammatory": "Entzündungshemmend",
+      "sustainable_eating": "Nachhaltig Essen",
+      "flexitarian": "Flexitarisch",
+      "other": "Andere"
     }
   }
 }
