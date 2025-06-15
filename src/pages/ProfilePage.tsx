@@ -47,7 +47,7 @@ export default function ProfilePage() {
     // Lade Basis- und erweiterte Profilinfos
     supabase
       .from("profiles")
-      .select("first_name,last_name")
+      .select("id,first_name,last_name,updated_at")
       .eq("id", user.id)
       .single()
       .then(({ data }) => setProfile(data));
