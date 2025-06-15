@@ -90,11 +90,22 @@
     "calc": {
       "title": "Kalorienbedarf berechnen",
       "weight": "Gewicht (kg)",
+      "weight.lbs": "Gewicht (lbs)",
       "height": "Größe (cm)",
+      "height.in": "Größe (in)",
+      "units": {
+        "label": "Einheiten",
+        "placeholder": "Einheit wählen",
+        "metric": "Metrisch (kg/cm)",
+        "imperial": "Imperial (lbs/in)",
+        "hintWeight": "Bitte Gewicht in Pfund (lbs) eingeben",
+        "hintHeight": "Bitte Größe in Zoll (in) eingeben"
+      },
       "age": "Alter",
       "gender": "Geschlecht",
       "gender.male": "Männlich",
       "gender.female": "Weiblich",
+      "gender.other": "Divers",
       "gender.placeholder": "Geschlecht wählen",
       "activity": "Aktivitätsniveau",
       "activity.sedentary": "Sitzend (wenig/keine Bewegung)",
@@ -106,16 +117,22 @@
       "submit": "Berechnen",
       "sending": "Berechne...",
       "result": {
+        "title": "Ergebnisse",
         "bmr": "Grundumsatz (BMR): {{value}} kcal/Tag",
         "tdee": "Gesamtenergiebedarf (TDEE): {{value}} kcal/Tag",
-        "units": "Alle Werte in {{units}}."
+        "units": "Alle Werte in {{units}}.",
+        "macros": "Makronährstoffe:",
+        "macroCarbs": "Kohlenhydrate",
+        "macroProtein": "Eiweiß",
+        "macroFat": "Fett"
       },
       "error": {
         "weight": "Bitte ein Gewicht zwischen 20–250 kg eingeben.",
         "height": "Bitte eine Größe zwischen 100–250 cm eingeben.",
         "age": "Bitte ein Alter zwischen 5–120 Jahren eingeben.",
         "gender": "Bitte ein Geschlecht wählen.",
-        "activity": "Bitte ein Aktivitätslevel wählen."
+        "activity": "Bitte ein Aktivitätslevel wählen.",
+        "fallback": "Unbekannter Fehler. Bitte erneut versuchen."
       }
     }
   }

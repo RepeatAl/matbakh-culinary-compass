@@ -1,4 +1,3 @@
-
 import React from "react";
 import { useForm, Controller } from "react-hook-form";
 import { z } from "zod";
@@ -100,7 +99,7 @@ export function NutritionCalculatorForm() {
   });
 
   const currUnits = watch("units");
-  // Bei units-Wechsel: Gewicht/Größe übernehmen + umrechnen
+
   React.useEffect(() => {
     // Wir wandeln bei units-Wechsel die Werte um (optisch, nicht im Backend), so dass der Nutzer sinnvoll weiterarbeiten kann.
     // WENN der Wert nicht im "defaultUnits" ist, konvertieren wir:
@@ -109,15 +108,13 @@ export function NutritionCalculatorForm() {
     // - Für Demo: keine automatische Umrechnung, nur Placeholder/Label ändern.
   }, [currUnits]); // Placeholder effect: hier könnte man noch das aktuelle Feld neu setzen.
 
-  // ---------- useMutation ----------
+  // Mutation-Setup (mit isPending, isError, error, data)
   const mutation = useMutation<any, Error, NutritionInput>({
     mutationFn: fetchNutritionCalc,
   });
 
-  // ---------- Submit ----------
   function onSubmit(data: NutritionInput) {
     mutation.reset();
-    // Umrechnungslogik für das Backend - Backend erwartet kg/cm, wenn imperial, liefern wir lbs/in + units: "imperial"
     mutation.mutate(data);
   }
 
@@ -129,7 +126,6 @@ export function NutritionCalculatorForm() {
     >
       <h2 className="text-lg font-semibold">{t("nutrition.calc.title")}</h2>
       <div className="space-y-2">
-        
         {/* Einheiten-Auswahl */}
         <Controller
           name="units"
@@ -149,7 +145,7 @@ export function NutritionCalculatorForm() {
             </label>
           )}
         />
-        
+
         {/* GESCHLECHT */}
         <Controller
           name="gender"
@@ -211,7 +207,7 @@ export function NutritionCalculatorForm() {
             {...register("weight", { valueAsNumber: true })}
             min={currUnits === "metric" ? 20 : 40}
             max={currUnits === "metric" ? 250 : 550}
-            disabled={mutation.isLoading}
+            disabled={mutation.isPending}
             placeholder={currUnits === "imperial" ? "154" : "70"}
           />
           {errors.weight && (
@@ -233,7 +229,7 @@ export function NutritionCalculatorForm() {
             {...register("height", { valueAsNumber: true })}
             min={currUnits === "metric" ? 100 : 39}
             max={currUnits === "metric" ? 250 : 98}
-            disabled={mutation.isLoading}
+            disabled={mutation.isPending}
             placeholder={currUnits === "imperial" ? "69" : "175"}
           />
           {errors.height && (
@@ -254,7 +250,7 @@ export function NutritionCalculatorForm() {
             {...register("age", { valueAsNumber: true })}
             min={5}
             max={120}
-            disabled={mutation.isLoading}
+            disabled={mutation.isPending}
             placeholder="30"
           />
           {errors.age && (
@@ -262,15 +258,25 @@ export function NutritionCalculatorForm() {
           )}
         </label>
       </div>
+
       <div>
-        <Button type="submit" disabled={mutation.isLoading} className="w-full">
-          {mutation.isLoading ? t("nutrition.calc.sending") : t("nutrition.calc.submit")}
+        <Button type="submit" disabled={mutation.isPending} className="w-full">
+          {mutation.isPending ? t("nutrition.calc.sending") : t("nutrition.calc.submit")}
         </Button>
+        {/* Statuszeile: Spinner & Fehleranzeige */}
+        <div className="min-h-8 mt-2 flex items-center">
+          {mutation.isPending && (
+            <span className="inline-block w-5 h-5 mr-2 border-2 border-primary border-t-transparent rounded-full animate-spin" aria-label={t("nutrition.calc.sending")}></span>
+          )}
+          {mutation.isError && (
+            <span className="block text-xs text-destructive">
+              {mutation.error?.message || t("nutrition.calc.error.fallback")}
+            </span>
+          )}
+        </div>
       </div>
-      {mutation.error && (
-        <div className="text-xs text-destructive mt-2">{mutation.error.message}</div>
-      )}
-      {/* ERGEBNIS */}
+
+      {/* ERGEBNIS nur zeigen, wenn mutation.data existiert */}
       {mutation.data && (
         <Card className="mt-6">
           <CardHeader>

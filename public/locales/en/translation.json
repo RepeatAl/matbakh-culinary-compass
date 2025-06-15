@@ -90,11 +90,22 @@
     "calc": {
       "title": "Calculate Calorie Needs",
       "weight": "Weight (kg)",
+      "weight.lbs": "Weight (lbs)",
       "height": "Height (cm)",
+      "height.in": "Height (in)",
+      "units": {
+        "label": "Units",
+        "placeholder": "Choose units",
+        "metric": "Metric (kg/cm)",
+        "imperial": "Imperial (lbs/in)",
+        "hintWeight": "Enter your weight in pounds (lbs)",
+        "hintHeight": "Enter your height in inches"
+      },
       "age": "Age",
       "gender": "Gender",
       "gender.male": "Male",
       "gender.female": "Female",
+      "gender.other": "Other",
       "gender.placeholder": "Choose gender",
       "activity": "Activity Level",
       "activity.sedentary": "Sedentary (little/no exercise)",
@@ -106,16 +117,22 @@
       "submit": "Calculate",
       "sending": "Calculating...",
       "result": {
+        "title": "Results",
         "bmr": "Basal Metabolic Rate (BMR): {{value}} kcal/day",
         "tdee": "Total Daily Energy Expenditure (TDEE): {{value}} kcal/day",
-        "units": "All values in {{units}}."
+        "units": "All values in {{units}}.",
+        "macros": "Macronutrients:",
+        "macroCarbs": "Carbohydrates",
+        "macroProtein": "Protein",
+        "macroFat": "Fat"
       },
       "error": {
         "weight": "Please enter a weight between 20–250 kg.",
         "height": "Please enter a height between 100–250 cm.",
         "age": "Please enter an age between 5–120 years.",
         "gender": "Please select a gender.",
-        "activity": "Please select an activity level."
+        "activity": "Please select an activity level.",
+        "fallback": "Unknown error. Please try again."
       }
     }
   }
