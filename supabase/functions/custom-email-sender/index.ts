@@ -1,4 +1,3 @@
-
 import React from 'npm:react@18.3.1'
 import { Webhook } from 'https://esm.sh/standardwebhooks@1.0.0'
 import { Resend } from 'npm:resend@4.0.0'
@@ -75,7 +74,7 @@ Deno.serve(async (req) => {
     );
 
     const { error } = await resend.emails.send({
-      from: 'Matbakh <onboarding@resend.dev>',
+      from: 'Matbakh <admin@whatsgonow.com>',
       to: [user.email],
       subject: 'Welcome to Matbakh! Please confirm your email.',
       html,
