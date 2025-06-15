@@ -153,6 +153,27 @@
       "title": "Alimentos recomendados",
       "noData": "Por favor, introduce tus datos de perfil para ver recomendaciones.",
       "seeAll": "Ver todas las recomendaciones"
+    },
+    "demo": {
+      "hint": "Prueba la calculadora de nutrición con datos de demostración. Para resultados precisos, completa tus datos en 'Mi Perfil'."
+    },
+    "season": {
+      "wholeyear": "Todo el año",
+      "seasonal": "Estacional",
+      "info": "Cambia entre recomendaciones anuales y estacionales."
+    }
+  },
+  "profile": {
+    "title": "Mi Perfil",
+    "save": "Guardar",
+    "saved": "Perfil guardado",
+    "save_failed": "No se pudo guardar el perfil.",
+    "loading": "Cargando datos personales ...",
+    "health": {
+      "allergies_label": "Alergias",
+      "favorite_foods_label": "Alimentos favoritos",
+      "disliked_foods_label": "Comidas que no te gustan",
+      "goals_label": "Objetivos nutricionales"
     }
   }
 }

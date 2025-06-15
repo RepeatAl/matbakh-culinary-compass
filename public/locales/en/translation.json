@@ -159,5 +159,30 @@
       "noData": "Please enter your profile details to see recommendations.",
       "seeAll": "See all recommendations"
     }
+  },
+  "profile": {
+    "title": "My Profile",
+    "save": "Save",
+    "saved": "Profile saved",
+    "save_failed": "Could not save profile.",
+    "loading": "Loading personal data ...",
+    "health": {
+      "allergies_label": "Allergies",
+      "favorite_foods_label": "Favorite Foods",
+      "disliked_foods_label": "Disliked Foods",
+      "goals_label": "Nutrition Goals"
+    }
+  },
+  "nutrition": {
+    "calc": {
+      "demo": {
+        "hint": "Try out the nutrition calculator with demo data. For accurate results, please enter your details in 'My Profile'."
+      }
+    },
+    "season": {
+      "wholeyear": "Whole Year",
+      "seasonal": "Seasonal",
+      "info": "Switch between whole-year and seasonal recommendations."
+    }
   }
 }

@@ -158,5 +158,30 @@
       "noData": "Bitte erst Profil­angaben vornehmen, um Empfehlungen zu sehen.",
       "seeAll": "Alle Empfehlungen anzeigen"
     }
+  },
+  "profile": {
+    "title": "Mein Profil",
+    "save": "Speichern",
+    "saved": "Profil gespeichert",
+    "save_failed": "Profil konnte nicht gespeichert werden.",
+    "loading": "Lade persönliche Daten ...",
+    "health": {
+      "allergies_label": "Allergien",
+      "favorite_foods_label": "Lieblingslebensmittel",
+      "disliked_foods_label": "Nicht gerne essen",
+      "goals_label": "Ernährungsziele"
+    }
+  },
+  "nutrition": {
+    "calc": {
+      "demo": {
+        "hint": "Teste den Nährstoffrechner mit Demo-Daten. Für präzise Ergebnisse gehe bitte auf 'Mein Profil' und gib deine Daten ein."
+      }
+    },
+    "season": {
+      "wholeyear": "Ganzjährig",
+      "seasonal": "Saisonal",
+      "info": "Wechsle zwischen ganzjährigen und saisonalen Empfehlungen."
+    }
   }
 }

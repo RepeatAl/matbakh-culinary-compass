@@ -154,5 +154,30 @@
       "noData": "Veuillez saisir vos informations de profil pour afficher les recommandations.",
       "seeAll": "Voir toutes les recommandations"
     }
+  },
+  "profile": {
+    "title": "Mon Profil",
+    "save": "Enregistrer",
+    "saved": "Profil enregistré",
+    "save_failed": "Impossible d'enregistrer le profil.",
+    "loading": "Chargement des données personnelles ...",
+    "health": {
+      "allergies_label": "Allergies",
+      "favorite_foods_label": "Aliments préférés",
+      "disliked_foods_label": "Aliments non appréciés",
+      "goals_label": "Objectifs nutritionnels"
+    }
+  },
+  "nutrition": {
+    "calc": {
+      "demo": {
+        "hint": "Essayez la calculatrice nutritionnelle avec des données de démonstration. Pour des résultats précis, remplissez vos données dans 'Mon Profil'."
+      }
+    },
+    "season": {
+      "wholeyear": "Toute l'année",
+      "seasonal": "Saisonnier",
+      "info": "Passez des recommandations annuelles à saisonnières."
+    }
   }
 }
