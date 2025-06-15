@@ -21,8 +21,10 @@ serve(async (req) => {
 
     // *** Nur der offene Backend-Key! ***
     const GOOGLE_KEY = Deno.env.get("GOOGLE_MAPS_API_KEY");
+    // LOGGING zum Debug
+    console.log("GOOGLE_MAPS_API_KEY:", GOOGLE_KEY ? `[${GOOGLE_KEY.slice(0,8)}...${GOOGLE_KEY.slice(-6)}]` : "NICHT GESETZT (undefined/null)");
     if (!GOOGLE_KEY) {
-      return new Response(JSON.stringify({ error: "Google API Key missing" }), {
+      return new Response(JSON.stringify({ error: "Google API Key missing in Edge Function (GOOGLE_MAPS_API_KEY)" }), {
         status: 500,
         headers: corsHeaders,
       });
@@ -57,6 +59,15 @@ serve(async (req) => {
     const gRes = await fetch(gUrl.toString());
     const gData = await gRes.json();
 
+    // Fehlerdiagnose: Falls Google API einen Fehler liefert, loggen wir das ausführlich:
+    if (gData.error_message) {
+      console.error("Google Places API Fehler:", gData.error_message, gData);
+      return new Response(JSON.stringify({ error: "Google Places API Fehler", details: gData.error_message }), {
+        status: 500,
+        headers: corsHeaders,
+      });
+    }
+
     // Mapping der Google-Antwort auf unser Schema + Filter nach min_rating (lokal)
     let items = (gData.results || []).filter((r: any) =>
       min_rating ? (r.rating ?? 0) >= min_rating : true
@@ -89,7 +100,7 @@ serve(async (req) => {
       headers: { "Content-Type": "application/json", ...corsHeaders }
     });
   } catch (e) {
-    console.error(e);
+    console.error("Edge Function (business-search) Fehler:", e);
     return new Response(JSON.stringify({ error: String(e) }), {
       status: 500,
       headers: { "Content-Type": "application/json", ...corsHeaders },
