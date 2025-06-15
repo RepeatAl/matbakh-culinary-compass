@@ -80,5 +80,51 @@
     "selectRecipe": "Choisir...",
     "noRecipe": "Aucune recette",
     "btnSave": "Enregistrer"
+  },
+  "nutrition": {
+    "calc": {
+      "weight":   { "label": "Poids (kg)",     "placeholder": "ex. 70" },
+      "height":   { "label": "Taille (cm)",    "placeholder": "ex. 175" },
+      "age":      { "label": "Âge (ans)",      "placeholder": "ex. 30" },
+      "gender":   {
+        "label": "Genre",
+        "placeholder": "Choisir le genre",
+        "male": "Homme", "female": "Femme", "other": "Autre"
+      },
+      "activity": {
+        "label": "Niveau d'activité",
+        "placeholder": "Choisir activité",
+        "sedentary": "Sédentaire",
+        "light": "Légèrement actif",
+        "moderate": "Modérément actif",
+        "active": "Actif",
+        "very_active": "Très actif"
+      },
+      "units": {
+        "label": "Unités",
+        "placeholder": "Choisir unité",
+        "metric": "Métrique (kg/cm)",
+        "imperial": "Impérial (lbs/in)"
+      },
+      "submit": "Calculer",
+      "error": {
+        "weight": "Veuillez saisir un poids entre 20–250 kg.",
+        "height": "Veuillez saisir une taille entre 100–250 cm.",
+        "age": "Veuillez saisir un âge entre 5–120 ans.",
+        "gender": "Veuillez choisir un genre.",
+        "activity": "Veuillez choisir un niveau d'activité.",
+        "fallback": "Erreur inconnue. Veuillez réessayer."
+      },
+      "result": {
+        "title": "Votre besoin calorique",
+        "subtitle": "Ceci est une estimation et ne remplace pas un avis médical.",
+        "bmr": "Métabolisme basal (BMR) : {{value}} kcal/jour",
+        "tdee": "Dépense énergétique totale (TDEE) : {{value}} kcal/jour",
+        "macros": "Macronutriments :",
+        "macroCarbs": "Glucides",
+        "macroProtein": "Protéines",
+        "macroFat": "Lipides"
+      }
+    }
   }
 }

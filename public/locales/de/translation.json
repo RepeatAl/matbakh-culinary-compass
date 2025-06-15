@@ -88,44 +88,30 @@
     },
     "disclaimer": "ACHTUNG: Dies ist keine Gesundheits- oder Ernährungsberatung. Konsultiere bei Unsicherheiten einen Arzt.",
     "calc": {
-      "title": "Kalorienbedarf berechnen",
-      "weight": "Gewicht (kg)",
-      "weight.lbs": "Gewicht (lbs)",
-      "height": "Größe (cm)",
-      "height.in": "Größe (in)",
+      "weight":   { "label": "Gewicht (kg)",   "placeholder": "z.B. 70" },
+      "height":   { "label": "Größe (cm)",     "placeholder": "z.B. 175" },
+      "age":      { "label": "Alter (Jahre)",  "placeholder": "z.B. 30" },
+      "gender":   {
+        "label": "Geschlecht",
+        "placeholder": "Geschlecht wählen",
+        "male": "Männlich", "female": "Weiblich", "other": "Divers"
+      },
+      "activity": {
+        "label": "Aktivitätslevel",
+        "placeholder": "Aktivität wählen",
+        "sedentary": "Sitzend",
+        "light": "Leicht aktiv",
+        "moderate": "Mäßig aktiv",
+        "active": "Aktiv",
+        "very_active": "Sehr aktiv"
+      },
       "units": {
         "label": "Einheiten",
         "placeholder": "Einheit wählen",
         "metric": "Metrisch (kg/cm)",
-        "imperial": "Imperial (lbs/in)",
-        "hintWeight": "Bitte Gewicht in Pfund (lbs) eingeben",
-        "hintHeight": "Bitte Größe in Zoll (in) eingeben"
+        "imperial": "Imperial (lbs/in)"
       },
-      "age": "Alter",
-      "gender": "Geschlecht",
-      "gender.male": "Männlich",
-      "gender.female": "Weiblich",
-      "gender.other": "Divers",
-      "gender.placeholder": "Geschlecht wählen",
-      "activity": "Aktivitätsniveau",
-      "activity.sedentary": "Sitzend (wenig/keine Bewegung)",
-      "activity.light": "Leicht aktiv (1-3x Woche Sport)",
-      "activity.moderate": "Mäßig aktiv (3-5x Woche Sport)",
-      "activity.active": "Aktiv (6-7x Woche Sport)",
-      "activity.very_active": "Sehr aktiv (intensiver Sport/jeden Tag)",
-      "activity.placeholder": "Aktivitätslevel wählen",
       "submit": "Berechnen",
-      "sending": "Berechne...",
-      "result": {
-        "title": "Ergebnisse",
-        "bmr": "Grundumsatz (BMR): {{value}} kcal/Tag",
-        "tdee": "Gesamtenergiebedarf (TDEE): {{value}} kcal/Tag",
-        "units": "Alle Werte in {{units}}.",
-        "macros": "Makronährstoffe:",
-        "macroCarbs": "Kohlenhydrate",
-        "macroProtein": "Eiweiß",
-        "macroFat": "Fett"
-      },
       "error": {
         "weight": "Bitte ein Gewicht zwischen 20–250 kg eingeben.",
         "height": "Bitte eine Größe zwischen 100–250 cm eingeben.",
@@ -133,6 +119,16 @@
         "gender": "Bitte ein Geschlecht wählen.",
         "activity": "Bitte ein Aktivitätslevel wählen.",
         "fallback": "Unbekannter Fehler. Bitte erneut versuchen."
+      },
+      "result": {
+        "title": "Dein Energiebedarf",
+        "subtitle": "Dies ist eine Orientierungshilfe und ersetzt keine medizinische Beratung.",
+        "bmr": "Grundumsatz (BMR): {{value}} kcal/Tag",
+        "tdee": "Gesamtbedarf (TDEE): {{value}} kcal/Tag",
+        "macros": "Makronährstoffe:",
+        "macroCarbs": "Kohlenhydrate",
+        "macroProtein": "Proteine",
+        "macroFat": "Fette"
       }
     }
   }

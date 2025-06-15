@@ -89,43 +89,30 @@
     "disclaimer": "NOTE: This is not medical or dietary advice. Please consult your doctor if in doubt.",
     "calc": {
       "title": "Calculate Calorie Needs",
-      "weight": "Weight (kg)",
-      "weight.lbs": "Weight (lbs)",
-      "height": "Height (cm)",
-      "height.in": "Height (in)",
+      "weight":   { "label": "Weight (kg)",   "placeholder": "e.g. 70" },
+      "height":   { "label": "Height (cm)",   "placeholder": "e.g. 175" },
+      "age":      { "label": "Age (years)",   "placeholder": "e.g. 30" },
+      "gender":   {
+        "label": "Gender",
+        "placeholder": "Select gender",
+        "male": "Male", "female": "Female", "other": "Other"
+      },
+      "activity": {
+        "label": "Activity Level",
+        "placeholder": "Select activity",
+        "sedentary": "Sedentary",
+        "light": "Light active",
+        "moderate": "Moderately active",
+        "active": "Active",
+        "very_active": "Very active"
+      },
       "units": {
         "label": "Units",
-        "placeholder": "Choose units",
+        "placeholder": "Select units",
         "metric": "Metric (kg/cm)",
-        "imperial": "Imperial (lbs/in)",
-        "hintWeight": "Enter your weight in pounds (lbs)",
-        "hintHeight": "Enter your height in inches"
+        "imperial": "Imperial (lbs/in)"
       },
-      "age": "Age",
-      "gender": "Gender",
-      "gender.male": "Male",
-      "gender.female": "Female",
-      "gender.other": "Other",
-      "gender.placeholder": "Choose gender",
-      "activity": "Activity Level",
-      "activity.sedentary": "Sedentary (little/no exercise)",
-      "activity.light": "Light active (1-3x/week exercise)",
-      "activity.moderate": "Moderately active (3-5x/week exercise)",
-      "activity.active": "Active (6-7x/week exercise)",
-      "activity.very_active": "Very active (intense exercise/daily)",
-      "activity.placeholder": "Choose activity",
       "submit": "Calculate",
-      "sending": "Calculating...",
-      "result": {
-        "title": "Results",
-        "bmr": "Basal Metabolic Rate (BMR): {{value}} kcal/day",
-        "tdee": "Total Daily Energy Expenditure (TDEE): {{value}} kcal/day",
-        "units": "All values in {{units}}.",
-        "macros": "Macronutrients:",
-        "macroCarbs": "Carbohydrates",
-        "macroProtein": "Protein",
-        "macroFat": "Fat"
-      },
       "error": {
         "weight": "Please enter a weight between 20–250 kg.",
         "height": "Please enter a height between 100–250 cm.",
@@ -133,6 +120,16 @@
         "gender": "Please select a gender.",
         "activity": "Please select an activity level.",
         "fallback": "Unknown error. Please try again."
+      },
+      "result": {
+        "title": "Your Caloric Needs",
+        "subtitle": "This is an estimate and should not replace medical advice.",
+        "bmr": "Basal Metabolic Rate (BMR): {{value}} kcal/day",
+        "tdee": "Total Daily Energy Expenditure (TDEE): {{value}} kcal/day",
+        "macros": "Macronutrients:",
+        "macroCarbs": "Carbohydrates",
+        "macroProtein": "Protein",
+        "macroFat": "Fat"
       }
     }
   }
