@@ -25,3 +25,6 @@ verify_jwt = false
 
 [functions.foods-list]
 verify_jwt = false
+
+[functions.nutrition-calc]
+verify_jwt = false
