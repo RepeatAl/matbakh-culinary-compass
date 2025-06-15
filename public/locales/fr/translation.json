@@ -1,4 +1,3 @@
-
 {
   "appTitle": "Matbakh",
   "welcome": {
@@ -37,6 +36,49 @@
     "nutrition": "Nutrition",
     "restaurants": "Restaurants",
     "contact": "Contact",
-    "sidebarHeader": "Menu"
+    "sidebarHeader": "Menu",
+    "myRecipes": "Mes Recettes",
+    "mealPlan": "Mon Plan de Semaine"
+  },
+  "myRecipes": {
+    "title": "Mes Recettes",
+    "loading": "Chargement des recettes...",
+    "btnNew": "Nouvelle recette",
+    "btnEdit": "Éditer",
+    "btnSave": "Enregistrer",
+    "btnDelete": "Supprimer",
+    "servings": "{{count}} portions",
+    "published": "Publié",
+    "formEdit": "Éditer la recette",
+    "formNew": "Nouvelle recette",
+    "titleLabel": "Titre",
+    "descLabel": "Description",
+    "prep": "Prépa (min)",
+    "cook": "Cuisson (min)",
+    "servingsLabel": "Portions",
+    "ingredients": "Ingrédients",
+    "ingrName": "Ingrédient",
+    "ingrQty": "Quantité",
+    "ingrUnit": "Unité",
+    "addIngr": "Ajouter ingrédient",
+    "publish": "Publier",
+    "successSave": "Recette sauvegardée",
+    "errorSave": "Erreur lors de la sauvegarde",
+    "successDelete": "Recette supprimée",
+    "errorDelete": "Erreur lors de la suppression",
+    "errorLoading": "Erreur lors du chargement"
+  },
+  "mealPlan": {
+    "title": "Mon Plan de Semaine",
+    "loading": "Chargement du plan...",
+    "error": "Erreur lors du chargement du plan.",
+    "success": "Plan sauvegardé",
+    "day": { "mon": "Lun", "tue": "Mar", "wed": "Mer", "thu": "Jeu", "fri": "Ven", "sat": "Sam", "sun": "Dim" },
+    "meal": { "breakfast": "Petit Dej.", "lunch": "Déjeuner", "dinner": "Dîner" },
+    "empty": "Choisir recette",
+    "selectRecipeTitle": "Choisir une recette pour cette case",
+    "selectRecipe": "Choisir...",
+    "noRecipe": "Aucune recette",
+    "btnSave": "Enregistrer"
   }
 }

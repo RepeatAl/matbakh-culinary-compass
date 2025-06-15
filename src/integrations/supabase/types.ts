@@ -9,6 +9,151 @@ export type Json =
 export type Database = {
   public: {
     Tables: {
+      ingredient_tags: {
+        Row: {
+          created_at: string | null
+          id: string
+          ingredient_id: string
+          tag: string
+        }
+        Insert: {
+          created_at?: string | null
+          id?: string
+          ingredient_id: string
+          tag: string
+        }
+        Update: {
+          created_at?: string | null
+          id?: string
+          ingredient_id?: string
+          tag?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "ingredient_tags_ingredient_id_fkey"
+            columns: ["ingredient_id"]
+            isOneToOne: false
+            referencedRelation: "ingredients"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      ingredients: {
+        Row: {
+          created_at: string | null
+          deleted_at: string | null
+          id: string
+          name: string
+          quantity: number | null
+          recipe_id: string
+          unit: string | null
+          updated_at: string | null
+        }
+        Insert: {
+          created_at?: string | null
+          deleted_at?: string | null
+          id?: string
+          name: string
+          quantity?: number | null
+          recipe_id: string
+          unit?: string | null
+          updated_at?: string | null
+        }
+        Update: {
+          created_at?: string | null
+          deleted_at?: string | null
+          id?: string
+          name?: string
+          quantity?: number | null
+          recipe_id?: string
+          unit?: string | null
+          updated_at?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "ingredients_recipe_id_fkey"
+            columns: ["recipe_id"]
+            isOneToOne: false
+            referencedRelation: "recipes"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      meal_plan_items: {
+        Row: {
+          created_at: string | null
+          deleted_at: string | null
+          id: string
+          meal: Database["public"]["Enums"]["meal_type"]
+          meal_plan_id: string
+          recipe_id: string | null
+          updated_at: string | null
+          weekday: Database["public"]["Enums"]["weekday_short"]
+        }
+        Insert: {
+          created_at?: string | null
+          deleted_at?: string | null
+          id?: string
+          meal: Database["public"]["Enums"]["meal_type"]
+          meal_plan_id: string
+          recipe_id?: string | null
+          updated_at?: string | null
+          weekday: Database["public"]["Enums"]["weekday_short"]
+        }
+        Update: {
+          created_at?: string | null
+          deleted_at?: string | null
+          id?: string
+          meal?: Database["public"]["Enums"]["meal_type"]
+          meal_plan_id?: string
+          recipe_id?: string | null
+          updated_at?: string | null
+          weekday?: Database["public"]["Enums"]["weekday_short"]
+        }
+        Relationships: [
+          {
+            foreignKeyName: "meal_plan_items_meal_plan_id_fkey"
+            columns: ["meal_plan_id"]
+            isOneToOne: false
+            referencedRelation: "meal_plans"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "meal_plan_items_recipe_id_fkey"
+            columns: ["recipe_id"]
+            isOneToOne: false
+            referencedRelation: "recipes"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      meal_plans: {
+        Row: {
+          created_at: string | null
+          deleted_at: string | null
+          id: string
+          updated_at: string | null
+          user_id: string
+          week_start: string
+        }
+        Insert: {
+          created_at?: string | null
+          deleted_at?: string | null
+          id?: string
+          updated_at?: string | null
+          user_id: string
+          week_start: string
+        }
+        Update: {
+          created_at?: string | null
+          deleted_at?: string | null
+          id?: string
+          updated_at?: string | null
+          user_id?: string
+          week_start?: string
+        }
+        Relationships: []
+      }
       profiles: {
         Row: {
           first_name: string | null
@@ -30,6 +175,51 @@ export type Database = {
         }
         Relationships: []
       }
+      recipes: {
+        Row: {
+          cook_minutes: number | null
+          created_at: string | null
+          deleted_at: string | null
+          description: string | null
+          id: string
+          prep_minutes: number | null
+          publish: boolean | null
+          search_vector: unknown | null
+          servings: number | null
+          title: string
+          updated_at: string | null
+          user_id: string
+        }
+        Insert: {
+          cook_minutes?: number | null
+          created_at?: string | null
+          deleted_at?: string | null
+          description?: string | null
+          id?: string
+          prep_minutes?: number | null
+          publish?: boolean | null
+          search_vector?: unknown | null
+          servings?: number | null
+          title: string
+          updated_at?: string | null
+          user_id: string
+        }
+        Update: {
+          cook_minutes?: number | null
+          created_at?: string | null
+          deleted_at?: string | null
+          description?: string | null
+          id?: string
+          prep_minutes?: number | null
+          publish?: boolean | null
+          search_vector?: unknown | null
+          servings?: number | null
+          title?: string
+          updated_at?: string | null
+          user_id?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
@@ -38,7 +228,8 @@ export type Database = {
       [_ in never]: never
     }
     Enums: {
-      [_ in never]: never
+      meal_type: "breakfast" | "lunch" | "dinner" | "snack"
+      weekday_short: "mon" | "tue" | "wed" | "thu" | "fri" | "sat" | "sun"
     }
     CompositeTypes: {
       [_ in never]: never
@@ -153,6 +344,9 @@ export type CompositeTypes<
 
 export const Constants = {
   public: {
-    Enums: {},
+    Enums: {
+      meal_type: ["breakfast", "lunch", "dinner", "snack"],
+      weekday_short: ["mon", "tue", "wed", "thu", "fri", "sat", "sun"],
+    },
   },
 } as const

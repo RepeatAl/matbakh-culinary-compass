@@ -1,4 +1,3 @@
-
 {
   "appTitle": "Matbakh",
   "welcome": {
@@ -37,6 +36,49 @@
     "nutrition": "Ernährung",
     "restaurants": "Restaurants",
     "contact": "Kontakt",
-    "sidebarHeader": "Menü"
+    "sidebarHeader": "Menü",
+    "myRecipes": "Meine Rezepte",
+    "mealPlan": "Mein Wochenplan"
+  },
+  "myRecipes": {
+    "title": "Meine Rezepte",
+    "loading": "Lade Rezepte...",
+    "btnNew": "Neues Rezept",
+    "btnEdit": "Bearbeiten",
+    "btnSave": "Speichern",
+    "btnDelete": "Löschen",
+    "servings": "{{count}} Portionen",
+    "published": "Veröffentlicht",
+    "formEdit": "Rezept bearbeiten",
+    "formNew": "Neues Rezept",
+    "titleLabel": "Titel",
+    "descLabel": "Beschreibung",
+    "prep": "Vorbereitung (Min.)",
+    "cook": "Kochen (Min.)",
+    "servingsLabel": "Portionen",
+    "ingredients": "Zutaten",
+    "ingrName": "Zutat",
+    "ingrQty": "Menge",
+    "ingrUnit": "Einheit",
+    "addIngr": "Zutat hinzufügen",
+    "publish": "Veröffentlichen",
+    "successSave": "Rezept gespeichert",
+    "errorSave": "Fehler beim Speichern",
+    "successDelete": "Rezept gelöscht",
+    "errorDelete": "Fehler beim Löschen",
+    "errorLoading": "Fehler beim Laden der Rezepte"
+  },
+  "mealPlan": {
+    "title": "Mein Wochenplan",
+    "loading": "Lade Wochenplan...",
+    "error": "Fehler beim Laden des Wochenplans.",
+    "success": "Wochenplan gespeichert",
+    "day": { "mon": "Mo", "tue": "Di", "wed": "Mi", "thu": "Do", "fri": "Fr", "sat": "Sa", "sun": "So" },
+    "meal": { "breakfast": "Frühstück", "lunch": "Mittag", "dinner": "Abend" },
+    "empty": "Rezept wählen",
+    "selectRecipeTitle": "Rezept für Slot wählen",
+    "selectRecipe": "Rezept wählen...",
+    "noRecipe": "Kein Rezept",
+    "btnSave": "Speichern"
   }
 }

@@ -1,0 +1,48 @@
+
+import { useEffect, useState } from "react";
+import { useTranslation } from "react-i18next";
+import { supabase } from "@/integrations/supabase/client";
+import MealPlanTable from "@/components/mealplan/MealPlanTable";
+import { Button } from "@/components/ui/button";
+import { useToast } from "@/hooks/use-toast";
+import { Tables } from "@/integrations/supabase/types";
+import { startOfWeek, format } from "date-fns";
+
+export default function MealPlan() {
+  const { t } = useTranslation();
+  const { toast } = useToast();
+  const [mealPlan, setMealPlan] = useState<Tables<"meal_plans"> | null>(null);
+  const [loading, setLoading] = useState(true);
+
+  // Finde/Erstelle meal_plan der aktuellen Woche (Mo)
+  useEffect(() => {
+    const load = async () => {
+      setLoading(true);
+      const monday = format(startOfWeek(new Date(), { weekStartsOn: 1 }), "yyyy-MM-dd");
+      let { data, error } = await supabase.from("meal_plans").select("*").eq("week_start", monday).maybeSingle();
+      if (!data) {
+        // Anlegen für User
+        const { data: created, error: createError } = await supabase.from("meal_plans").insert({ week_start: monday }).select().single();
+        if (createError) {
+          toast({ title: t("mealPlan.error"), description: createError.message, variant: "destructive" });
+        }
+        setMealPlan(created ?? null);
+      } else {
+        setMealPlan(data);
+      }
+      setLoading(false);
+    };
+    load();
+    // eslint-disable-next-line
+  }, []);
+
+  if (loading) return <div>{t("mealPlan.loading")}</div>;
+  if (!mealPlan) return <div>{t("mealPlan.error")}</div>;
+
+  return (
+    <div className="container mx-auto px-2 py-6">
+      <h1 className="text-2xl font-bold mb-4">{t("mealPlan.title", "Mein Wochenplan")}</h1>
+      <MealPlanTable mealPlan={mealPlan} />
+    </div>
+  );
+}

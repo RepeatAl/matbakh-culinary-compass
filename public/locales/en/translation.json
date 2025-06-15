@@ -1,4 +1,3 @@
-
 {
   "appTitle": "Matbakh",
   "welcome": {
@@ -37,6 +36,49 @@
     "nutrition": "Nutrition",
     "restaurants": "Restaurants",
     "contact": "Contact",
-    "sidebarHeader": "Menu"
+    "sidebarHeader": "Menu",
+    "myRecipes": "My Recipes",
+    "mealPlan": "My Meal Plan"
+  },
+  "myRecipes": {
+    "title": "My Recipes",
+    "loading": "Loading recipes...",
+    "btnNew": "New Recipe",
+    "btnEdit": "Edit",
+    "btnSave": "Save",
+    "btnDelete": "Delete",
+    "servings": "{{count}} servings",
+    "published": "Published",
+    "formEdit": "Edit Recipe",
+    "formNew": "New Recipe",
+    "titleLabel": "Title",
+    "descLabel": "Description",
+    "prep": "Prep (min)",
+    "cook": "Cook (min)",
+    "servingsLabel": "Servings",
+    "ingredients": "Ingredients",
+    "ingrName": "Ingredient",
+    "ingrQty": "Amount",
+    "ingrUnit": "Unit",
+    "addIngr": "Add Ingredient",
+    "publish": "Publish",
+    "successSave": "Recipe saved",
+    "errorSave": "Error saving recipe",
+    "successDelete": "Recipe deleted",
+    "errorDelete": "Error deleting recipe",
+    "errorLoading": "Error loading recipes"
+  },
+  "mealPlan": {
+    "title": "My Meal Plan",
+    "loading": "Loading meal plan...",
+    "error": "Error loading meal plan.",
+    "success": "Meal plan saved",
+    "day": { "mon": "Mon", "tue": "Tue", "wed": "Wed", "thu": "Thu", "fri": "Fri", "sat": "Sat", "sun": "Sun" },
+    "meal": { "breakfast": "Breakfast", "lunch": "Lunch", "dinner": "Dinner" },
+    "empty": "Select recipe",
+    "selectRecipeTitle": "Select recipe for slot",
+    "selectRecipe": "Choose recipe...",
+    "noRecipe": "No recipe",
+    "btnSave": "Save"
   }
 }

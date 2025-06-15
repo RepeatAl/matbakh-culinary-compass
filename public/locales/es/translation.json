@@ -1,4 +1,3 @@
-
 {
   "appTitle": "Matbakh",
   "welcome": {
@@ -37,6 +36,49 @@
     "nutrition": "Nutrición",
     "restaurants": "Restaurantes",
     "contact": "Contacto",
-    "sidebarHeader": "Menú"
+    "sidebarHeader": "Menú",
+    "myRecipes": "Mis Recetas",
+    "mealPlan": "Mi Plan Semanal"
+  },
+  "myRecipes": {
+    "title": "Mis Recetas",
+    "loading": "Cargando recetas...",
+    "btnNew": "Nueva receta",
+    "btnEdit": "Editar",
+    "btnSave": "Guardar",
+    "btnDelete": "Eliminar",
+    "servings": "{{count}} raciones",
+    "published": "Publicado",
+    "formEdit": "Editar receta",
+    "formNew": "Nueva receta",
+    "titleLabel": "Título",
+    "descLabel": "Descripción",
+    "prep": "Preparar (min)",
+    "cook": "Cocinar (min)",
+    "servingsLabel": "Raciones",
+    "ingredients": "Ingredientes",
+    "ingrName": "Ingrediente",
+    "ingrQty": "Cantidad",
+    "ingrUnit": "Unidad",
+    "addIngr": "Añadir ingrediente",
+    "publish": "Publicar",
+    "successSave": "Receta guardada",
+    "errorSave": "Error guardando receta",
+    "successDelete": "Receta eliminada",
+    "errorDelete": "Error eliminando receta",
+    "errorLoading": "Error cargando recetas"
+  },
+  "mealPlan": {
+    "title": "Mi Plan Semanal",
+    "loading": "Cargando plan semanal...",
+    "error": "Error cargando plan semanal.",
+    "success": "Plan guardado",
+    "day": { "mon": "Lun", "tue": "Mar", "wed": "Mié", "thu": "Jue", "fri": "Vie", "sat": "Sáb", "sun": "Dom" },
+    "meal": { "breakfast": "Desayuno", "lunch": "Almuerzo", "dinner": "Cena" },
+    "empty": "Seleccionar receta",
+    "selectRecipeTitle": "Seleccionar receta para el hueco",
+    "selectRecipe": "Elige receta...",
+    "noRecipe": "Sin receta",
+    "btnSave": "Guardar"
   }
 }

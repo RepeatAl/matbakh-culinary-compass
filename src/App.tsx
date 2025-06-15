@@ -12,10 +12,15 @@ import RecipesPage from "./pages/RecipesPage";
 import NutritionPage from "./pages/NutritionPage";
 import RestaurantsPage from "./pages/RestaurantsPage";
 import ContactPage from "./pages/ContactPage";
-import AuthPage from "./pages/AuthPage"; // AuthPage importieren
+import AuthPage from "./pages/AuthPage";
 import NotFound from "./pages/NotFound";
 import LanguageSwitcher from "@/components/LanguageSwitcher";
-import { AuthProvider } from "@/contexts/AuthContext"; // AuthProvider importieren
+import { AuthProvider } from "@/contexts/AuthContext";
+
+// NEU:
+import PrivateRoute from "@/routes/PrivateRoute";
+import MyRecipes from "@/pages/MyRecipes";
+import MealPlan from "@/pages/MealPlan";
 
 const queryClient = new QueryClient();
 
@@ -26,14 +31,14 @@ const App = () => (
       <Sonner />
       <BrowserRouter>
         <AuthProvider>
-          <SidebarProvider defaultOpen={true}> {/* defaultOpen auf true für sichtbare Sidebar initial */}
-            <div className="flex min-h-screen w-full bg-background"> {/* Ensure w-full for SidebarProvider */}
+          <SidebarProvider defaultOpen={true}>
+            <div className="flex min-h-screen w-full bg-background">
               <AppSidebar />
-              <SidebarInset> {/* Umschließt den Hauptinhalt */}
-                <div className="p-4"> {/* Padding für den Inhalt neben der Sidebar */}
+              <SidebarInset>
+                <div className="p-4">
                   <div className="flex justify-between items-center mb-4">
-                    <SidebarTrigger className="md:hidden" /> {/* Nur auf mobilen Geräten anzeigen, Desktop-Toggle über Rail/Shortcut */}
-                    <div className="ml-auto"> {/* LanguageSwitcher nach rechts */}
+                    <SidebarTrigger className="md:hidden" />
+                    <div className="ml-auto">
                       <LanguageSwitcher />
                     </div>
                   </div>
@@ -44,7 +49,24 @@ const App = () => (
                     <Route path="/nutrition" element={<NutritionPage />} />
                     <Route path="/restaurants" element={<RestaurantsPage />} />
                     <Route path="/contact" element={<ContactPage />} />
-                    <Route path="/auth" element={<AuthPage />} /> {/* Route für AuthPage */}
+                    <Route path="/auth" element={<AuthPage />} />
+                    {/* NEU: */}
+                    <Route
+                      path="/my-recipes"
+                      element={
+                        <PrivateRoute>
+                          <MyRecipes />
+                        </PrivateRoute>
+                      }
+                    />
+                    <Route
+                      path="/meal-plan"
+                      element={
+                        <PrivateRoute>
+                          <MealPlan />
+                        </PrivateRoute>
+                      }
+                    />
                     {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
                     <Route path="*" element={<NotFound />} />
                   </Routes>
