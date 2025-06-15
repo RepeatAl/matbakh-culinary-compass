@@ -131,6 +131,24 @@
         "macroProtein": "Protein",
         "macroFat": "Fat"
       }
+    },
+    "tiles": {
+      "fresh": {
+        "title": "Fresh & Natural",
+        "desc": "Unprocessed, local foods provide maximum nutrients and flavor."
+      },
+      "energy": {
+        "title": "Energy & Balance",
+        "desc": "The right amount of calories forms the foundation for energy and well-being."
+      },
+      "variety": {
+        "title": "Enjoy Variety",
+        "desc": "A varied diet supports your health and helps prevent deficiencies."
+      },
+      "protein": {
+        "title": "Protein & Satiety",
+        "desc": "Protein helps maintain muscle and keeps you feeling full longer."
+      }
     }
   }
 }

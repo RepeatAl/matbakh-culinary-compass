@@ -130,6 +130,24 @@
         "macroProtein": "Proteine",
         "macroFat": "Fette"
       }
+    },
+    "tiles": {
+      "fresh": {
+        "title": "Frisch & Natürlich",
+        "desc": "Unverarbeitete, regionale Lebensmittel liefern maximale Nährstoffe und Geschmack."
+      },
+      "energy": {
+        "title": "Energie & Balance",
+        "desc": "Die richtige Kalorienzufuhr ist die Basis für Leistungsfähigkeit und Wohlbefinden."
+      },
+      "variety": {
+        "title": "Vielfalt genießen",
+        "desc": "Abwechslungsreiche Ernährung unterstützt deine Gesundheit und vermeidet Mangelerscheinungen."
+      },
+      "protein": {
+        "title": "Protein & Sättigung",
+        "desc": "Eiweiß trägt zum Muskelerhalt und einer langanhaltenden Sättigung bei."
+      }
     }
   }
 }

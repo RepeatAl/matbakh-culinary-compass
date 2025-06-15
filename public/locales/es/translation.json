@@ -125,6 +125,24 @@
         "macroProtein": "Proteína",
         "macroFat": "Grasa"
       }
+    },
+    "tiles": {
+      "fresh": {
+        "title": "Fresco y Natural",
+        "desc": "Los alimentos locales y sin procesar proporcionan el máximo de nutrientes y sabor."
+      },
+      "energy": {
+        "title": "Energía y Equilibrio",
+        "desc": "La ingesta calórica adecuada es la base para la energía y el bienestar."
+      },
+      "variety": {
+        "title": "Disfrutar de la variedad",
+        "desc": "Una dieta variada apoya tu salud y previene deficiencias."
+      },
+      "protein": {
+        "title": "Proteína y saciedad",
+        "desc": "La proteína ayuda a mantener los músculos y la sensación de saciedad."
+      }
     }
   }
 }

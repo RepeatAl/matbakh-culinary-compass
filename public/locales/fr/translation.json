@@ -125,6 +125,24 @@
         "macroProtein": "Protéines",
         "macroFat": "Lipides"
       }
+    },
+    "tiles": {
+      "fresh": {
+        "title": "Frais et naturel",
+        "desc": "Des aliments locaux et non transformés fournissent un maximum de nutriments et de saveur."
+      },
+      "energy": {
+        "title": "Énergie & Équilibre",
+        "desc": "Un apport calorique adapté est la base de l'énergie et du bien-être."
+      },
+      "variety": {
+        "title": "Le plaisir de la variété",
+        "desc": "Une alimentation variée soutient la santé et évite les carences."
+      },
+      "protein": {
+        "title": "Protéines & Satiété",
+        "desc": "Les protéines contribuent au maintien des muscles et à une longue sensation de satiété."
+      }
     }
   }
 }
