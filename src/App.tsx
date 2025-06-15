@@ -16,6 +16,7 @@ import NotFound from "./pages/NotFound";
 import LanguageSwitcher from "@/components/LanguageSwitcher";
 import { AuthProvider } from "@/contexts/AuthContext";
 import ProfilePage from "./pages/ProfilePage";
+import BusinessProfileSearchPage from "./pages/BusinessProfileSearchPage";
 
 // NEU:
 import PrivateRoute from "@/routes/PrivateRoute";
@@ -76,6 +77,7 @@ const App = () => (
                         </PrivateRoute>
                       }
                     />
+                    <Route path="/business-search" element={<BusinessProfileSearchPage />} />
                     <Route path="*" element={<NotFound />} />
                   </Routes>
                 </div>
