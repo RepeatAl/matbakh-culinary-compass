@@ -79,6 +79,25 @@
     "es": "Español",
     "fr": "Francés"
   },
+  "welcome": {
+    "title": "Matbakh – La cocina digital para gastronomía y solteros",
+    "subtitle": "Descubre alimentación equilibrada, planificación semanal y recetas creativas cada día."
+  },
+  "valueProposition": {
+    "title": "Hecho para ti – Matbakh brinda valor a todos"
+  },
+  "forSingles": {
+    "title": "Para solteros y cocineros particulares",
+    "point1": "Planes semanales personalizados según tus gustos.",
+    "point2": "Lista de compras automática adaptada a tu día a día.",
+    "point3": "Recetas ajustables – para uno o varios comensales."
+  },
+  "forGastronomes": {
+    "title": "Para gastronómicos y equipos",
+    "point1": "Gestión inteligente de inventario y recetas.",
+    "point2": "Planificación eficiente – menos desperdicio, más beneficio.",
+    "point3": "Acceso de equipo, procesos digitales y comunidad."
+  },
   "nutrition": {
     "calc": {
       "title": "Calculadora Nutricional",

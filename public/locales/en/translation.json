@@ -79,6 +79,25 @@
     "es": "Spanish",
     "fr": "French"
   },
+  "welcome": {
+    "title": "Matbakh – The digital kitchen for gastronomy & singles",
+    "subtitle": "Discover balanced nutrition, weekly meal planning, and creative recipes for every day."
+  },
+  "valueProposition": {
+    "title": "Created for you – Matbakh creates value for everyone"
+  },
+  "forSingles": {
+    "title": "For singles & home cooks",
+    "point1": "Personalized weekly meal plans for your needs.",
+    "point2": "Automatic shopping lists adapted to your habits.",
+    "point3": "Easily scale recipes for yourself or more guests."
+  },
+  "forGastronomes": {
+    "title": "For gastronomes & teams",
+    "point1": "Smart inventory and recipe management.",
+    "point2": "Efficient planning – less food waste, higher profit.",
+    "point3": "Team access, digital process and community exchange."
+  },
   "nutrition": {
     "calc": {
       "title": "Nutrition Calculator",

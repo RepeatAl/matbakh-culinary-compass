@@ -145,5 +145,24 @@
         "units": "Angaben in {{units}} pro Tag"
       }
     }
+  },
+  "welcome": {
+    "title": "Matbakh – Die digitale Küche für Gastronomie und Singles",
+    "subtitle": "Entdecke ausgewogene Ernährung, smarte Wochenplanung und kreative Rezepte für jeden Tag."
+  },
+  "valueProposition": {
+    "title": "Für dich gemacht – Matbakh schafft Mehrwert für alle"
+  },
+  "forSingles": {
+    "title": "Für Singles & private Köche",
+    "point1": "Individuelle Wochenpläne nach deinen Vorlieben.",
+    "point2": "Automatische Einkaufslisten, angepasst an deinen Alltag.",
+    "point3": "Rezepte leicht hochrechnen – für ein oder mehrere Gäste."
+  },
+  "forGastronomes": {
+    "title": "Für Gastronomen & Teams",
+    "point1": "Intelligentes Warenmanagement und Rezepturverwaltung.",
+    "point2": "Effiziente Planung – weniger Food Waste, mehr Gewinn.",
+    "point3": "Teamzugänge, digitale Abläufe und Community-Austausch."
   }
 }

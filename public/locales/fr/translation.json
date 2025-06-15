@@ -79,6 +79,25 @@
     "es": "Espagnol",
     "fr": "Français"
   },
+  "welcome": {
+    "title": "Matbakh – La cuisine digitale pour la gastronomie et les célibataires",
+    "subtitle": "Découvre une nutrition équilibrée, un planning hebdo et des recettes créatives chaque jour."
+  },
+  "valueProposition": {
+    "title": "Conçu pour toi – Matbakh valorise chacun"
+  },
+  "forSingles": {
+    "title": "Pour les célibataires & cuisiniers privés",
+    "point1": "Plans de repas personnalisés, adaptés à tes envies.",
+    "point2": "Liste de courses automatique, pratique chaque semaine.",
+    "point3": "Recettes faciles à multiplier – pour toi ou des invités."
+  },
+  "forGastronomes": {
+    "title": "Pour les restaurateurs & équipes",
+    "point1": "Gestion intelligente des stocks & recettes.",
+    "point2": "Planification efficace : moins de pertes, plus de bénéfices.",
+    "point3": "Accès équipe, process digitaux et échange communautaire."
+  },
   "nutrition": {
     "calc": {
       "title": "Calculateur nutritionnel",
