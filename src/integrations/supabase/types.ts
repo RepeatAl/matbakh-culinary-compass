@@ -9,6 +9,63 @@ export type Json =
 export type Database = {
   public: {
     Tables: {
+      foods: {
+        Row: {
+          category: string
+          created_at: string | null
+          id: string
+          name: Json
+          properties: Json | null
+          slug: string
+        }
+        Insert: {
+          category: string
+          created_at?: string | null
+          id?: string
+          name: Json
+          properties?: Json | null
+          slug: string
+        }
+        Update: {
+          category?: string
+          created_at?: string | null
+          id?: string
+          name?: Json
+          properties?: Json | null
+          slug?: string
+        }
+        Relationships: []
+      }
+      foods_seasons: {
+        Row: {
+          food_id: string
+          season_id: string
+        }
+        Insert: {
+          food_id: string
+          season_id: string
+        }
+        Update: {
+          food_id?: string
+          season_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "foods_seasons_food_id_fkey"
+            columns: ["food_id"]
+            isOneToOne: false
+            referencedRelation: "foods"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "foods_seasons_season_id_fkey"
+            columns: ["season_id"]
+            isOneToOne: false
+            referencedRelation: "seasons"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       ingredient_tags: {
         Row: {
           created_at: string | null
@@ -186,6 +243,9 @@ export type Database = {
           consent_privacy_at: string | null
           created_at: string | null
           diabetes_type: string | null
+          disliked_foods: string[] | null
+          favorite_foods: string[] | null
+          goals: string[] | null
           id: string
           is_diabetic: boolean
           language: string | null
@@ -205,6 +265,9 @@ export type Database = {
           consent_privacy_at?: string | null
           created_at?: string | null
           diabetes_type?: string | null
+          disliked_foods?: string[] | null
+          favorite_foods?: string[] | null
+          goals?: string[] | null
           id?: string
           is_diabetic?: boolean
           language?: string | null
@@ -224,6 +287,9 @@ export type Database = {
           consent_privacy_at?: string | null
           created_at?: string | null
           diabetes_type?: string | null
+          disliked_foods?: string[] | null
+          favorite_foods?: string[] | null
+          goals?: string[] | null
           id?: string
           is_diabetic?: boolean
           language?: string | null
@@ -285,6 +351,24 @@ export type Database = {
           title?: string
           updated_at?: string | null
           user_id?: string
+        }
+        Relationships: []
+      }
+      seasons: {
+        Row: {
+          id: string
+          months: number[]
+          name: string
+        }
+        Insert: {
+          id?: string
+          months: number[]
+          name: string
+        }
+        Update: {
+          id?: string
+          months?: number[]
+          name?: string
         }
         Relationships: []
       }
