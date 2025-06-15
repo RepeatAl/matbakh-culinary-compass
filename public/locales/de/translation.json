@@ -92,10 +92,11 @@
     },
     "disclaimer": "ACHTUNG: Dies ist keine Gesundheits- oder Ernährungsberatung. Konsultiere bei Unsicherheiten einen Arzt.",
     "calc": {
-      "weight":   { "label": "Gewicht (kg)",   "placeholder": "z.B. 70" },
-      "height":   { "label": "Größe (cm)",     "placeholder": "z.B. 175" },
-      "age":      { "label": "Alter (Jahre)",  "placeholder": "z.B. 30" },
-      "gender":   {
+      "title": "Berechne Kalorienbedarf",
+      "weight": { "label": "Gewicht (kg)", "placeholder": "z.B. 70", "lbs": "Gewicht (lbs)" },
+      "height": { "label": "Größe (cm)", "placeholder": "z.B. 175", "in": "Größe (in)" },
+      "age": { "label": "Alter (Jahre)", "placeholder": "z.B. 30" },
+      "gender": {
         "label": "Geschlecht",
         "placeholder": "Geschlecht wählen",
         "male": "Männlich", "female": "Weiblich", "other": "Divers"
@@ -113,15 +114,19 @@
         "label": "Einheiten",
         "placeholder": "Einheit wählen",
         "metric": "Metrisch (kg/cm)",
-        "imperial": "Imperial (lbs/in)"
+        "imperial": "Imperial (lbs/in)",
+        "hintWeight": "Bitte Gewicht in Pfund (lbs) angeben.",
+        "hintHeight": "Bitte Größe in Zoll (in) angeben."
       },
       "submit": "Berechnen",
+      "sending": "Berechnung läuft...",
       "error": {
         "weight": "Bitte ein Gewicht zwischen 20–250 kg eingeben.",
         "height": "Bitte eine Größe zwischen 100–250 cm eingeben.",
         "age": "Bitte ein Alter zwischen 5–120 Jahren eingeben.",
         "gender": "Bitte ein Geschlecht wählen.",
         "activity": "Bitte ein Aktivitätslevel wählen.",
+        "units": "Bitte eine Einheit wählen.",
         "fallback": "Unbekannter Fehler. Bitte erneut versuchen."
       },
       "result": {
@@ -132,31 +137,28 @@
         "macros": "Makronährstoffe:",
         "macroCarbs": "Kohlenhydrate",
         "macroProtein": "Proteine",
-        "macroFat": "Fette"
+        "macroFat": "Fette",
+        "units": "Alle Angaben pro Tag ({{units}})"
+      },
+      "demo": {
+        "hint": "Teste den Nährstoffrechner mit Demo-Daten. Für präzise Ergebnisse bitte auf 'Mein Profil' die eigenen Daten eintragen."
       }
     },
     "tiles": {
-      "fresh": {
-        "title": "Frisch & Natürlich",
-        "desc": "Unverarbeitete, regionale Lebensmittel liefern maximale Nährstoffe und Geschmack."
-      },
-      "energy": {
-        "title": "Energie & Balance",
-        "desc": "Die richtige Kalorienzufuhr ist die Basis für Leistungsfähigkeit und Wohlbefinden."
-      },
-      "variety": {
-        "title": "Vielfalt genießen",
-        "desc": "Abwechslungsreiche Ernährung unterstützt deine Gesundheit und vermeidet Mangelerscheinungen."
-      },
-      "protein": {
-        "title": "Protein & Sättigung",
-        "desc": "Eiweiß trägt zum Muskelerhalt und einer langanhaltenden Sättigung bei."
-      }
+      "fresh": { "title": "Frisch & Natürlich", "desc": "Unverarbeitete, regionale Lebensmittel liefern maximale Nährstoffe und Geschmack." },
+      "energy": { "title": "Energie & Balance", "desc": "Die richtige Kalorienzufuhr ist die Basis für Leistungsfähigkeit und Wohlbefinden." },
+      "variety": { "title": "Vielfalt genießen", "desc": "Abwechslungsreiche Ernährung unterstützt deine Gesundheit und vermeidet Mangelerscheinungen." },
+      "protein": { "title": "Protein & Sättigung", "desc": "Eiweiß trägt zum Muskelerhalt und einer langanhaltenden Sättigung bei." }
     },
     "recommendations": {
       "title": "Empfohlene Lebensmittel",
       "noData": "Bitte erst Profil­angaben vornehmen, um Empfehlungen zu sehen.",
       "seeAll": "Alle Empfehlungen anzeigen"
+    },
+    "season": {
+      "wholeyear": "Ganzjährig",
+      "seasonal": "Saisonal",
+      "info": "Wechsle zwischen ganzjährigen und saisonalen Empfehlungen."
     }
   },
   "profile": {

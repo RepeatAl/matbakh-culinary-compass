@@ -88,10 +88,11 @@
     },
     "disclaimer": "NOTA: Esto no es un consejo médico o nutricional. Consulta a tu médico si tienes dudas.",
     "calc": {
-      "weight":   { "label": "Peso (kg)",     "placeholder": "ej. 70" },
-      "height":   { "label": "Altura (cm)",   "placeholder": "ej. 175" },
-      "age":      { "label": "Edad (años)",   "placeholder": "ej. 30" },
-      "gender":   {
+      "title": "Calcular necesidades calóricas",
+      "weight": { "label": "Peso (kg)", "placeholder": "ej. 70", "lbs": "Peso (lbs)" },
+      "height": { "label": "Altura (cm)", "placeholder": "ej. 175", "in": "Altura (in)" },
+      "age": { "label": "Edad (años)", "placeholder": "ej. 30" },
+      "gender": {
         "label": "Género",
         "placeholder": "Selecciona género",
         "male": "Hombre", "female": "Mujer", "other": "Otro"
@@ -109,15 +110,19 @@
         "label": "Unidades",
         "placeholder": "Selecciona unidad",
         "metric": "Métrico (kg/cm)",
-        "imperial": "Imperial (lbs/in)"
+        "imperial": "Imperial (lbs/in)",
+        "hintWeight": "Introduce el peso en libras (lbs).",
+        "hintHeight": "Introduce la altura en pulgadas (in)."
       },
       "submit": "Calcular",
+      "sending": "Calculando...",
       "error": {
         "weight": "Introduce un peso entre 20–250 kg.",
         "height": "Introduce una altura entre 100–250 cm.",
         "age": "Introduce una edad entre 5–120 años.",
         "gender": "Selecciona un género.",
         "activity": "Selecciona un nivel de actividad.",
+        "units": "Selecciona unidades.",
         "fallback": "Error desconocido. Intente de nuevo."
       },
       "result": {
@@ -128,34 +133,23 @@
         "macros": "Macronutrientes:",
         "macroCarbs": "Carbohidratos",
         "macroProtein": "Proteína",
-        "macroFat": "Grasa"
+        "macroFat": "Grasa",
+        "units": "Todos los valores por día ({{units}})"
+      },
+      "demo": {
+        "hint": "Prueba la calculadora de nutrición con datos de demostración. Para resultados precisos, completa tus datos en 'Mi Perfil'."
       }
     },
     "tiles": {
-      "fresh": {
-        "title": "Fresco y Natural",
-        "desc": "Los alimentos locales y sin procesar proporcionan el máximo de nutrientes y sabor."
-      },
-      "energy": {
-        "title": "Energía y Equilibrio",
-        "desc": "La ingesta calórica adecuada es la base para la energía y el bienestar."
-      },
-      "variety": {
-        "title": "Disfrutar de la variedad",
-        "desc": "Una dieta variada apoya tu salud y previene deficiencias."
-      },
-      "protein": {
-        "title": "Proteína y saciedad",
-        "desc": "La proteína ayuda a mantener los músculos y la sensación de saciedad."
-      }
+      "fresh": { "title": "Fresco y Natural", "desc": "Los alimentos locales y sin procesar proporcionan el máximo de nutrientes y sabor." },
+      "energy": { "title": "Energía y Equilibrio", "desc": "La ingesta calórica adecuada es la base para la energía y el bienestar." },
+      "variety": { "title": "Disfrutar de la variedad", "desc": "Una dieta variada apoya tu salud y previene deficiencias." },
+      "protein": { "title": "Proteína y saciedad", "desc": "La proteína ayuda a mantener los músculos y la sensación de saciedad." }
     },
     "recommendations": {
       "title": "Alimentos recomendados",
       "noData": "Por favor, introduce tus datos de perfil para ver recomendaciones.",
       "seeAll": "Ver todas las recomendaciones"
-    },
-    "demo": {
-      "hint": "Prueba la calculadora de nutrición con datos de demostración. Para resultados precisos, completa tus datos en 'Mi Perfil'."
     },
     "season": {
       "wholeyear": "Todo el año",

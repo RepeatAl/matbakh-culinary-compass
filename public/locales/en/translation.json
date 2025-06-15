@@ -88,15 +88,15 @@
   "nutrition": {
     "hero": {
       "title": "Your Personal Nutrition Calculator",
-      "body": "Estimate your ideal calorie intake with just a few details. This is a rough orientation and does not replace individual medical advice."
+      "body": "Estimate your ideal calorie intake with just a few details. This is a rough orientation and does not replace medical advice."
     },
     "disclaimer": "NOTE: This is not medical or dietary advice. Please consult your doctor if in doubt.",
     "calc": {
       "title": "Calculate Calorie Needs",
-      "weight":   { "label": "Weight (kg)",   "placeholder": "e.g. 70" },
-      "height":   { "label": "Height (cm)",   "placeholder": "e.g. 175" },
-      "age":      { "label": "Age (years)",   "placeholder": "e.g. 30" },
-      "gender":   {
+      "weight": { "label": "Weight (kg)", "placeholder": "e.g. 70", "lbs": "Weight (lbs)" },
+      "height": { "label": "Height (cm)", "placeholder": "e.g. 175", "in": "Height (in)" },
+      "age": { "label": "Age (years)", "placeholder": "e.g. 30" },
+      "gender": {
         "label": "Gender",
         "placeholder": "Select gender",
         "male": "Male", "female": "Female", "other": "Other"
@@ -114,15 +114,19 @@
         "label": "Units",
         "placeholder": "Select units",
         "metric": "Metric (kg/cm)",
-        "imperial": "Imperial (lbs/in)"
+        "imperial": "Imperial (lbs/in)",
+        "hintWeight": "Please enter weight in pounds (lbs).",
+        "hintHeight": "Please enter height in inches (in)."
       },
       "submit": "Calculate",
+      "sending": "Calculating...",
       "error": {
         "weight": "Please enter a weight between 20–250 kg.",
         "height": "Please enter a height between 100–250 cm.",
         "age": "Please enter an age between 5–120 years.",
         "gender": "Please select a gender.",
         "activity": "Please select an activity level.",
+        "units": "Please select a unit.",
         "fallback": "Unknown error. Please try again."
       },
       "result": {
@@ -133,31 +137,28 @@
         "macros": "Macronutrients:",
         "macroCarbs": "Carbohydrates",
         "macroProtein": "Protein",
-        "macroFat": "Fat"
+        "macroFat": "Fat",
+        "units": "All values per day ({{units}})"
+      },
+      "demo": {
+        "hint": "Try out the nutrition calculator with demo data. For accurate results, please enter your details in 'My Profile'."
       }
     },
     "tiles": {
-      "fresh": {
-        "title": "Fresh & Natural",
-        "desc": "Unprocessed, local foods provide maximum nutrients and flavor."
-      },
-      "energy": {
-        "title": "Energy & Balance",
-        "desc": "The right amount of calories forms the foundation for energy and well-being."
-      },
-      "variety": {
-        "title": "Enjoy Variety",
-        "desc": "A varied diet supports your health and helps prevent deficiencies."
-      },
-      "protein": {
-        "title": "Protein & Satiety",
-        "desc": "Protein helps maintain muscle and keeps you feeling full longer."
-      }
+      "fresh": { "title": "Fresh & Natural", "desc": "Unprocessed, local foods provide maximum nutrients and flavor." },
+      "energy": { "title": "Energy & Balance", "desc": "The right amount of calories forms the foundation for energy and well-being." },
+      "variety": { "title": "Enjoy Variety", "desc": "A varied diet supports your health and helps prevent deficiencies." },
+      "protein": { "title": "Protein & Satiety", "desc": "Protein helps maintain muscle and keeps you feeling full longer." }
     },
     "recommendations": {
       "title": "Recommended Foods",
       "noData": "Please enter your profile details to see recommendations.",
       "seeAll": "See all recommendations"
+    },
+    "season": {
+      "wholeyear": "Whole Year",
+      "seasonal": "Seasonal",
+      "info": "Switch between whole-year and seasonal recommendations."
     }
   },
   "profile": {
