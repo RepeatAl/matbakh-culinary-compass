@@ -12,6 +12,15 @@ function parseNumber(val: string | null, fallback?: number) {
   return isNaN(n) ? fallback : n;
 }
 
+// Hilfsfunktion für Logging der Parameter
+function debugLogParams(params: Record<string, any>) {
+  console.log("===== Matbakh BUSINESS SEARCH Debug-Request Params =====");
+  Object.entries(params).forEach(([k, v]) => {
+    console.log(`  ${k}: ${JSON.stringify(v)}`);
+  });
+  console.log("--------------------------------------------------------");
+}
+
 serve(async (req) => {
   if (req.method === "OPTIONS") {
     return new Response(null, { headers: corsHeaders });
@@ -19,9 +28,8 @@ serve(async (req) => {
   try {
     const url = new URL(req.url);
 
-    // *** Nur der offene Backend-Key! ***
     const GOOGLE_KEY = Deno.env.get("GOOGLE_MAPS_API_KEY");
-    // LOGGING zum Debug
+    // Logging zum Debug
     console.log("GOOGLE_MAPS_API_KEY:", GOOGLE_KEY ? `[${GOOGLE_KEY.slice(0,8)}...${GOOGLE_KEY.slice(-6)}]` : "NICHT GESETZT (undefined/null)");
     if (!GOOGLE_KEY) {
       return new Response(JSON.stringify({ error: "Google API Key missing in Edge Function (GOOGLE_MAPS_API_KEY)" }), {
@@ -44,9 +52,33 @@ serve(async (req) => {
     const page = parseNumber(url.searchParams.get("page"), 1);
     const pageSize = Math.min(parseNumber(url.searchParams.get("pageSize"), 20), 50);
 
-    // Advanced: Filterfelder (Stub, noch kein Effekt)
-    // delivery, outdoor_seating, exclude_allergens später per Erweiterung
+    // Debug-Log aller eingehenden Such-Parameter
+    debugLogParams({q, cuisine, location, price_level, open_now, min_rating, page, pageSize});
 
+    // PLACEHOLDER: Falls Testdaten-Trigger aktiv (location=DEBUG-TEST), gebe DUMMY-Daten aus!
+    if (location && location.toUpperCase() === "DEBUG-TEST") {
+      console.log("[Matbakh] Sende Demo/Testdaten zurück (location=DEBUG-TEST)");
+      return new Response(JSON.stringify({
+        data: [
+          {
+            place_id: "debug1",
+            name: "DEMO – Restaurant Paradeis",
+            address: "DEMO-Straße 1, 12345 Teststadt",
+            vicinity: "Teststadt",
+            rating: 4.8,
+            location: { lat: 52.52, lng: 13.41 },
+            photo_url: undefined,
+            price_level: 2,
+            menu_preview: ["Pizza Margherita", "Caprese", "Tiramisu"],
+            geometry: { location: { lat: 52.52, lng: 13.41 } },
+            types: ["restaurant", "food"],
+          },
+        ],
+        meta: { page: 1, pageSize: 1, total: 1 }
+      }), {
+        headers: { "Content-Type": "application/json", ...corsHeaders }
+      });
+    }
     // Google Places API Call (Text Search)
     let query = [cuisine, q, "restaurant", `in ${location}`].filter(Boolean).join(" ");
     const gUrl = new URL("https://maps.googleapis.com/maps/api/place/textsearch/json");
@@ -61,8 +93,14 @@ serve(async (req) => {
 
     // Fehlerdiagnose: Falls Google API einen Fehler liefert, loggen wir das ausführlich:
     if (gData.error_message) {
-      console.error("Google Places API Fehler:", gData.error_message, gData);
-      return new Response(JSON.stringify({ error: "Google Places API Fehler", details: gData.error_message }), {
+      console.error("[Matbakh] Google Places API Fehler:", gData.error_message, gData);
+      return new Response(JSON.stringify({
+        error: "Google Places API Fehler",
+        details: gData.error_message,
+        gUrl: gUrl.toString(),
+        queryUsed: query,
+        params: {q, cuisine, location, price_level, open_now, min_rating, page, pageSize},
+      }), {
         status: 500,
         headers: corsHeaders,
       });
@@ -77,6 +115,10 @@ serve(async (req) => {
       address: r.formatted_address || r.vicinity,
       vicinity: r.vicinity,
       rating: r.rating,
+      location: r.geometry?.location ? {
+        lat: r.geometry.location.lat,
+        lng: r.geometry.location.lng
+      } : undefined,
       photo_url: r.photos && r.photos[0] ?
         // Bilder holen IMMER mit Backend-Key!
         `https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=${r.photos[0].photo_reference}&key=${GOOGLE_KEY}` : undefined,
@@ -85,9 +127,6 @@ serve(async (req) => {
       geometry: r.geometry,
       types: r.types,
     }));
-
-    // Menü-Preview via Firecrawl (Demo: leer; TODO: nachrüsten/caching/real scraping nach user)
-    // Für MVP lassen wir menu_preview erstmal leer!
 
     // Pagination
     const total = items.length;
@@ -100,8 +139,12 @@ serve(async (req) => {
       headers: { "Content-Type": "application/json", ...corsHeaders }
     });
   } catch (e) {
-    console.error("Edge Function (business-search) Fehler:", e);
-    return new Response(JSON.stringify({ error: String(e) }), {
+    console.error("[Matbakh] Edge Function (business-search) Fehler:", e);
+    return new Response(JSON.stringify({
+      error: String(e),
+      stack: e?.stack || "",
+      info: "Matbakh Fehler in Edge Function",
+    }), {
       status: 500,
       headers: { "Content-Type": "application/json", ...corsHeaders },
     });
