@@ -82,6 +82,11 @@
     "btnSave": "Enregistrer"
   },
   "nutrition": {
+    "hero": {
+      "title": "Votre Calculateur Personnel de Nutrition",
+      "body": "Estimez vos besoins caloriques idéaux en quelques étapes simples. Il s'agit d'une estimation et cela ne remplace pas l'avis médical individuel."
+    },
+    "disclaimer": "REMARQUE : Ceci n'est pas un avis médical ou diététique. Veuillez consulter votre médecin en cas de doute.",
     "calc": {
       "weight":   { "label": "Poids (kg)",     "placeholder": "ex. 70" },
       "height":   { "label": "Taille (cm)",    "placeholder": "ex. 175" },
