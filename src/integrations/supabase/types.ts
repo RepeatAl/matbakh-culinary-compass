@@ -175,6 +175,59 @@ export type Database = {
         }
         Relationships: []
       }
+      profiles_ext: {
+        Row: {
+          consent_agb: boolean | null
+          consent_agb_at: string | null
+          consent_marketing: boolean | null
+          consent_marketing_at: string | null
+          consent_privacy: boolean | null
+          consent_privacy_at: string | null
+          created_at: string | null
+          id: string
+          language: string | null
+          phone: string | null
+          updated_at: string | null
+          user_id: string
+        }
+        Insert: {
+          consent_agb?: boolean | null
+          consent_agb_at?: string | null
+          consent_marketing?: boolean | null
+          consent_marketing_at?: string | null
+          consent_privacy?: boolean | null
+          consent_privacy_at?: string | null
+          created_at?: string | null
+          id?: string
+          language?: string | null
+          phone?: string | null
+          updated_at?: string | null
+          user_id: string
+        }
+        Update: {
+          consent_agb?: boolean | null
+          consent_agb_at?: string | null
+          consent_marketing?: boolean | null
+          consent_marketing_at?: string | null
+          consent_privacy?: boolean | null
+          consent_privacy_at?: string | null
+          created_at?: string | null
+          id?: string
+          language?: string | null
+          phone?: string | null
+          updated_at?: string | null
+          user_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "profiles_ext_user_id_fkey"
+            columns: ["user_id"]
+            isOneToOne: true
+            referencedRelation: "profiles"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       recipes: {
         Row: {
           cook_minutes: number | null
