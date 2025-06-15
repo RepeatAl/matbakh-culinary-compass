@@ -80,5 +80,43 @@
     "selectRecipe": "Choose recipe...",
     "noRecipe": "No recipe",
     "btnSave": "Save"
+  },
+  "nutrition": {
+    "hero": {
+      "title": "Your Personal Nutrition Calculator",
+      "body": "Estimate your ideal calorie intake with just a few details. This is a rough orientation and does not replace individual medical advice."
+    },
+    "disclaimer": "NOTE: This is not medical or dietary advice. Please consult your doctor if in doubt.",
+    "calc": {
+      "title": "Calculate Calorie Needs",
+      "weight": "Weight (kg)",
+      "height": "Height (cm)",
+      "age": "Age",
+      "gender": "Gender",
+      "gender.male": "Male",
+      "gender.female": "Female",
+      "gender.placeholder": "Choose gender",
+      "activity": "Activity Level",
+      "activity.sedentary": "Sedentary (little/no exercise)",
+      "activity.light": "Light active (1-3x/week exercise)",
+      "activity.moderate": "Moderately active (3-5x/week exercise)",
+      "activity.active": "Active (6-7x/week exercise)",
+      "activity.very_active": "Very active (intense exercise/daily)",
+      "activity.placeholder": "Choose activity",
+      "submit": "Calculate",
+      "sending": "Calculating...",
+      "result": {
+        "bmr": "Basal Metabolic Rate (BMR): {{value}} kcal/day",
+        "tdee": "Total Daily Energy Expenditure (TDEE): {{value}} kcal/day",
+        "units": "All values in {{units}}."
+      },
+      "error": {
+        "weight": "Please enter a weight between 20–250 kg.",
+        "height": "Please enter a height between 100–250 cm.",
+        "age": "Please enter an age between 5–120 years.",
+        "gender": "Please select a gender.",
+        "activity": "Please select an activity level."
+      }
+    }
   }
 }

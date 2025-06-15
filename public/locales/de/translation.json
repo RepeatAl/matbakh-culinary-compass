@@ -80,5 +80,43 @@
     "selectRecipe": "Rezept wählen...",
     "noRecipe": "Kein Rezept",
     "btnSave": "Speichern"
+  },
+  "nutrition": {
+    "hero": {
+      "title": "Dein persönlicher Ernährungsrechner",
+      "body": "Berechne deinen ungefähren Kalorienbedarf auf Basis weniger Angaben. Dies ist nur eine Orientierungshilfe und ersetzt keine individuelle medizinische Beratung."
+    },
+    "disclaimer": "ACHTUNG: Dies ist keine Gesundheits- oder Ernährungsberatung. Konsultiere bei Unsicherheiten einen Arzt.",
+    "calc": {
+      "title": "Kalorienbedarf berechnen",
+      "weight": "Gewicht (kg)",
+      "height": "Größe (cm)",
+      "age": "Alter",
+      "gender": "Geschlecht",
+      "gender.male": "Männlich",
+      "gender.female": "Weiblich",
+      "gender.placeholder": "Geschlecht wählen",
+      "activity": "Aktivitätsniveau",
+      "activity.sedentary": "Sitzend (wenig/keine Bewegung)",
+      "activity.light": "Leicht aktiv (1-3x Woche Sport)",
+      "activity.moderate": "Mäßig aktiv (3-5x Woche Sport)",
+      "activity.active": "Aktiv (6-7x Woche Sport)",
+      "activity.very_active": "Sehr aktiv (intensiver Sport/jeden Tag)",
+      "activity.placeholder": "Aktivitätslevel wählen",
+      "submit": "Berechnen",
+      "sending": "Berechne...",
+      "result": {
+        "bmr": "Grundumsatz (BMR): {{value}} kcal/Tag",
+        "tdee": "Gesamtenergiebedarf (TDEE): {{value}} kcal/Tag",
+        "units": "Alle Werte in {{units}}."
+      },
+      "error": {
+        "weight": "Bitte ein Gewicht zwischen 20–250 kg eingeben.",
+        "height": "Bitte eine Größe zwischen 100–250 cm eingeben.",
+        "age": "Bitte ein Alter zwischen 5–120 Jahren eingeben.",
+        "gender": "Bitte ein Geschlecht wählen.",
+        "activity": "Bitte ein Aktivitätslevel wählen."
+      }
+    }
   }
 }
