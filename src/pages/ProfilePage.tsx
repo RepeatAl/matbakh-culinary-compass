@@ -1,4 +1,3 @@
-
 import React, { useEffect } from "react";
 import { useForm, FormProvider } from "react-hook-form";
 import { useTranslation } from "react-i18next";
@@ -72,6 +71,12 @@ export default function ProfilePage() {
       goals: [],
     }
   });
+
+  // Hilfsfunktion für Labels – nutzt Übersetzung oder Fallback
+  const translatedLabel = (key: string, fallback: string) => {
+    const val = t(key);
+    return val && val !== key ? val : fallback;
+  };
 
   // Lade Daten on mount
   useEffect(() => {
@@ -162,9 +167,11 @@ export default function ProfilePage() {
           />
           <ProfileMetaFields />
 
-          {/* NEU: Lieblingslebensmittel */}
+          {/* Lieblingslebensmittel */}
           <div>
-            <label className="block text-sm font-medium mb-1">{t("profile.favorite_foods.label")}</label>
+            <label className="block text-sm font-medium mb-1">
+              {translatedLabel("profile.favorite_foods.label", "Lebensmittel auswählen")}
+            </label>
             <Select
               isMulti
               options={foodOptions}
@@ -175,9 +182,11 @@ export default function ProfilePage() {
             />
           </div>
 
-          {/* NEU: Nicht gerne gegessen */}
+          {/* Nicht gerne gegessen */}
           <div>
-            <label className="block text-sm font-medium mb-1">{t("profile.disliked_foods.label")}</label>
+            <label className="block text-sm font-medium mb-1">
+              {translatedLabel("profile.disliked_foods.label", "Nicht bevorzugte Lebensmittel")}
+            </label>
             <Select
               isMulti
               options={foodOptions}
@@ -188,9 +197,11 @@ export default function ProfilePage() {
             />
           </div>
 
-          {/* NEU: Ernährungsziele */}
+          {/* Ernährungsziele */}
           <div>
-            <label className="block text-sm font-medium mb-1">{t("profile.goals.label")}</label>
+            <label className="block text-sm font-medium mb-1">
+              {translatedLabel("profile.goals.label", "Ziele auswählen")}
+            </label>
             <Select
               isMulti
               options={goalOptions}
