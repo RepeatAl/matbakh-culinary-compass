@@ -1,3 +1,4 @@
+
 # Supabase project configuration
 project_id = "eztmmerfuxcgmggewvaq"
 
@@ -18,4 +19,7 @@ port = 54323
 verify_jwt = false
 
 [functions.business-profile-search]
+verify_jwt = false
+
+[functions.business-search]
 verify_jwt = false
