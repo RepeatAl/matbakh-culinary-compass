@@ -1,26 +1,9 @@
 import React, { useState, useMemo } from "react";
 import { useQuery } from "@tanstack/react-query";
-import {
-  Card,
-  CardContent,
-  CardHeader,
-  CardTitle,
-  CardDescription,
-} from "@/components/ui/card";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
-import { Button } from "@/components/ui/button";
-import {
-  Pagination,
-  PaginationContent,
-  PaginationPrevious,
-  PaginationNext,
-  PaginationLink,
-} from "@/components/ui/pagination";
-import { Select } from "@/components/ui/select";
-import { Checkbox } from "@/components/ui/checkbox";
-import { GoogleMap, Marker, LoadScript } from "@react-google-maps/api";
 import { RestaurantMap } from "@/components/map/RestaurantMap";
+import { SearchForm, SearchParams } from "@/components/discover/SearchForm";
+import { ResultsGrid } from "@/components/discover/ResultsGrid";
+import { PaginationControls } from "@/components/discover/PaginationControls";
 
 // Typen für die Search-Params
 interface SearchParams {
@@ -96,7 +79,7 @@ export default function DiscoverPage() {
     enabled: !!form.location,
   });
 
-  // Map Center: Erster Treffer oder Berlin
+  // Map Center
   const mapCenter = useMemo(() => {
     if (data?.data?.length && data.data[0]?.location?.lat && data.data[0]?.location?.lng) {
       return {
@@ -108,94 +91,21 @@ export default function DiscoverPage() {
     return { lat: 52.5208, lng: 13.4094 };
   }, [data]);
 
-  const mapContainerStyle = { width: "100%", height: "400px" };
-
   // Helper für Field Change
   const update = <K extends keyof SearchParams>(key: K, value: SearchParams[K]) => {
     setForm((f) => ({ ...f, [key]: value, page: 1 }));
   };
 
+  // Pagination change
+  const handlePageChange = (newPage: number) => {
+    setForm((f) => ({ ...f, page: newPage }));
+  };
+
   return (
     <div className="p-6">
       <h1 className="text-2xl mb-4">Restaurants suchen</h1>
-      <form
-        className="grid grid-cols-4 gap-4 mb-6"
-        onSubmit={(e) => {
-          e.preventDefault();
-          refetch();
-        }}
-      >
-        <Input
-          placeholder="Stadt oder PLZ*"
-          value={form.location}
-          onChange={(e) => update("location", e.target.value)}
-          required
-        />
-        <Input
-          placeholder="Stichwort (z.B. Sushi)"
-          value={form.q || ""}
-          onChange={(e) => update("q", e.target.value)}
-        />
-        <select
-          value={form.cuisine || ""}
-          onChange={(e) => update("cuisine", e.target.value || undefined)}
-          className="rounded-md border px-3 py-2"
-        >
-          <option value="">– Küche –</option>
-          <option value="italian">Italienisch</option>
-          <option value="japanese">Japanisch</option>
-          <option value="vegan">Vegan</option>
-        </select>
-        <select
-          value={form.price_level !== undefined ? String(form.price_level) : ""}
-          onChange={(e) =>
-            update(
-              "price_level",
-              e.target.value ? Number(e.target.value) : undefined
-            )
-          }
-          className="rounded-md border px-3 py-2"
-        >
-          <option value="">– Preis –</option>
-          {[0, 1, 2, 3, 4].map((i) => (
-            <option key={i} value={i}>
-              {"€".repeat(i + 1)}
-            </option>
-          ))}
-        </select>
-        <div className="flex items-center col-span-2 space-x-2">
-          <Checkbox
-            checked={!!form.open_now}
-            onCheckedChange={(v) => update("open_now", !!v)}
-            id="open_now"
-          />
-          <Label htmlFor="open_now">Jetzt geöffnet</Label>
-        </div>
-        <select
-          multiple
-          value={form.exclude_allergens || []}
-          onChange={(e) =>
-            update(
-              "exclude_allergens",
-              Array.from(e.target.selectedOptions).map((o) => o.value)
-            )
-          }
-          className="col-span-2 rounded-md border px-3 py-2"
-        >
-          <option value="" disabled>
-            – Allergene ausschließen –
-          </option>
-          <option value="gluten">Gluten</option>
-          <option value="lactose">Laktose</option>
-          <option value="nuts">Nüsse</option>
-        </select>
+      <SearchForm form={form} onChange={update} onSubmit={e => { e.preventDefault(); refetch(); }} />
 
-        <Button type="submit" className="col-span-4">
-          Suchen
-        </Button>
-      </form>
-
-      {/* DSGVO-konforme Google Map */}
       <div className="w-full mb-8">
         <RestaurantMap
           center={mapCenter}
@@ -216,84 +126,15 @@ export default function DiscoverPage() {
       {isLoading && <p>Ergebnisse laden…</p>}
       {isError && <p className="text-red-600">Fehler bei der Suche!</p>}
 
-      <div className="grid grid-cols-3 gap-4">
-        {data?.data?.map((r) => (
-          <Card key={r.place_id}>
-            <CardHeader>
-              <CardTitle>{r.name}</CardTitle>
-              <CardDescription>{r.address}</CardDescription>
-            </CardHeader>
-            <CardContent>
-              <p>
-                ⭐ {r.rating}{" "}
-                {r.price_level !== undefined &&
-                  "|" + "€".repeat(r.price_level + 1)}
-              </p>
-              <ul className="list-disc list-inside">
-                {r.menu_preview?.map((m, i) => (
-                  <li key={i}>{m}</li>
-                ))}
-              </ul>
-            </CardContent>
-          </Card>
-        ))}
-      </div>
+      {data?.data && <ResultsGrid results={data.data} />}
 
-      {/* Pagination */}
       {data?.meta && (
-        <div className="mt-6 flex justify-center">
-          <Pagination>
-            <PaginationPrevious
-              onClick={() =>
-                setForm((f) => ({
-                  ...f,
-                  page: Math.max(1, data.meta.page - 1),
-                }))
-              }
-              className={data.meta.page === 1 ? "pointer-events-none opacity-50" : ""}
-            >
-              Zurück
-            </PaginationPrevious>
-            <PaginationContent>
-              {Array.from(
-                { length: Math.ceil(data.meta.total / data.meta.pageSize) },
-                (_, i) => (
-                  <li key={i}>
-                    <PaginationLink
-                      isActive={data.meta.page === i + 1}
-                      onClick={(e) => {
-                        e.preventDefault();
-                        setForm((f) => ({ ...f, page: i + 1 }));
-                      }}
-                      href="#"
-                    >
-                      {i + 1}
-                    </PaginationLink>
-                  </li>
-                )
-              )}
-            </PaginationContent>
-            <PaginationNext
-              onClick={() =>
-                setForm((f) => ({
-                  ...f,
-                  page: Math.min(
-                    Math.ceil(data.meta.total / data.meta.pageSize),
-                    data.meta.page + 1
-                  ),
-                }))
-              }
-              className={
-                data.meta.page ===
-                Math.ceil(data.meta.total / data.meta.pageSize)
-                  ? "pointer-events-none opacity-50"
-                  : ""
-              }
-            >
-              Weiter
-            </PaginationNext>
-          </Pagination>
-        </div>
+        <PaginationControls
+          page={data.meta.page}
+          total={data.meta.total}
+          pageSize={data.meta.pageSize}
+          onPageChange={handlePageChange}
+        />
       )}
     </div>
   );
