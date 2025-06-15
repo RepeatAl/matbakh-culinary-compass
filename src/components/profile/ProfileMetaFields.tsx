@@ -1,14 +1,8 @@
+
 import React from "react";
 import { useFormContext } from "react-hook-form";
 import { Input } from "@/components/ui/input";
 import { useTranslation } from "react-i18next";
-
-const LANG_OPTIONS = [
-  { value: "de", label: "Deutsch" },
-  { value: "en", label: "English" },
-  { value: "es", label: "Español" },
-  { value: "fr", label: "Français" },
-];
 
 export function ProfileMetaFields() {
   const { register, formState: { errors } } = useFormContext();
@@ -16,22 +10,22 @@ export function ProfileMetaFields() {
   return (
     <div className="space-y-4">
       <div>
-        <label htmlFor="first_name" className="block text-sm font-medium mb-1">{t("profile.first_name", "Vorname")}</label>
+        <label htmlFor="first_name" className="block text-sm font-medium mb-1">{t("profile.first_name")}</label>
         <Input
           id="first_name"
-          placeholder={t("profile.first_name", "Vorname")}
+          placeholder={t("profile.first_name")}
           {...register("first_name", { required: true })}
         />
-        {errors.first_name && <span className="text-destructive text-xs">{t("profile.first_name_error", "Vorname ist erforderlich")}</span>}
+        {errors.first_name && <span className="text-destructive text-xs">{t("profile.first_name_error")}</span>}
       </div>
       <div>
-        <label htmlFor="last_name" className="block text-sm font-medium mb-1">{t("profile.last_name", "Nachname")}</label>
+        <label htmlFor="last_name" className="block text-sm font-medium mb-1">{t("profile.last_name")}</label>
         <Input
           id="last_name"
-          placeholder={t("profile.last_name", "Nachname")}
+          placeholder={t("profile.last_name")}
           {...register("last_name", { required: true })}
         />
-        {errors.last_name && <span className="text-destructive text-xs">{t("profile.last_name_error", "Nachname ist erforderlich")}</span>}
+        {errors.last_name && <span className="text-destructive text-xs">{t("profile.last_name_error")}</span>}
       </div>
       <div>
         <label htmlFor="language" className="block text-sm font-medium mb-1">{t("profile.language_label")}</label>
@@ -45,7 +39,7 @@ export function ProfileMetaFields() {
           <option value="es">Español</option>
           <option value="fr">Français</option>
         </select>
-        {errors.language && <span className="text-destructive text-xs">{t("profile.language_error", "Bitte Sprache wählen")}</span>}
+        {errors.language && <span className="text-destructive text-xs">{t("profile.language_error")}</span>}
       </div>
     </div>
   );

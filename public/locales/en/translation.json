@@ -1,172 +1,17 @@
+
 {
-  "appTitle": "Matbakh",
-  "welcome": {
-    "title": "Welcome to Matbakh!",
-    "subtitle": "Your kitchen, reimagined."
-  },
-  "valueProposition": {
-    "title": "Discover what Matbakh can do for you:"
-  },
-  "forSingles": {
-    "title": "For Singles & Cooking Enthusiasts:",
-    "point1": "Impress on your next date with perfect recipes tailored to your needs.",
-    "point2": "Effortlessly create seasonal and sustainable weekly or monthly meal plans – stress-free and delicious.",
-    "point3": "Never again ask 'What should I cook today?' – Matbakh inspires you daily."
-  },
-  "forGastronomes": {
-    "title": "For Gastronomes & Professionals:",
-    "point1": "Playfully build a solid resource plan step by step – without complicated ERP systems.",
-    "point2": "Optimize your inventory management with AI support and flexibly adapt it to real conditions – save time and reduce waste.",
-    "point3": "Focus on what you love: cooking and delighting your guests. Matbakh takes care of the rest."
-  },
-  "languageSwitcher": {
-    "label": "Choose language:",
-    "selectedLabel": "Selected language:"
-  },
-  "languages": {
-    "de": "German",
-    "en": "English",
-    "es": "Spanish",
-    "fr": "French"
-  },
-  "navigation": {
-    "home": "Home",
-    "about": "About Us",
-    "recipes": "Recipes",
-    "myRecipes": "My Recipes",
-    "allRecipes": "All Recipes",
-    "mealPlan": "My Meal Plan",
-    "nutrition": "Nutrition",
-    "restaurants": "Restaurants",
-    "contact": "Contact",
-    "profile": "My Profile",
-    "logout": "Logout",
-    "login": "Login",
-    "sidebarHeader": "Menu"
-  },
-  "myRecipes": {
-    "title": "My Recipes",
-    "loading": "Loading recipes...",
-    "btnNew": "New Recipe",
-    "btnEdit": "Edit",
-    "btnSave": "Save",
-    "btnDelete": "Delete",
-    "servings": "{{count}} servings",
-    "published": "Published",
-    "formEdit": "Edit Recipe",
-    "formNew": "New Recipe",
-    "titleLabel": "Title",
-    "descLabel": "Description",
-    "prep": "Prep (min)",
-    "cook": "Cook (min)",
-    "servingsLabel": "Servings",
-    "ingredients": "Ingredients",
-    "ingrName": "Ingredient",
-    "ingrQty": "Amount",
-    "ingrUnit": "Unit",
-    "addIngr": "Add Ingredient",
-    "publish": "Publish",
-    "successSave": "Recipe saved",
-    "errorSave": "Error saving recipe",
-    "successDelete": "Recipe deleted",
-    "errorDelete": "Error deleting recipe",
-    "errorLoading": "Error loading recipes"
-  },
-  "mealPlan": {
-    "title": "My Meal Plan",
-    "loading": "Loading meal plan...",
-    "error": "Error loading meal plan.",
-    "success": "Meal plan saved",
-    "day": { "mon": "Mon", "tue": "Tue", "wed": "Wed", "thu": "Thu", "fri": "Fri", "sat": "Sat", "sun": "Sun" },
-    "meal": { "breakfast": "Breakfast", "lunch": "Lunch", "dinner": "Dinner" },
-    "empty": "Select recipe",
-    "selectRecipeTitle": "Select recipe for slot",
-    "selectRecipe": "Choose recipe...",
-    "noRecipe": "No recipe",
-    "btnSave": "Save"
-  },
-  "nutrition": {
-    "hero": {
-      "title": "Your Personal Nutrition Calculator",
-      "body": "Estimate your ideal calorie intake with just a few details. This is a rough orientation and does not replace medical advice."
-    },
-    "disclaimer": "NOTE: This is not medical or dietary advice. Please consult your doctor if in doubt.",
-    "tiles": {
-      "fresh": { "title": "Fresh & Natural", "desc": "Unprocessed, local foods provide maximum nutrients and flavor." },
-      "energy": { "title": "Energy & Balance", "desc": "The right amount of calories forms the foundation for energy and well-being." },
-      "variety": { "title": "Enjoy Variety", "desc": "A varied diet supports your health and helps prevent deficiencies." },
-      "protein": { "title": "Protein & Satiety", "desc": "Protein helps maintain muscle and keeps you feeling full longer." }
-    },
-    "calc": {
-      "title": "Calculate Calorie Needs",
-      "weight": { "label": "Weight (kg)", "placeholder": "e.g. 70", "lbs": "Weight (lbs)" },
-      "height": { "label": "Height (cm)", "placeholder": "e.g. 175", "in": "Height (in)" },
-      "age": { "label": "Age (years)", "placeholder": "e.g. 30" },
-      "gender": {
-        "label": "Gender",
-        "placeholder": "Select gender",
-        "male": "Male", "female": "Female", "other": "Other"
-      },
-      "activity": {
-        "label": "Activity Level",
-        "placeholder": "Select activity",
-        "sedentary": "Sedentary",
-        "light": "Light active",
-        "moderate": "Moderately active",
-        "active": "Active",
-        "very_active": "Very active"
-      },
-      "units": {
-        "label": "Units",
-        "placeholder": "Select units",
-        "metric": "Metric (kg/cm)",
-        "imperial": "Imperial (lbs/in)",
-        "hintWeight": "Please enter weight in pounds (lbs).",
-        "hintHeight": "Please enter height in inches (in)."
-      },
-      "submit": "Calculate",
-      "sending": "Calculating...",
-      "error": {
-        "weight": "Please enter a weight between 20–250 kg.",
-        "height": "Please enter a height between 100–250 cm.",
-        "age": "Please enter an age between 5–120 years.",
-        "gender": "Please select a gender.",
-        "activity": "Please select an activity level.",
-        "units": "Please select a unit.",
-        "fallback": "Unknown error. Please try again."
-      },
-      "result": {
-        "title": "Your Caloric Needs",
-        "subtitle": "This is an estimate and should not replace medical advice.",
-        "bmr": "Basal Metabolic Rate (BMR): {{value}} kcal/day",
-        "tdee": "Total Daily Energy Expenditure (TDEE): {{value}} kcal/day",
-        "macros": "Macronutrients:",
-        "macroCarbs": "Carbohydrates",
-        "macroProtein": "Protein",
-        "macroFat": "Fat",
-        "units": "All values per day ({{units}})"
-      },
-      "demo": {
-        "hint": "Try out the nutrition calculator with demo data. For accurate results, please enter your details in 'My Profile'."
-      }
-    },
-    "recommendations": {
-      "title": "Recommended Foods",
-      "noData": "Please enter your profile details to see recommendations.",
-      "seeAll": "See all recommendations"
-    },
-    "season": {
-      "wholeyear": "Whole Year",
-      "seasonal": "Seasonal",
-      "info": "Switch between whole-year and seasonal recommendations."
-    }
-  },
   "profile": {
     "title": "My Profile",
     "save": "Save",
     "saved": "Profile saved",
     "save_failed": "Could not save profile.",
     "loading": "Loading personal data ...",
+    "first_name": "First name",
+    "first_name_error": "First name is required.",
+    "last_name": "Last name",
+    "last_name_error": "Last name is required.",
+    "language_label": "Language",
+    "language_error": "Please select a language.",
     "allergies": {
       "label": "Allergies",
       "gluten": "Gluten",
@@ -201,7 +46,6 @@
       "sustainable_eating": "Sustainable Eating",
       "flexitarian": "Flexitarian",
       "other": "Other"
-    },
-    "language_label": "Language"
+    }
   }
 }

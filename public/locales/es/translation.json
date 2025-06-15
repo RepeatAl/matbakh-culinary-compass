@@ -1,168 +1,17 @@
+
 {
-  "appTitle": "Matbakh",
-  "welcome": {
-    "title": "¡Bienvenido a Matbakh!",
-    "subtitle": "Tu cocina, reinventada."
-  },
-  "valueProposition": {
-    "title": "Descubre lo que Matbakh puede hacer por ti:"
-  },
-  "forSingles": {
-    "title": "Para Solteros y Entusiastas de la Cocina:",
-    "point1": "Impresiona en tu próxima cita con recetas perfectas adaptadas a tus necesidades.",
-    "point2": "Crea sin esfuerzo planes de comidas semanales o mensuales, estacionales y sostenibles – sin estrés y deliciosos.",
-    "point3": "Nunca más te preguntes '¿Qué cocino hoy?' – Matbakh te inspira a diario."
-  },
-  "forGastronomes": {
-    "title": "Para Gastrónomos y Profesionales:",
-    "point1": "Construye de forma lúdica y paso a paso un plan de recursos sólido – sin complicados sistemas ERP.",
-    "point2": "Optimiza la gestión de tu inventario con IA y adáptala flexiblemente a las condiciones reales – ahorra tiempo y reduce desperdicios.",
-    "point3": "Concéntrate en lo que amas: cocinar y deleitar a tus invitados. Matbakh se encarga del resto."
-  },
-  "languageSwitcher": {
-    "label": "Seleccionar idioma:",
-    "selectedLabel": "Idioma seleccionado:"
-  },
-  "languages": {
-    "de": "Alemán",
-    "en": "Inglés",
-    "es": "Español",
-    "fr": "Francés"
-  },
-  "navigation": {
-    "home": "Inicio",
-    "about": "Sobre Nosotros",
-    "recipes": "Recetas",
-    "nutrition": "Nutrición",
-    "restaurants": "Restaurantes",
-    "contact": "Contacto",
-    "sidebarHeader": "Menú",
-    "myRecipes": "Mis Recetas",
-    "mealPlan": "Mi Plan Semanal"
-  },
-  "myRecipes": {
-    "title": "Mis Recetas",
-    "loading": "Cargando recetas...",
-    "btnNew": "Nueva receta",
-    "btnEdit": "Editar",
-    "btnSave": "Guardar",
-    "btnDelete": "Eliminar",
-    "servings": "{{count}} raciones",
-    "published": "Publicado",
-    "formEdit": "Editar receta",
-    "formNew": "Nueva receta",
-    "titleLabel": "Título",
-    "descLabel": "Descripción",
-    "prep": "Preparar (min)",
-    "cook": "Cocinar (min)",
-    "servingsLabel": "Raciones",
-    "ingredients": "Ingredientes",
-    "ingrName": "Ingrediente",
-    "ingrQty": "Cantidad",
-    "ingrUnit": "Unidad",
-    "addIngr": "Añadir ingrediente",
-    "publish": "Publicar",
-    "successSave": "Receta guardada",
-    "errorSave": "Error guardando receta",
-    "successDelete": "Receta eliminada",
-    "errorDelete": "Error eliminando receta",
-    "errorLoading": "Error cargando recetas"
-  },
-  "mealPlan": {
-    "title": "Mi Plan Semanal",
-    "loading": "Cargando plan semanal...",
-    "error": "Error cargando plan semanal.",
-    "success": "Plan guardado",
-    "day": { "mon": "Lun", "tue": "Mar", "wed": "Mié", "thu": "Jue", "fri": "Vie", "sat": "Sáb", "sun": "Dom" },
-    "meal": { "breakfast": "Desayuno", "lunch": "Almuerzo", "dinner": "Cena" },
-    "empty": "Seleccionar receta",
-    "selectRecipeTitle": "Seleccionar receta para el hueco",
-    "selectRecipe": "Elige receta...",
-    "noRecipe": "Sin receta",
-    "btnSave": "Guardar"
-  },
-  "nutrition": {
-    "hero": {
-      "title": "Tu Calculadora Personal de Nutrición",
-      "body": "Estima tu ingesta ideal de calorías con solo algunos datos. Esta es una orientación aproximada y no reemplaza el consejo médico individual."
-    },
-    "disclaimer": "NOTA: Esto no es un consejo médico o nutricional. Consulta a tu médico si tienes dudas.",
-    "tiles": {
-      "fresh": { "title": "Fresco y Natural", "desc": "Los alimentos locales y sin procesar proporcionan el máximo de nutrientes y sabor." },
-      "energy": { "title": "Energía y Equilibrio", "desc": "La ingesta calórica adecuada es la base para la energía y el bienestar." },
-      "variety": { "title": "Disfrutar de la variedad", "desc": "Una dieta variada apoya tu salud y previene deficiencias." },
-      "protein": { "title": "Proteína y saciedad", "desc": "La proteína ayuda a mantener los músculos y la sensación de saciedad." }
-    },
-    "calc": {
-      "title": "Calcular necesidades calóricas",
-      "weight": { "label": "Peso (kg)", "placeholder": "ej. 70", "lbs": "Peso (lbs)" },
-      "height": { "label": "Altura (cm)", "placeholder": "ej. 175", "in": "Altura (in)" },
-      "age": { "label": "Edad (años)", "placeholder": "ej. 30" },
-      "gender": {
-        "label": "Género",
-        "placeholder": "Selecciona género",
-        "male": "Hombre", "female": "Mujer", "other": "Otro"
-      },
-      "activity": {
-        "label": "Actividad",
-        "placeholder": "Selecciona actividad",
-        "sedentary": "Sedentario",
-        "light": "Ligeramente activo",
-        "moderate": "Moderadamente activo",
-        "active": "Activo",
-        "very_active": "Muy activo"
-      },
-      "units": {
-        "label": "Unidades",
-        "placeholder": "Selecciona unidad",
-        "metric": "Métrico (kg/cm)",
-        "imperial": "Imperial (lbs/in)",
-        "hintWeight": "Introduce el peso en libras (lbs).",
-        "hintHeight": "Introduce la altura en pulgadas (in)."
-      },
-      "submit": "Calcular",
-      "sending": "Calculando...",
-      "error": {
-        "weight": "Introduce un peso entre 20–250 kg.",
-        "height": "Introduce una altura entre 100–250 cm.",
-        "age": "Introduce una edad entre 5–120 años.",
-        "gender": "Selecciona un género.",
-        "activity": "Selecciona un nivel de actividad.",
-        "units": "Selecciona unidades.",
-        "fallback": "Error desconocido. Intente de nuevo."
-      },
-      "result": {
-        "title": "Tu necesidad calórica",
-        "subtitle": "Esta es una estimación y no reemplaza el consejo médico.",
-        "bmr": "Tasa metabólica basal (BMR): {{value}} kcal/día",
-        "tdee": "Gasto energético total (TDEE): {{value}} kcal/día",
-        "macros": "Macronutrientes:",
-        "macroCarbs": "Carbohidratos",
-        "macroProtein": "Proteína",
-        "macroFat": "Grasa",
-        "units": "Todos los valores por día ({{units}})"
-      },
-      "demo": {
-        "hint": "Prueba la calculadora de nutrición con datos de demostración. Para resultados precisos, completa tus datos en 'Mi Perfil'."
-      }
-    },
-    "recommendations": {
-      "title": "Alimentos recomendados",
-      "noData": "Por favor, introduce tus datos de perfil para ver recomendaciones.",
-      "seeAll": "Ver todas las recomendaciones"
-    },
-    "season": {
-      "wholeyear": "Todo el año",
-      "seasonal": "Estacional",
-      "info": "Cambia entre recomendaciones anuales y estacionales."
-    }
-  },
   "profile": {
     "title": "Mi Perfil",
     "save": "Guardar",
     "saved": "Perfil guardado",
     "save_failed": "No se pudo guardar el perfil.",
     "loading": "Cargando datos personales ...",
+    "first_name": "Nombre",
+    "first_name_error": "El nombre es obligatorio.",
+    "last_name": "Apellido",
+    "last_name_error": "El apellido es obligatorio.",
+    "language_label": "Idioma",
+    "language_error": "Por favor, seleccione un idioma.",
     "allergies": {
       "label": "Alergias",
       "gluten": "Gluten",
@@ -197,7 +46,6 @@
       "sustainable_eating": "Alimentación sostenible",
       "flexitarian": "Flexitariano",
       "other": "Otro"
-    },
-    "language_label": "Idioma"
+    }
   }
 }
