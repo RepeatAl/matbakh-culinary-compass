@@ -1,4 +1,3 @@
-
 # Supabase project configuration
 project_id = "eztmmerfuxcgmggewvaq"
 
@@ -22,4 +21,7 @@ verify_jwt = false
 verify_jwt = false
 
 [functions.business-search]
+verify_jwt = false
+
+[functions.foods-list]
 verify_jwt = false

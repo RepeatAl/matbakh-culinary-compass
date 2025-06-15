@@ -1,10 +1,10 @@
-
 import React from "react";
-import { useFormContext } from "react-hook-form";
+import { useFormContext, Controller } from "react-hook-form";
+import { useFoods } from "@/hooks/useFoods";
+import { useTranslation } from "react-i18next";
 import { Textarea } from "@/components/ui/textarea";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Label } from "@/components/ui/label";
-import { useTranslation } from "react-i18next";
 
 const ALLERGEN_OPTIONS = [
   "Gluten",
@@ -24,12 +24,31 @@ const ALLERGEN_OPTIONS = [
 ];
 
 export function ProfileHealthFields() {
-  const { t } = useTranslation();
-  const { register, setValue, watch } = useFormContext();
+  const { t, i18n } = useTranslation();
+  const { register, setValue, watch, control } = useFormContext();
+  const { data: foods = [], isLoading } = useFoods();
 
   const allergies: string[] = watch("allergies") || [];
   const is_diabetic: boolean = watch("is_diabetic");
   const diabetes_type: string = watch("diabetes_type");
+
+  // Helper für Food-Optionen aus aktuellem Sprach-Kontext
+  const foodOptions = foods.map(f => ({
+    value: f.slug,
+    label: f.name[i18n.language] || f.name.de || f.slug,
+    category: f.category,
+  }));
+
+  // Ernährungsziele (Trend-Liste, quickstart)
+  const goalsOptions = [
+    { value: "abnehmen", label: t("nutrition.goals.weight_loss", "Abnehmen") },
+    { value: "muskelaufbau", label: t("nutrition.goals.muscle_gain", "Muskelaufbau") },
+    { value: "allergiefrei", label: t("nutrition.goals.allergy_free", "Allergiefrei") },
+    { value: "energie", label: t("nutrition.goals.energy", "Mehr Energie") },
+    { value: "vegan", label: t("nutrition.goals.vegan", "Vegan") },
+    { value: "vegetarisch", label: t("nutrition.goals.vegetarian", "Vegetarisch") },
+    { value: "paleo", label: t("nutrition.goals.paleo", "Paleo") },
+  ];
 
   function handleAllergyChange(allergy: string) {
     let newAllergies = allergies ? [...allergies] : [];
@@ -125,6 +144,78 @@ export function ProfileHealthFields() {
           id="other_conditions"
           placeholder={t("profile.health.other_conditions_ph", "z.B. Zöliakie, Reizdarm, ...")}
           {...register("other_conditions")}
+        />
+      </div>
+
+      {/* Lieblingslebensmittel */}
+      <div>
+        <Label htmlFor="favorite_foods" className="block text-sm font-medium mb-1">
+          {t("profile.health.favorite_foods_label", "Lieblingslebensmittel")}
+        </Label>
+        <Controller
+          name="favorite_foods"
+          control={control}
+          render={({ field }) => (
+            <select
+              {...field}
+              multiple
+              className="w-full border rounded p-2 bg-background"
+            >
+              {foodOptions.map(opt => (
+                <option key={opt.value} value={opt.value}>
+                  {opt.label}
+                </option>
+              ))}
+            </select>
+          )}
+        />
+      </div>
+
+      {/* Nicht gemochte Lebensmittel */}
+      <div>
+        <Label htmlFor="disliked_foods" className="block text-sm font-medium mb-1">
+          {t("profile.health.disliked_foods_label", "Nicht gerne essen")}
+        </Label>
+        <Controller
+          name="disliked_foods"
+          control={control}
+          render={({ field }) => (
+            <select
+              {...field}
+              multiple
+              className="w-full border rounded p-2 bg-background"
+            >
+              {foodOptions.map(opt => (
+                <option key={opt.value} value={opt.value}>
+                  {opt.label}
+                </option>
+              ))}
+            </select>
+          )}
+        />
+      </div>
+
+      {/* Ernährungsziele */}
+      <div>
+        <Label htmlFor="goals" className="block text-sm font-medium mb-1">
+          {t("profile.health.goals_label", "Ernährungsziele")}
+        </Label>
+        <Controller
+          name="goals"
+          control={control}
+          render={({ field }) => (
+            <select
+              {...field}
+              multiple
+              className="w-full border rounded p-2 bg-background"
+            >
+              {goalsOptions.map(opt => (
+                <option key={opt.value} value={opt.value}>
+                  {opt.label}
+                </option>
+              ))}
+            </select>
+          )}
         />
       </div>
 
