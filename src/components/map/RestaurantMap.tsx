@@ -13,10 +13,21 @@ interface RestaurantMapProps {
 export function RestaurantMap({ center, markers }: RestaurantMapProps) {
   const [consent, setConsent] = useState(false);
 
+  // LocalStorage-Änderungen sofort erkennen, damit Consent "live" ist:
   useEffect(() => {
-    // react-cookie-consent legt den Wert in localStorage
-    const c = localStorage.getItem("matbakh_consent_thirdparty");
-    setConsent(c === "true");
+    function updateConsent() {
+      const c = localStorage.getItem("matbakh_consent_thirdparty");
+      setConsent(c === "true");
+    }
+    updateConsent(); // initial prüfen
+    // Listener auf Speicheränderungen (auch im gleichen Tab)
+    window.addEventListener("storage", updateConsent);
+    // Auch manuelle Änderungen im gleichen Tab: auf klicks im Cookie-Banner reagieren:
+    const interval = setInterval(updateConsent, 500); // kleine Hilfslösung bei Banner (CookieConsent setzt localStorage NUR im eigenen Tab, "storage" feuert nur in anderen Tabs)
+    return () => {
+      window.removeEventListener("storage", updateConsent);
+      clearInterval(interval);
+    };
   }, []);
 
   if (!consent) {
