@@ -18,6 +18,7 @@ import { AuthProvider } from "@/contexts/AuthContext";
 import ProfilePage from "./pages/ProfilePage";
 import BusinessProfileSearchPage from "./pages/BusinessProfileSearchPage";
 import DiscoverPage from "./pages/DiscoverPage";
+import CookieConsent from "react-cookie-consent";
 
 // NEU:
 import PrivateRoute from "@/routes/PrivateRoute";
@@ -88,6 +89,20 @@ const App = () => (
           </SidebarProvider>
         </AuthProvider>
       </BrowserRouter>
+      {/* DSGVO Third-Party Consent Banner */}
+      <CookieConsent
+        location="bottom"
+        buttonText="Akzeptieren"
+        declineButtonText="Ablehnen"
+        enableDeclineButton
+        cookieName="matbakh_consent_thirdparty"
+        style={{ background: "#2B373B" }}
+        buttonStyle={{ color: "#4e503b", fontSize: "13px" }}
+        expires={150}
+      >
+        Diese Seite verwendet Google Maps, um Restaurants in deiner Nähe anzuzeigen.
+        Wenn du zustimmst, werden externe Skripte geladen.
+      </CookieConsent>
     </TooltipProvider>
   </QueryClientProvider>
 );

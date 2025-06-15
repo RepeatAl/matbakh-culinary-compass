@@ -1,4 +1,3 @@
-
 import React, { useState, useMemo } from "react";
 import { useQuery } from "@tanstack/react-query";
 import {
@@ -14,10 +13,14 @@ import { Button } from "@/components/ui/button";
 import {
   Pagination,
   PaginationContent,
+  PaginationPrev,
+  PaginationNext,
+  PaginationPage,
 } from "@/components/ui/pagination";
 import { Select } from "@/components/ui/select";
 import { Checkbox } from "@/components/ui/checkbox";
 import { GoogleMap, Marker, LoadScript } from "@react-google-maps/api";
+import { RestaurantMap } from "@/components/map/RestaurantMap";
 
 // Typen für die Search-Params
 interface SearchParams {
@@ -192,25 +195,22 @@ export default function DiscoverPage() {
         </Button>
       </form>
 
-      {/* Google Map */}
+      {/* DSGVO-konforme Google Map */}
       <div className="w-full mb-8">
-        <LoadScript googleMapsApiKey={import.meta.env.VITE_GOOGLE_MAPS_API_KEY}>
-          <GoogleMap
-            mapContainerStyle={mapContainerStyle}
-            center={mapCenter}
-            zoom={13}
-          >
-            {data?.data?.map((r) =>
-              r.location?.lat && r.location?.lng ? (
-                <Marker
-                  key={r.place_id}
-                  position={{ lat: r.location.lat, lng: r.location.lng }}
-                  title={r.name}
-                />
-              ) : null
-            )}
-          </GoogleMap>
-        </LoadScript>
+        <RestaurantMap
+          center={mapCenter}
+          markers={
+            data?.data?.flatMap(r =>
+              r.location?.lat && r.location?.lng
+                ? [{
+                    id: r.place_id,
+                    position: { lat: r.location.lat, lng: r.location.lng },
+                    title: r.name,
+                  }]
+                : []
+            ) || []
+          }
+        />
       </div>
 
       {isLoading && <p>Ergebnisse laden…</p>}
@@ -243,60 +243,44 @@ export default function DiscoverPage() {
       {data?.meta && (
         <div className="mt-6 flex justify-center">
           <Pagination>
+            <PaginationPrev
+              onClick={() => setForm(f => ({ ...f, page: Math.max(1, data.meta.page - 1) }))}
+              disabled={data.meta.page === 1}
+            >
+              Zurück
+            </PaginationPrev>
             <PaginationContent>
-              {/* Previous */}
-              <li>
-                <button
-                  className="px-3 py-1 rounded hover:bg-accent"
-                  disabled={data.meta.page === 1}
-                  onClick={() => {
-                    if (data.meta.page > 1) {
-                      setForm((f) => ({ ...f, page: data.meta.page - 1 }));
-                    }
-                  }}
-                >
-                  &lt;
-                </button>
-              </li>
-              {/* Page numbers */}
               {Array.from(
                 { length: Math.ceil(data.meta.total / data.meta.pageSize) },
                 (_, i) => (
-                  <li key={i}>
-                    <button
-                      className={`px-3 py-1 rounded ${
-                        data.meta.page === i + 1
-                          ? "bg-primary text-white"
-                          : "hover:bg-accent"
-                      }`}
-                      onClick={() => setForm((f) => ({ ...f, page: i + 1 }))}
-                    >
-                      {i + 1}
-                    </button>
-                  </li>
+                  <PaginationPage
+                    key={i}
+                    onClick={() => setForm(f => ({ ...f, page: i + 1 }))}
+                    isCurrent={data.meta.page === i + 1}
+                  >
+                    {i + 1}
+                  </PaginationPage>
                 )
               )}
-              {/* Next */}
-              <li>
-                <button
-                  className="px-3 py-1 rounded hover:bg-accent"
-                  disabled={
-                    data.meta.page ===
-                    Math.ceil(data.meta.total / data.meta.pageSize)
-                  }
-                  onClick={() => {
-                    if (
-                      data.meta.page <
-                      Math.ceil(data.meta.total / data.meta.pageSize)
-                    ) {
-                      setForm((f) => ({ ...f, page: data.meta.page + 1 }));
-                    }
-                  }}
-                >
-                  &gt;
-                </button>
-              </li>
             </PaginationContent>
+            <PaginationNext
+              onClick={() =>
+                setForm(f =>
+                  ({
+                    ...f,
+                    page: Math.min(
+                      Math.ceil(data.meta.total / data.meta.pageSize),
+                      data.meta.page + 1
+                    ),
+                  })
+                )
+              }
+              disabled={
+                data.meta.page === Math.ceil(data.meta.total / data.meta.pageSize)
+              }
+            >
+              Weiter
+            </PaginationNext>
           </Pagination>
         </div>
       )}
