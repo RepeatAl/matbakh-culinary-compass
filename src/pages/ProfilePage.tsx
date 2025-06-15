@@ -1,4 +1,3 @@
-
 import React, { useEffect } from "react";
 import { useForm, FormProvider } from "react-hook-form";
 import { useTranslation } from "react-i18next";
@@ -19,6 +18,11 @@ type ProfileFormValues = {
   consent_agb: boolean;
   consent_privacy: boolean;
   consent_marketing: boolean;
+  allergies: string[];
+  other_allergies: string;
+  is_diabetic: boolean;
+  diabetes_type: string;
+  other_conditions: string;
 };
 
 export default function ProfilePage() {
@@ -33,13 +37,17 @@ export default function ProfilePage() {
       consent_agb: false,
       consent_privacy: false,
       consent_marketing: false,
+      allergies: [],
+      other_allergies: "",
+      is_diabetic: false,
+      diabetes_type: "",
+      other_conditions: "",
     }
   });
 
   // Lade Daten on mount
   useEffect(() => {
     if (!user) return;
-    // Standard-Prozedere zum Laden der Daten (kann noch optimiert in Hook!)
     async function fetchProfile() {
       const { data: basic } = await supabase
         .from("profiles")
@@ -48,17 +56,22 @@ export default function ProfilePage() {
         .single();
       const { data: ext } = await supabase
         .from("profiles_ext")
-        .select("language,consent_agb,consent_privacy,consent_marketing")
+        .select("language,consent_agb,consent_privacy,consent_marketing,allergies,other_allergies,is_diabetic,diabetes_type,other_conditions")
         .eq("user_id", user.id)
         .maybeSingle();
       methods.reset({
         first_name: basic?.first_name || "",
         last_name: basic?.last_name || "",
         language: ext?.language || i18n.language,
-        avatar_url: "", // Avatar separat laden
+        avatar_url: "",
         consent_agb: !!ext?.consent_agb,
         consent_privacy: !!ext?.consent_privacy,
         consent_marketing: !!ext?.consent_marketing,
+        allergies: ext?.allergies || [],
+        other_allergies: ext?.other_allergies || "",
+        is_diabetic: ext?.is_diabetic ?? false,
+        diabetes_type: ext?.diabetes_type || "",
+        other_conditions: ext?.other_conditions || "",
       });
     }
     fetchProfile();
@@ -83,6 +96,11 @@ export default function ProfilePage() {
         consent_agb: data.consent_agb,
         consent_privacy: data.consent_privacy,
         consent_marketing: data.consent_marketing,
+        allergies: data.allergies,
+        other_allergies: data.other_allergies,
+        is_diabetic: data.is_diabetic,
+        diabetes_type: data.is_diabetic ? data.diabetes_type : "",
+        other_conditions: data.other_conditions,
       })
       .eq("user_id", user.id);
 
@@ -106,6 +124,7 @@ export default function ProfilePage() {
             onUpload={handleAvatarUpload}
           />
           <ProfileMetaFields />
+          <ProfileHealthFields />
           <ProfileConsentCheckboxes />
           <ChangePasswordButton />
           <Button type="submit" className="w-full mt-4">

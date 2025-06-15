@@ -177,6 +177,7 @@ export type Database = {
       }
       profiles_ext: {
         Row: {
+          allergies: string[] | null
           consent_agb: boolean | null
           consent_agb_at: string | null
           consent_marketing: boolean | null
@@ -184,13 +185,18 @@ export type Database = {
           consent_privacy: boolean | null
           consent_privacy_at: string | null
           created_at: string | null
+          diabetes_type: string | null
           id: string
+          is_diabetic: boolean
           language: string | null
+          other_allergies: string | null
+          other_conditions: string | null
           phone: string | null
           updated_at: string | null
           user_id: string
         }
         Insert: {
+          allergies?: string[] | null
           consent_agb?: boolean | null
           consent_agb_at?: string | null
           consent_marketing?: boolean | null
@@ -198,13 +204,18 @@ export type Database = {
           consent_privacy?: boolean | null
           consent_privacy_at?: string | null
           created_at?: string | null
+          diabetes_type?: string | null
           id?: string
+          is_diabetic?: boolean
           language?: string | null
+          other_allergies?: string | null
+          other_conditions?: string | null
           phone?: string | null
           updated_at?: string | null
           user_id: string
         }
         Update: {
+          allergies?: string[] | null
           consent_agb?: boolean | null
           consent_agb_at?: string | null
           consent_marketing?: boolean | null
@@ -212,8 +223,12 @@ export type Database = {
           consent_privacy?: boolean | null
           consent_privacy_at?: string | null
           created_at?: string | null
+          diabetes_type?: string | null
           id?: string
+          is_diabetic?: boolean
           language?: string | null
+          other_allergies?: string | null
+          other_conditions?: string | null
           phone?: string | null
           updated_at?: string | null
           user_id?: string
