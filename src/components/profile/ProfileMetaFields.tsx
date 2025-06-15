@@ -7,6 +7,7 @@ import { useTranslation } from "react-i18next";
 export function ProfileMetaFields() {
   const { register, formState: { errors } } = useFormContext();
   const { t } = useTranslation();
+
   return (
     <div className="space-y-4">
       <div>

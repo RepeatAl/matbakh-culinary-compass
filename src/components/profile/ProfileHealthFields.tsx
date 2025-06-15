@@ -1,14 +1,15 @@
+
 import React from "react";
 import { useTranslation } from "react-i18next";
 import { AllergiesCheckboxGroup } from "./AllergiesCheckboxGroup";
 import { FoodMultiSelect } from "./FoodMultiSelect";
 import { GoalsMultiSelect } from "./GoalsMultiSelect";
 import { useFoods } from "@/hooks/useFoods";
-import { useProfileExt } from "@/hooks/useUserNutritionProfile"; // Corrected import
+import { useProfileExt } from "@/hooks/useUserNutritionProfile";
 
 export const ProfileHealthFields: React.FC = () => {
   const { t, i18n } = useTranslation();
-  const { data: profileExt } = useProfileExt(); // Fixed: new signature
+  const { data: profileExt } = useProfileExt();
   const { data: foods = [], isLoading: foodsLoading } = useFoods();
 
   // Define allergen and goal lists as specified
@@ -26,7 +27,7 @@ export const ProfileHealthFields: React.FC = () => {
     { value: 'histamine', label: t("profile.allergies.histamine") },
   ];
 
-  // Prepare food options from db (dynamically, using the translated name)
+  // Prepare food options from db
   const foodOptions = foods.map(f => ({
     value: f.slug || f.id,
     label: f.name?.[i18n.language] || f.name?.en || f.name?.de || f.slug,
@@ -34,9 +35,9 @@ export const ProfileHealthFields: React.FC = () => {
 
   // Placeholders for update handlers since the new hook doesn't provide update mutation.
   const notifyNotEditable = () =>
-    alert(t("Diese Funktion ist aktuell nur lesbar."));
+    alert(t("profile.save_failed", "Speichern nicht möglich."));
 
-  if (foodsLoading) return <div>{t("Lade Daten...")}</div>;
+  if (foodsLoading) return <div>{t("profile.loading")}</div>;
   if (!profileExt) return null;
 
   return (
@@ -62,7 +63,7 @@ export const ProfileHealthFields: React.FC = () => {
         onChange={notifyNotEditable}
       />
       <div className="rounded bg-yellow-50 border-l-4 border-yellow-600 px-3 py-2 text-yellow-900 text-sm mt-2">
-        {t("profile.health.disclaimer", "Wichtiger Hinweis: Diese Angaben ersetzen keine medizinische/ärztliche Beratung. Im Zweifelsfall wenden Sie sich bitte an Ihren Arzt oder Ihre Ärztin.")}
+        {t("profile.health.disclaimer")}
       </div>
     </div>
   );

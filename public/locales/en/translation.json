@@ -46,6 +46,9 @@
       "sustainable_eating": "Sustainable Eating",
       "flexitarian": "Flexitarian",
       "other": "Other"
+    },
+    "health": {
+      "disclaimer": "Important note: This information does not replace medical advice. In case of doubt, please consult your doctor."
     }
   }
 }
