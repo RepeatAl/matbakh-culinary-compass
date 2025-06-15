@@ -1,13 +1,12 @@
-
 import React from "react";
 import { useTranslation } from "react-i18next";
-import { useUserNutritionProfile } from "@/hooks/useUserNutritionProfile";
+import { useProfileExt } from "@/hooks/useUserNutritionProfile";
 import { useFoods } from "@/hooks/useFoods";
 import { Badge } from "@/components/ui/badge";
 
 export const UserProfileFilters: React.FC = () => {
   const { t, i18n } = useTranslation();
-  const { data: profile, isLoading: loadingProfile } = useUserNutritionProfile();
+  const { data: profile, isLoading: loadingProfile } = useProfileExt();
   const { data: foods = [] } = useFoods();
 
   // Helper für Labels
@@ -25,10 +24,10 @@ export const UserProfileFilters: React.FC = () => {
 
   return (
     <div className="mb-6">
-      <h2 className="text-lg font-semibold mb-2">{t("nutrition.personalization.filters", "Deine Ernährungsfilter")}</h2>
+      <h2 className="text-lg font-semibold mb-2">{t("nutrition.personalization.filters", "Deine Ernährungsfilter") as string}</h2>
       {profile.allergies?.length > 0 && (
         <div className="mb-2">
-          <span className="font-medium">{t("profile.health.allergies_label", "Allergien")}:</span>{" "}
+          <span className="font-medium">{t("profile.health.allergies_label", "Allergien") as string}:</span>{" "}
           {profile.allergies.map((a) => (
             <Badge variant="destructive" key={a} className="mr-1 mb-1">{a}</Badge>
           ))}
@@ -36,7 +35,7 @@ export const UserProfileFilters: React.FC = () => {
       )}
       {profile.favorite_foods?.length > 0 && (
         <div className="mb-2">
-          <span className="font-medium">{t("profile.health.favorite_foods_label", "Lieblingslebensmittel")}:</span>{" "}
+          <span className="font-medium">{t("profile.health.favorite_foods_label", "Lieblingslebensmittel") as string}:</span>{" "}
           {labelFromSlugs(profile.favorite_foods).map((n) => (
             <Badge variant="outline" key={n} className="mr-1 mb-1">{n}</Badge>
           ))}
@@ -44,7 +43,7 @@ export const UserProfileFilters: React.FC = () => {
       )}
       {profile.disliked_foods?.length > 0 && (
         <div className="mb-2">
-          <span className="font-medium">{t("profile.health.disliked_foods_label", "Nicht gerne essen")}:</span>{" "}
+          <span className="font-medium">{t("profile.health.disliked_foods_label", "Nicht gerne essen") as string}:</span>{" "}
           {labelFromSlugs(profile.disliked_foods).map((n) => (
             <Badge variant="secondary" key={n} className="mr-1 mb-1">{n}</Badge>
           ))}
@@ -52,7 +51,7 @@ export const UserProfileFilters: React.FC = () => {
       )}
       {profile.goals?.length > 0 && (
         <div className="mb-2">
-          <span className="font-medium">{t("profile.health.goals_label", "Ernährungsziele")}:</span>{" "}
+          <span className="font-medium">{t("profile.health.goals_label", "Ernährungsziele") as string}:</span>{" "}
           {profile.goals.map((g) => (
             <Badge variant="default" key={g} className="mr-1 mb-1">{t(`nutrition.goals.${g}`, g)}</Badge>
           ))}

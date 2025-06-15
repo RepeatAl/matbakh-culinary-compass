@@ -7,7 +7,7 @@ import { useNavigate } from "react-router-dom";
 import { useAuth } from "@/contexts/AuthContext";
 import { UserProfileFilters } from "@/components/nutrition/UserProfileFilters";
 import { useFoods } from "@/hooks/useFoods";
-import { useUserNutritionProfile } from "@/hooks/useUserNutritionProfile";
+import { useProfileExt } from "@/hooks/useUserNutritionProfile";
 import { NutritionProfileMultiselect } from "@/components/nutrition/NutritionProfileMultiselect";
 
 const NutritionPage = () => {
@@ -15,7 +15,7 @@ const NutritionPage = () => {
   const navigate = useNavigate();
   const { user } = useAuth();
   const { data: foods = [] } = useFoods();
-  const { data: profile } = useUserNutritionProfile();
+  const { data: profile } = useProfileExt();
 
   // Filter: Allergene & disliked
   let filteredFoods = foods;
