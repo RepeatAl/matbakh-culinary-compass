@@ -1,1 +1,19 @@
+
+# Supabase project configuration
 project_id = "eztmmerfuxcgmggewvaq"
+
+[api]
+port = 54321
+schemas = ["public", "storage", "graphql"]
+extra_search_path = ["public", "extensions"]
+max_rows = 1000
+
+[db]
+port = 54322
+major_version = 15
+
+[studio]
+port = 54323
+
+[functions.custom-email-sender]
+verify_jwt = false
