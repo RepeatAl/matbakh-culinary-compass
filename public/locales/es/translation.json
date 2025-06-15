@@ -68,5 +68,15 @@
   },
   "about": {
     "description": "Matbakh es tu plataforma inteligente de nutrición que une recomendaciones personalizadas con variedad estacional y tecnología moderna. Nuestro objetivo es ayudarte a encontrar comidas saludables y deliciosas, adaptadas a tus gustos, alergias y metas. Apostamos por:\n\nPersonalización: En tu perfil indicas alergias, alimentos preferidos y no preferidos, así como tus objetivos nutricionales. Matbakh filtra automáticamente las opciones inadecuadas y resalta las sugerencias relevantes.\n\nOrientación estacional: Te mostramos qué ingredientes están de temporada. Así cocinas fresco, sostenible y variado, sin tener que buscar mucho.\n\nExperiencia multilingüe: Matbakh está disponible en varios idiomas. Todos los contenidos, etiquetas y notas se ajustan dinámicamente a tu idioma.\n\nRecomendaciones impulsadas por IA: Nuestros agentes analizan combinaciones de alimentos y te inspiran con sugerencias gustativas y saludables.\n\nCalculadora demo sencilla: Prueba nuestro calculador de calorías y macros directamente en la página de inicio, de forma rápida, anónima y sin registro.\n\nUI/UX moderna: Un diseño claro y responsive facilita la navegación en escritorio y en móvil. Multiselecciones intuitivas y avisos claros hacen la experiencia sencilla.\n\nEscalabilidad y privacidad: Tus datos se tratan con confidencialidad. Gracias a políticas de seguridad y edge-functions protegidas, tu privacidad está garantizada. La arquitectura es escalable: desde listas de compra hasta reportes personalizados.\n\nMatbakh te acompaña desde la inspiración inicial hasta la implementación en tu cocina. Tanto si recién comienzas como si persigues un objetivo nutricional concreto: Te ofrecemos herramientas y contenido para que tomes decisiones informadas, combinando salud y disfrute. ¡Descubre Matbakh y cocina con visión, variedad y facilidad!"
+  },
+  "languageSwitcher": {
+    "label": "Selecciona el idioma",
+    "selectedLabel": "Idioma"
+  },
+  "languages": {
+    "de": "Alemán",
+    "en": "Inglés",
+    "es": "Español",
+    "fr": "Francés"
   }
 }

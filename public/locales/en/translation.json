@@ -68,5 +68,15 @@
   },
   "about": {
     "description": "Matbakh is your intelligent nutrition platform combining personalized recommendations with seasonal variety and modern technology. Our goal is to help you find healthy and enjoyable meals—tailored to your preferences, allergies, and goals. We focus on:\n\nPersonalization: In your profile, you enter allergies, favorite and disliked foods as well as nutrition goals. Matbakh automatically filters out unsuitable options and highlights matching suggestions.\n\nSeasonal focus: We show you which ingredients are in season right now. This lets you cook fresh, sustainable, and varied meals—without having to search long for suitable ingredients.\n\nMultilingual experience: Matbakh is available in several languages. All content, labels, and hints adjust dynamically to your language setting.\n\nAI-powered recommendations: Our agents analyze food pairings in the background and provide inspiration on which combinations are tasty or nutritionally sensible.\n\nSimple demo calculator: Try out our calorie and macro calculator directly on the landing page—fast, anonymous, and with no registration required—so you get a feel for your needs.\n\nModern UI/UX: A clear, responsive design makes for easy navigation on desktop and mobile. Intuitive multiselects and clear notifications ensure a great user experience.\n\nScalability & privacy: Your profile data is treated confidentially. Thanks to strict database policies and secure edge functions, your privacy is protected. The architecture is flexibly extendable—from shopping lists to personalized reports.\n\nMatbakh guides you from first inspiration to implementation in your kitchen. Whether you're starting out or working towards a nutrition goal: We provide the tools and content you need to make informed decisions and bring enjoyment and health into harmony. Discover Matbakh—and cook with clarity, variety, and ease!"
+  },
+  "languageSwitcher": {
+    "label": "Select language",
+    "selectedLabel": "Language"
+  },
+  "languages": {
+    "de": "German",
+    "en": "English",
+    "es": "Spanish",
+    "fr": "French"
   }
 }

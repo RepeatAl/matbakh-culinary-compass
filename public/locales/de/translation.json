@@ -68,5 +68,15 @@
   },
   "about": {
     "description": "Matbakh ist deine intelligente Ernährungsplattform, die persönliche Ernährungsempfehlungen mit saisonaler Vielfalt und moderner Technologie verbindet. Unser Ziel ist es, dich dabei zu unterstützen, gesunde und genussvolle Mahlzeiten zu finden – zugeschnitten auf deine Vorlieben, Allergien und Ziele. Dabei setzen wir auf:\n\nPersonalisierung: In deinem Profil hinterlegst du Allergien, Lieblings- und Nicht-Lebensmittel sowie Ernährungsziele. Matbakh filtert automatisch ungeeignete Optionen heraus und hebt passende Vorschläge hervor.\n\nSaisonale Orientierung: Wir zeigen dir, welche Zutaten gerade Saison haben. So kochst du frisch, umweltbewusst und abwechslungsreich, ohne lange nach geeigneten Zutaten suchen zu müssen.\n\nMultilinguale Nutzererfahrung: Matbakh ist in mehreren Sprachen verfügbar. Alle Inhalte, Labels und Hinweise werden dynamisch an deine Spracheinstellung angepasst.\n\nKI-gestützte Empfehlungen: Hinter den Kulissen analysieren unsere Agenten Lebensmittel-Paarungen und liefern Inspiration, welche Kombinationen geschmacklich harmonieren oder ernährungsphysiologisch sinnvoll sind.\n\nEinfacher Demo-Rechner: Probiere unseren Kalorien- und Makro-Rechner direkt auf der Landingpage aus – schnell, anonym und ohne Anmeldung, um ein Gefühl für deinen Bedarf zu bekommen.\n\nModerne UI/UX: Ein klares, responsives Design sorgt dafür, dass du auf Desktop und Mobilgerät problemlos navigieren kannst. Intuitive Multiselects und verständliche Meldungen machen die Bedienung einfach.\n\nSkalierbarkeit & Datenschutz: Deine Profildaten werden vertraulich behandelt. Dank RLS-Policies in der Datenbank und sicherer Edge-Functions bleibt deine Privatsphäre geschützt. Gleichzeitig ist die Architektur flexibel erweiterbar – von Einkaufslisten bis zu personalisierten Reports.\n\nMatbakh begleitet dich von der ersten Inspiration bis zur Umsetzung in deiner Küche. Ob du gerade erst einsteigst oder gezielt an einem Ernährungsziel arbeitest: Wir bieten die Werkzeuge und Inhalte, um informierte Entscheidungen zu treffen und Genuss und Gesundheit in Einklang zu bringen. Entdecke Matbakh – und koche mit Übersicht, Vielfalt und Leichtigkeit!"
+  },
+  "languageSwitcher": {
+    "label": "Sprache auswählen",
+    "selectedLabel": "Sprache"
+  },
+  "languages": {
+    "de": "Deutsch",
+    "en": "Englisch",
+    "es": "Spanisch",
+    "fr": "Französisch"
   }
 }
