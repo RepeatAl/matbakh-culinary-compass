@@ -1,16 +1,18 @@
+
 import { useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
-import { Button } from "@/components/ui/button";
-import { Form, FormItem, FormLabel, FormControl, FormMessage } from "@/components/ui/form";
-import IngredientFields from "./IngredientFields";
+import { Form } from "@/components/ui/form";
 import { useToast } from "@/hooks/use-toast";
 import { supabase } from "@/integrations/supabase/client";
 import { useTranslation } from "react-i18next";
 import { Tables } from "@/integrations/supabase/types";
 import { useAuth } from "@/contexts/AuthContext";
+import RecipeMetaFields from "./RecipeMetaFields";
+import RecipeIngredientsSection from "./RecipeIngredientsSection";
+import RecipeFormActions from "./RecipeFormActions";
 
 const recipeSchema = z.object({
   title: z.string().min(2),
@@ -22,7 +24,6 @@ const recipeSchema = z.object({
   ingredients: z.array(
     z.object({
       name: z.string().min(1),
-      // Nimmt Dezimalzahlen ab 0.01, damit auch 0,5 und 0.05 erlaubt sind
       quantity: z.preprocess(
         (v) => typeof v === "string" ? Number((v as string).replace(",", ".")) : v,
         z.number().min(0.01, { message: "Menge muss mindestens 0,01 sein." })
@@ -59,7 +60,6 @@ export default function RecipeForm({ open, onOpenChange, existing, onSaved }: Re
     },
   });
 
-  // Zutaten für Edit-Form nachladen
   useEffect(() => {
     if (existing) {
       form.reset({
@@ -84,7 +84,6 @@ export default function RecipeForm({ open, onOpenChange, existing, onSaved }: Re
     // eslint-disable-next-line
   }, [existing, open]);
 
-  // Submit
   async function onSubmit(values: FormValues) {
     if (!user) {
       toast({ title: t("myRecipes.errorSave"), description: "Not logged in", variant: "destructive" });
@@ -136,7 +135,6 @@ export default function RecipeForm({ open, onOpenChange, existing, onSaved }: Re
     if (recipeId) {
       await supabase.from("ingredients").delete().eq("recipe_id", recipeId);
       if (values.ingredients.length > 0) {
-        // Jede Zutat braucht name (string), quantity (number), unit (string|undefined), und recipe_id
         const ingrPayload = values.ingredients.map((i) => ({
           recipe_id: recipeId,
           name: i.name,
@@ -150,7 +148,6 @@ export default function RecipeForm({ open, onOpenChange, existing, onSaved }: Re
     onSaved();
   }
 
-  // Löschen
   async function onDelete() {
     if (!existing) return;
     const { error } = await supabase.from("recipes").delete().eq("id", existing.id);
@@ -170,58 +167,9 @@ export default function RecipeForm({ open, onOpenChange, existing, onSaved }: Re
         </DialogHeader>
         <Form {...form}>
           <form className="space-y-4" onSubmit={form.handleSubmit(onSubmit)}>
-            <FormItem>
-              <FormLabel>{t("myRecipes.titleLabel")}</FormLabel>
-              <FormControl>
-                <input {...form.register("title")} className="input" />
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-            <FormItem>
-              <FormLabel>{t("myRecipes.descLabel")}</FormLabel>
-              <FormControl>
-                <textarea {...form.register("description")} className="textarea" />
-              </FormControl>
-            </FormItem>
-            <div className="flex gap-2">
-              <FormItem>
-                <FormLabel>{t("myRecipes.prep")}</FormLabel>
-                <FormControl>
-                  <input type="number" {...form.register("prep_minutes")} className="input w-20" min={0} />
-                </FormControl>
-              </FormItem>
-              <FormItem>
-                <FormLabel>{t("myRecipes.cook")}</FormLabel>
-                <FormControl>
-                  <input type="number" {...form.register("cook_minutes")} className="input w-20" min={0} />
-                </FormControl>
-              </FormItem>
-              <FormItem>
-                <FormLabel>{t("myRecipes.servingsLabel")}</FormLabel>
-                <FormControl>
-                  <input type="number" {...form.register("servings")} className="input w-16" min={1} required />
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            </div>
-            <FormItem>
-              <FormLabel>{t("myRecipes.ingredients")}</FormLabel>
-              <FormControl>
-                <IngredientFields />
-              </FormControl>
-            </FormItem>
-            <FormItem>
-              <FormLabel>{t("myRecipes.publish")}</FormLabel>
-              <FormControl>
-                <input type="checkbox" {...form.register("publish")} />
-              </FormControl>
-            </FormItem>
-            <div className="flex justify-between items-center gap-3 pt-2">
-              <Button type="submit">{t("myRecipes.btnSave")}</Button>
-              {existing && (
-                <Button type="button" variant="destructive" onClick={onDelete}>{t("myRecipes.btnDelete")}</Button>
-              )}
-            </div>
+            <RecipeMetaFields />
+            <RecipeIngredientsSection />
+            <RecipeFormActions isEdit={!!existing} onDelete={onDelete} />
           </form>
         </Form>
       </DialogContent>
