@@ -1,4 +1,3 @@
-
 import React from "react";
 import { useTranslation } from "react-i18next";
 import { AllergiesCheckboxGroup } from "./AllergiesCheckboxGroup";
@@ -27,25 +26,6 @@ export const ProfileHealthFields: React.FC = () => {
     { value: 'histamine', label: t("profile.allergies.histamine") },
   ];
 
-  const goalsOptions = [
-    { value: "weight_loss", label: t("profile.goals.weight_loss") },
-    { value: "weight_maintenance", label: t("profile.goals.weight_maintenance") },
-    { value: "muscle_gain", label: t("profile.goals.muscle_gain") },
-    { value: "high_protein", label: t("profile.goals.high_protein") },
-    { value: "low_carb", label: t("profile.goals.low_carb") },
-    { value: "vegan", label: t("profile.goals.vegan") },
-    { value: "vegetarian", label: t("profile.goals.vegetarian") },
-    { value: "keto", label: t("profile.goals.keto") },
-    { value: "paleo", label: t("profile.goals.paleo") },
-    { value: "diabetic_friendly", label: t("profile.goals.diabetic_friendly") },
-    { value: "heart_health", label: t("profile.goals.heart_health") },
-    { value: "gut_health", label: t("profile.goals.gut_health") },
-    { value: "anti_inflammatory", label: t("profile.goals.anti_inflammatory") },
-    { value: "sustainable_eating", label: t("profile.goals.sustainable_eating") },
-    { value: "flexitarian", label: t("profile.goals.flexitarian") },
-    { value: "other", label: t("profile.goals.other") },
-  ];
-
   // Prepare food options from db (dynamically, using the translated name)
   const foodOptions = foods.map(f => ({
     value: f.slug || f.id,
@@ -56,7 +36,6 @@ export const ProfileHealthFields: React.FC = () => {
   const notifyNotEditable = () =>
     alert(t("Diese Funktion ist aktuell nur lesbar."));
 
-  // Defensive: if the profile is loading or missing
   if (foodsLoading) return <div>{t("Lade Daten...")}</div>;
   if (!profileExt) return null;
 
@@ -80,7 +59,6 @@ export const ProfileHealthFields: React.FC = () => {
       <GoalsMultiSelect
         label={t("profile.goals.label")}
         selected={profileExt.goals || []}
-        options={goalsOptions}
         onChange={notifyNotEditable}
       />
       <div className="rounded bg-yellow-50 border-l-4 border-yellow-600 px-3 py-2 text-yellow-900 text-sm mt-2">
