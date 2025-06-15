@@ -17,6 +17,7 @@ import LanguageSwitcher from "@/components/LanguageSwitcher";
 import { AuthProvider } from "@/contexts/AuthContext";
 import ProfilePage from "./pages/ProfilePage";
 import BusinessProfileSearchPage from "./pages/BusinessProfileSearchPage";
+import DiscoverPage from "./pages/DiscoverPage";
 
 // NEU:
 import PrivateRoute from "@/routes/PrivateRoute";
@@ -78,6 +79,7 @@ const App = () => (
                       }
                     />
                     <Route path="/business-search" element={<BusinessProfileSearchPage />} />
+                    <Route path="/restaurant-suche" element={<DiscoverPage />} />
                     <Route path="*" element={<NotFound />} />
                   </Routes>
                 </div>
