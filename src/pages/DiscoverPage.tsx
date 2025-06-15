@@ -1,31 +1,24 @@
-import React from "react";
 
-import { BusinessProfileResult, searchBusinessProfile } from "@/services/businessProfileService";
+import React, { useState, useMemo } from "react";
+import { useQuery } from "@tanstack/react-query";
 import {
   Card,
   CardContent,
-  CardDescription,
-  CardFooter,
   CardHeader,
   CardTitle,
+  CardDescription,
 } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Button } from "@/components/ui/button";
 import {
   Pagination,
-  PaginationContent,
-  PaginationItem,
-  PaginationLink,
-  PaginationNext,
-  PaginationPrevious,
 } from "@/components/ui/pagination";
 import { Select } from "@/components/ui/select";
 import { Checkbox } from "@/components/ui/checkbox";
-import { GoogleMap, Marker, LoadScript } from '@react-google-maps/api';
-import { useState, useMemo } from 'react';
-import { useQuery } from '@tanstack/react-query';
+import { GoogleMap, Marker, LoadScript } from "@react-google-maps/api";
 
+// Typen für die Search-Params
 interface SearchParams {
   location: string;
   q?: string;
@@ -37,56 +30,93 @@ interface SearchParams {
   pageSize: number;
 }
 
-async function fetchSearch(params: SearchParams) {
-  return await searchBusinessProfile(
-    params.q || "",
-    params.location,
-    params.cuisine,
-    params.price_level,
-    params.open_now,
-    params.exclude_allergens,
-    params.page,
-    params.pageSize
+// Meta-Antwort von der Edge Function
+interface Meta {
+  page: number;
+  pageSize: number;
+  total: number;
+}
+
+// Ergebnis-Item
+interface RestaurantSummary {
+  place_id: string;
+  name: string;
+  address: string;
+  rating: number;
+  location?: { lat: number; lng: number };
+  photo_url?: string;
+  price_level?: number;
+  menu_preview: string[];
+}
+
+// Wrapper um deinen Fetch-Call
+async function fetchSearch(params: SearchParams): Promise<{ data: RestaurantSummary[]; meta: Meta }> {
+  const url = new URL(
+    `${import.meta.env.VITE_SUPABASE_FUNCTIONS_URL || ""}/business-search`
   );
+  if (!url.hostname) {
+    // Fallback falls keine VAR gesetzt
+    url.href = `/functions/v1/business-search`;
+  }
+  Object.entries(params).forEach(([k, v]) => {
+    if (v != null) {
+      if (Array.isArray(v)) {
+        v.forEach((item) => url.searchParams.append(k, item));
+      } else {
+        url.searchParams.set(k, String(v));
+      }
+    }
+  });
+  const res = await fetch(url.toString());
+  if (!res.ok) throw new Error("Search failed");
+  return res.json();
 }
 
 export default function DiscoverPage() {
+  // Form-State
   const [form, setForm] = useState<SearchParams>({
-    location: '',
+    location: "",
     page: 1,
     pageSize: 20,
   });
 
-  const { data, isLoading, isError, refetch } = useQuery(
-    ['business-search', form],
-    () => fetchSearch(form),
-    { enabled: !!form.location }
-  );
+  // React Query im Object style + Typisierung debug
+  const {
+    data,
+    isLoading,
+    isError,
+    refetch,
+  } = useQuery({
+    queryKey: ["business-search", form],
+    queryFn: () => fetchSearch(form),
+    enabled: !!form.location,
+  });
 
-  const update = <K extends keyof SearchParams>(key: K, value: SearchParams[K]) =>
-    setForm(f => ({ ...f, [key]: value, page: 1 }));
-
-  // Karte: Berechne Map Center anhand des ersten Ergebnisses oder Default Berlin
+  // Map Center: Erster Treffer oder Berlin
   const mapCenter = useMemo(() => {
-    if (data?.data?.length && data.data[0].location?.lat && data.data[0].location?.lng) {
+    if (data?.data?.length && data.data[0]?.location?.lat && data.data[0]?.location?.lng) {
       return {
         lat: data.data[0].location.lat,
         lng: data.data[0].location.lng,
       };
     }
-    // Default auf Berlin (z.B.)
+    // Default auf Berlin
     return { lat: 52.5208, lng: 13.4094 };
   }, [data]);
 
-  // Kartenoptionen
-  const mapContainerStyle = { width: '100%', height: '400px' };
+  const mapContainerStyle = { width: "100%", height: "400px" };
+
+  // Helper für Field Change
+  const update = <K extends keyof SearchParams>(key: K, value: SearchParams[K]) => {
+    setForm((f) => ({ ...f, [key]: value, page: 1 }));
+  };
 
   return (
     <div className="p-6">
       <h1 className="text-2xl mb-4">Restaurants suchen</h1>
       <form
         className="grid grid-cols-4 gap-4 mb-6"
-        onSubmit={e => {
+        onSubmit={(e) => {
           e.preventDefault();
           refetch();
         }}
@@ -94,57 +124,59 @@ export default function DiscoverPage() {
         <Input
           placeholder="Stadt oder PLZ*"
           value={form.location}
-          onChange={e => update('location', e.target.value)}
+          onChange={(e) => update("location", e.target.value)}
           required
         />
         <Input
           placeholder="Stichwort (z.B. Sushi)"
-          value={form.q || ''}
-          onChange={e => update('q', e.target.value)}
+          value={form.q || ""}
+          onChange={(e) => update("q", e.target.value)}
         />
-        <Select
-          value={form.cuisine || ''}
-          onChange={e => update('cuisine', e.target.value || undefined)}
+        <select
+          value={form.cuisine || ""}
+          onChange={(e) => update("cuisine", e.target.value || undefined)}
+          className="rounded-md border px-3 py-2"
         >
           <option value="">– Küche –</option>
           <option value="italian">Italienisch</option>
           <option value="japanese">Japanisch</option>
           <option value="vegan">Vegan</option>
-        </Select>
-        <Select
-          value={form.price_level ?? ''}
-          onChange={e =>
+        </select>
+        <select
+          value={form.price_level !== undefined ? String(form.price_level) : ""}
+          onChange={(e) =>
             update(
-              'price_level',
+              "price_level",
               e.target.value ? Number(e.target.value) : undefined
             )
           }
+          className="rounded-md border px-3 py-2"
         >
           <option value="">– Preis –</option>
-          {[0, 1, 2, 3, 4].map(i => (
+          {[0, 1, 2, 3, 4].map((i) => (
             <option key={i} value={i}>
-              {'€'.repeat(i + 1)}
+              {"€".repeat(i + 1)}
             </option>
           ))}
-        </Select>
-        <div className="flex items-center space-x-2 col-span-2">
+        </select>
+        <div className="flex items-center col-span-2 space-x-2">
           <Checkbox
-            checked={form.open_now || false}
-            onCheckedChange={v => update('open_now', v)}
-          >
-            Jetzt geöffnet
-          </Checkbox>
+            checked={!!form.open_now}
+            onCheckedChange={(v) => update("open_now", !!v)}
+            id="open_now"
+          />
+          <Label htmlFor="open_now">Jetzt geöffnet</Label>
         </div>
-        <Select
+        <select
           multiple
           value={form.exclude_allergens || []}
-          onChange={e =>
+          onChange={(e) =>
             update(
-              'exclude_allergens',
-              Array.from(e.target.selectedOptions).map(o => o.value)
+              "exclude_allergens",
+              Array.from(e.target.selectedOptions).map((o) => o.value)
             )
           }
-          className="col-span-2"
+          className="col-span-2 rounded-md border px-3 py-2"
         >
           <option value="" disabled>
             – Allergene ausschließen –
@@ -152,13 +184,14 @@ export default function DiscoverPage() {
           <option value="gluten">Gluten</option>
           <option value="lactose">Laktose</option>
           <option value="nuts">Nüsse</option>
-        </Select>
+        </select>
+
         <Button type="submit" className="col-span-4">
           Suchen
         </Button>
       </form>
 
-      {/* 1. Google Map */}
+      {/* Google Map */}
       <div className="w-full mb-8">
         <LoadScript googleMapsApiKey={import.meta.env.VITE_GOOGLE_MAPS_API_KEY}>
           <GoogleMap
@@ -166,7 +199,6 @@ export default function DiscoverPage() {
             center={mapCenter}
             zoom={13}
           >
-            {/* Marker für jedes Restaurant */}
             {data?.data?.map((r) =>
               r.location?.lat && r.location?.lng ? (
                 <Marker
@@ -184,17 +216,20 @@ export default function DiscoverPage() {
       {isError && <p className="text-red-600">Fehler bei der Suche!</p>}
 
       <div className="grid grid-cols-3 gap-4">
-        {data?.data.map(r => (
+        {data?.data?.map((r) => (
           <Card key={r.place_id}>
-            <CardHeader title={r.name} subtitle={r.address} />
+            <CardHeader>
+              <CardTitle>{r.name}</CardTitle>
+              <CardDescription>{r.address}</CardDescription>
+            </CardHeader>
             <CardContent>
               <p>
-                ⭐ {r.rating}{' '}
+                ⭐ {r.rating}{" "}
                 {r.price_level !== undefined &&
-                  '|' + '€'.repeat(r.price_level + 1)}
+                  "|" + "€".repeat(r.price_level + 1)}
               </p>
               <ul className="list-disc list-inside">
-                {r.menu_preview.map((m, i) => (
+                {r.menu_preview?.map((m, i) => (
                   <li key={i}>{m}</li>
                 ))}
               </ul>
@@ -207,11 +242,11 @@ export default function DiscoverPage() {
       {data?.meta && (
         <div className="mt-6 flex justify-center">
           <Pagination
-            currentPage={data.meta.page}
-            totalItems={data.meta.total}
+            page={data.meta.page}
+            total={data.meta.total}
             pageSize={data.meta.pageSize}
-            onPageChange={newPage => {
-              setForm(f => ({ ...f, page: newPage }))
+            onPageChange={(newPage: number) => {
+              setForm((f) => ({ ...f, page: newPage }));
             }}
           />
         </div>
