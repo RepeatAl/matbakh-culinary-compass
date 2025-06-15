@@ -11,10 +11,21 @@ type Ingredient = {
 };
 type Props = { control: Control<any> };
 
+function parseLocaleNumber(input: string, locale: string): number | "" {
+  // Erlaubt Komma und Punkt als Dezimaltrennzeichen
+  if (input === "") return "";
+  let normalized = input.trim().replace(",", ".");
+  const n = Number(normalized);
+  return isNaN(n) ? "" : n;
+}
+
 export default function IngredientFields({ control }: Props) {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   const { fields, append, remove } = useFieldArray({ control, name: "ingredients" });
   const ingredients = useWatch({ control, name: "ingredients" }) ?? [];
+
+  // Format-Placeholder je nach Sprache
+  const decPlaceholder = i18n.language === "de" || i18n.language === "fr" ? "0,5" : "0.5";
 
   return (
     <div className="flex flex-col space-y-2">
@@ -27,10 +38,15 @@ export default function IngredientFields({ control }: Props) {
           />
           <input
             className="input w-20"
-            type="number"
-            min={0}
-            placeholder={t("myRecipes.ingrQty")}
-            {...control.register(`ingredients.${idx}.quantity`)}
+            type="text"
+            inputMode="decimal"
+            placeholder={t("myRecipes.ingrQty") + ` (${decPlaceholder})`}
+            value={ingredients[idx]?.quantity ?? ""}
+            onChange={e => {
+              const v = parseLocaleNumber(e.target.value, i18n.language);
+              control.setValue(`ingredients.${idx}.quantity`, v, { shouldValidate: true });
+            }}
+            aria-label={t("myRecipes.ingrQty")}
           />
           <input
             className="input w-16"
@@ -40,9 +56,10 @@ export default function IngredientFields({ control }: Props) {
           <Button type="button" variant="ghost" onClick={() => remove(idx)}><X /></Button>
         </div>
       ))}
-      <Button type="button" variant="outline" onClick={() => append({ name: "", quantity: 0, unit: "" })}>
+      <Button type="button" variant="outline" onClick={() => append({ name: "", quantity: "", unit: "" })}>
         + {t("myRecipes.addIngr")}
       </Button>
     </div>
   );
 }
+

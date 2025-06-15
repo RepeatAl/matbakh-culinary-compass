@@ -23,7 +23,11 @@ const recipeSchema = z.object({
   ingredients: z.array(
     z.object({
       name: z.string().min(1),
-      quantity: z.coerce.number().min(0),
+      // Nimmt Dezimalzahlen ab 0.01, damit auch 0,5 und 0.05 erlaubt sind
+      quantity: z.preprocess(
+        (v) => typeof v === "string" ? Number((v as string).replace(",", ".")) : v,
+        z.number().min(0.01, { message: "Menge muss mindestens 0,01 sein." })
+      ),
       unit: z.string().optional(),
     })
   ),
