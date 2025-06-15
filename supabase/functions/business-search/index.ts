@@ -18,7 +18,9 @@ serve(async (req) => {
   }
   try {
     const url = new URL(req.url);
-    const GOOGLE_KEY = Deno.env.get("GOOGLE_MAPS_API_KEY") || Deno.env.get("GOOGLE_BUSINESS_API_KEY");
+
+    // *** Nur der offene Backend-Key! ***
+    const GOOGLE_KEY = Deno.env.get("GOOGLE_MAPS_API_KEY");
     if (!GOOGLE_KEY) {
       return new Response(JSON.stringify({ error: "Google API Key missing" }), {
         status: 500,
@@ -65,6 +67,7 @@ serve(async (req) => {
       vicinity: r.vicinity,
       rating: r.rating,
       photo_url: r.photos && r.photos[0] ?
+        // Bilder holen IMMER mit Backend-Key!
         `https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=${r.photos[0].photo_reference}&key=${GOOGLE_KEY}` : undefined,
       price_level: r.price_level,
       menu_preview: [],

@@ -2,6 +2,9 @@
 import React, { useEffect, useState } from "react";
 import { GoogleMap, Marker, LoadScript } from "@react-google-maps/api";
 
+/**
+ * Nutzt ausschließlich den referrer-beschränkten Frontend-Key!
+ */
 interface RestaurantMapProps {
   center: { lat: number; lng: number };
   markers: { id: string; position: { lat: number; lng: number }; title: string }[];
