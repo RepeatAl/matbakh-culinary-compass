@@ -1,4 +1,3 @@
-
 import React, { useState } from "react";
 import { useMutation } from "@tanstack/react-query";
 import { useTranslation } from "react-i18next";
@@ -36,7 +35,7 @@ export function NutritionCalculatorForm() {
 
   const {
     mutate,
-    isLoading,
+    status,
     data,
     error,
     reset,
@@ -50,11 +49,14 @@ export function NutritionCalculatorForm() {
         gender: values.gender,
         activityLevel: values.activityLevel,
       };
-      const res = await fetch(NUTRITION_CALC_ENDPOINT, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(payload),
-      });
+      const res = await fetch(
+        "https://eztmmerfuxcgmggewvaq.functions.supabase.co/nutrition-calc",
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(payload),
+        }
+      );
       if (!res.ok) {
         const err = await res.json();
         throw new Error(err.error || "Fehler bei der Berechnung.");
@@ -88,7 +90,7 @@ export function NutritionCalculatorForm() {
   }
 
   function handleChange(
-    e: React.ChangeEvent<HTMLInputElement> | React.ChangeEvent<HTMLSelectElement>
+    e: React.ChangeEvent<HTMLInputElement>
   ) {
     setForm((f) => ({
       ...f,
@@ -110,6 +112,8 @@ export function NutritionCalculatorForm() {
       mutate(form);
     }
   }
+
+  const isLoading = status === "pending";
 
   return (
     <form
