@@ -1,3 +1,4 @@
+
 import React, { useEffect } from "react";
 import { useForm, FormProvider } from "react-hook-form";
 import { useTranslation } from "react-i18next";
@@ -9,6 +10,7 @@ import { ProfileMetaFields } from "@/components/profile/ProfileMetaFields";
 import { ProfileConsentCheckboxes } from "@/components/profile/ProfileConsentCheckboxes";
 import { AvatarUploader } from "@/components/profile/AvatarUploader";
 import { ChangePasswordButton } from "@/components/profile/ChangePasswordButton";
+import { ProfileHealthFields } from "@/components/profile/ProfileHealthFields";
 
 type ProfileFormValues = {
   first_name: string;
