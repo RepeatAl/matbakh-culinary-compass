@@ -13,9 +13,9 @@ import { Button } from "@/components/ui/button";
 import {
   Pagination,
   PaginationContent,
-  PaginationPrev,
+  PaginationPrevious,
   PaginationNext,
-  PaginationPage,
+  PaginationLink,
 } from "@/components/ui/pagination";
 import { Select } from "@/components/ui/select";
 import { Checkbox } from "@/components/ui/checkbox";
@@ -243,40 +243,51 @@ export default function DiscoverPage() {
       {data?.meta && (
         <div className="mt-6 flex justify-center">
           <Pagination>
-            <PaginationPrev
-              onClick={() => setForm(f => ({ ...f, page: Math.max(1, data.meta.page - 1) }))}
-              disabled={data.meta.page === 1}
+            <PaginationPrevious
+              onClick={() =>
+                setForm((f) => ({
+                  ...f,
+                  page: Math.max(1, data.meta.page - 1),
+                }))
+              }
+              className={data.meta.page === 1 ? "pointer-events-none opacity-50" : ""}
             >
               Zurück
-            </PaginationPrev>
+            </PaginationPrevious>
             <PaginationContent>
               {Array.from(
                 { length: Math.ceil(data.meta.total / data.meta.pageSize) },
                 (_, i) => (
-                  <PaginationPage
-                    key={i}
-                    onClick={() => setForm(f => ({ ...f, page: i + 1 }))}
-                    isCurrent={data.meta.page === i + 1}
-                  >
-                    {i + 1}
-                  </PaginationPage>
+                  <li key={i}>
+                    <PaginationLink
+                      isActive={data.meta.page === i + 1}
+                      onClick={(e) => {
+                        e.preventDefault();
+                        setForm((f) => ({ ...f, page: i + 1 }));
+                      }}
+                      href="#"
+                    >
+                      {i + 1}
+                    </PaginationLink>
+                  </li>
                 )
               )}
             </PaginationContent>
             <PaginationNext
               onClick={() =>
-                setForm(f =>
-                  ({
-                    ...f,
-                    page: Math.min(
-                      Math.ceil(data.meta.total / data.meta.pageSize),
-                      data.meta.page + 1
-                    ),
-                  })
-                )
+                setForm((f) => ({
+                  ...f,
+                  page: Math.min(
+                    Math.ceil(data.meta.total / data.meta.pageSize),
+                    data.meta.page + 1
+                  ),
+                }))
               }
-              disabled={
-                data.meta.page === Math.ceil(data.meta.total / data.meta.pageSize)
+              className={
+                data.meta.page ===
+                Math.ceil(data.meta.total / data.meta.pageSize)
+                  ? "pointer-events-none opacity-50"
+                  : ""
               }
             >
               Weiter
