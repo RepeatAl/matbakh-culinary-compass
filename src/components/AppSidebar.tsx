@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
@@ -37,6 +36,21 @@ export const AppSidebar: React.FC = () => {
         <SidebarGroup>
           <SidebarGroupLabel>{t('navigation.sidebarHeader')}</SidebarGroupLabel>
           <SidebarMenu>
+            {/* Mein Profil Link */}
+            {session && (
+              <SidebarMenuItem>
+                <SidebarMenuButton
+                  asChild
+                  isActive={location.pathname === '/profile'}
+                  tooltip={t('navigation.profile', 'Mein Profil')}
+                >
+                  <Link to="/profile">
+                    <span className="w-4 h-4 border rounded-full mr-2 bg-gray-200 inline-block" />
+                    <span>{t('navigation.profile', 'Mein Profil')}</span>
+                  </Link>
+                </SidebarMenuButton>
+              </SidebarMenuItem>
+            )}
             <SidebarMenuItem>
               <SidebarMenuButton
                 asChild

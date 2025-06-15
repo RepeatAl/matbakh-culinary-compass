@@ -15,6 +15,7 @@ import AuthPage from "./pages/AuthPage";
 import NotFound from "./pages/NotFound";
 import LanguageSwitcher from "@/components/LanguageSwitcher";
 import { AuthProvider } from "@/contexts/AuthContext";
+import ProfilePage from "./pages/ProfilePage";
 
 // NEU:
 import PrivateRoute from "@/routes/PrivateRoute";
@@ -67,6 +68,14 @@ const App = () => (
                     <Route path="/restaurants" element={<RestaurantsPage />} />
                     <Route path="/contact" element={<ContactPage />} />
                     <Route path="/auth" element={<AuthPage />} />
+                    <Route
+                      path="/profile"
+                      element={
+                        <PrivateRoute>
+                          <ProfilePage />
+                        </PrivateRoute>
+                      }
+                    />
                     <Route path="*" element={<NotFound />} />
                   </Routes>
                 </div>
