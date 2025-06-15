@@ -1,11 +1,14 @@
-import React from "react";
+
+import React, { useMemo } from "react";
 import { useFormContext, Controller } from "react-hook-form";
 import { useFoods } from "@/hooks/useFoods";
 import { useTranslation } from "react-i18next";
+import Select from "react-select";
 import { Textarea } from "@/components/ui/textarea";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Label } from "@/components/ui/label";
 
+// Allergie-Optionen – Keys für potentielle i18n-Anbindung
 const ALLERGEN_OPTIONS = [
   "Gluten",
   "Laktose",
@@ -32,12 +35,16 @@ export function ProfileHealthFields() {
   const is_diabetic: boolean = watch("is_diabetic");
   const diabetes_type: string = watch("diabetes_type");
 
-  // Helper für Food-Optionen aus aktuellem Sprach-Kontext
-  const foodOptions = foods.map(f => ({
-    value: f.slug,
-    label: f.name[i18n.language] || f.name.de || f.slug,
-    category: f.category,
-  }));
+  // Helper für Food-Optionen (ID, Label) – i18n Support
+  const foodOptions = useMemo(
+    () =>
+      foods.map(f => ({
+        value: f.slug,
+        label: f.name?.[i18n.language] || f.name?.de || f.slug,
+        category: f.category,
+      })),
+    [foods, i18n.language]
+  );
 
   // Ernährungsziele (Trend-Liste, quickstart)
   const goalsOptions = [
@@ -66,6 +73,72 @@ export function ProfileHealthFields() {
     if (!checked) setValue("diabetes_type", "");
   }
 
+  // MultiSelect Wrapper für react-select (Food/Goals)
+  function MultiSelectField({ name, label, options }: {
+    name: string;
+    label: string;
+    options: { value: string; label: string }[];
+  }) {
+    return (
+      <Controller
+        name={name}
+        control={control}
+        render={({ field }) => (
+          <div className="mb-2">
+            <Label className="block text-sm font-medium mb-1">{label}</Label>
+            <Select
+              isMulti
+              name={name}
+              options={options}
+              value={options.filter(opt => Array.isArray(field.value) && field.value.includes(opt.value))}
+              onChange={(selected) => field.onChange((selected as any[]).map(item => item.value))}
+              className="react-select-container"
+              classNamePrefix="react-select"
+              placeholder={t("profile.select_placeholder", "Auswählen...")}
+              closeMenuOnSelect={false}
+              hideSelectedOptions={false}
+              isDisabled={isLoading}
+              styles={{
+                option: (base, state) => ({
+                  ...base,
+                  paddingLeft: 28,
+                  position: "relative",
+                  // Zeigt Checkboxen im Dropdown (benötigt react-select CSS/Prefix)
+                  ':before': {
+                    content: '""',
+                    position: 'absolute',
+                    left: 5,
+                    top: 8,
+                    width: 14,
+                    height: 14,
+                    border: '1.5px solid #aaa',
+                    borderRadius: 3,
+                    background: state.isSelected ? '#2563eb' : '#fff',
+                  }
+                }),
+                multiValue: (base) => ({
+                  ...base,
+                  background: "#f1f5f9",
+                  color: "#111"
+                }),
+                // evtl. noch mehr Styles für Lesbarkeit!
+              }}
+              theme={theme => ({
+                ...theme,
+                colors: {
+                  ...theme.colors,
+                  primary: "#2563eb",
+                  primary25: "#eff6ff",
+                  neutral10: "#cbd5e1"
+                }
+              })}
+            />
+          </div>
+        )}
+      />
+    );
+  }
+
   return (
     <div className="space-y-6 mt-4">
       {/* Allergene Auswahl */}
@@ -81,7 +154,7 @@ export function ProfileHealthFields() {
                 onCheckedChange={() => handleAllergyChange(a)}
                 aria-checked={allergies?.includes(a)}
               />
-              <span>{a}</span>
+              <span>{t(`allergies.${a.toLowerCase()}`, a)}</span>
             </label>
           ))}
         </div>
@@ -148,76 +221,25 @@ export function ProfileHealthFields() {
       </div>
 
       {/* Lieblingslebensmittel */}
-      <div>
-        <Label htmlFor="favorite_foods" className="block text-sm font-medium mb-1">
-          {t("profile.health.favorite_foods_label", "Lieblingslebensmittel")}
-        </Label>
-        <Controller
-          name="favorite_foods"
-          control={control}
-          render={({ field }) => (
-            <select
-              {...field}
-              multiple
-              className="w-full border rounded p-2 bg-background"
-            >
-              {foodOptions.map(opt => (
-                <option key={opt.value} value={opt.value}>
-                  {opt.label}
-                </option>
-              ))}
-            </select>
-          )}
-        />
-      </div>
+      <MultiSelectField
+        name="favorite_foods"
+        label={t("profile.health.favorite_foods_label", "Lieblingslebensmittel")}
+        options={foodOptions}
+      />
 
       {/* Nicht gemochte Lebensmittel */}
-      <div>
-        <Label htmlFor="disliked_foods" className="block text-sm font-medium mb-1">
-          {t("profile.health.disliked_foods_label", "Nicht gerne essen")}
-        </Label>
-        <Controller
-          name="disliked_foods"
-          control={control}
-          render={({ field }) => (
-            <select
-              {...field}
-              multiple
-              className="w-full border rounded p-2 bg-background"
-            >
-              {foodOptions.map(opt => (
-                <option key={opt.value} value={opt.value}>
-                  {opt.label}
-                </option>
-              ))}
-            </select>
-          )}
-        />
-      </div>
+      <MultiSelectField
+        name="disliked_foods"
+        label={t("profile.health.disliked_foods_label", "Nicht gerne essen")}
+        options={foodOptions}
+      />
 
       {/* Ernährungsziele */}
-      <div>
-        <Label htmlFor="goals" className="block text-sm font-medium mb-1">
-          {t("profile.health.goals_label", "Ernährungsziele")}
-        </Label>
-        <Controller
-          name="goals"
-          control={control}
-          render={({ field }) => (
-            <select
-              {...field}
-              multiple
-              className="w-full border rounded p-2 bg-background"
-            >
-              {goalsOptions.map(opt => (
-                <option key={opt.value} value={opt.value}>
-                  {opt.label}
-                </option>
-              ))}
-            </select>
-          )}
-        />
-      </div>
+      <MultiSelectField
+        name="goals"
+        label={t("profile.health.goals_label", "Ernährungsziele")}
+        options={goalsOptions}
+      />
 
       {/* Disclaimer */}
       <div className="rounded bg-yellow-50 border-l-4 border-yellow-600 px-3 py-2 text-yellow-900 text-sm mt-2">
