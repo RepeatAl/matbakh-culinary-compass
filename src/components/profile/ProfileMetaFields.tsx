@@ -1,7 +1,7 @@
-
 import React from "react";
 import { useFormContext } from "react-hook-form";
 import { Input } from "@/components/ui/input";
+import { useTranslation } from "react-i18next";
 
 const LANG_OPTIONS = [
   { value: "de", label: "Deutsch" },
@@ -12,38 +12,40 @@ const LANG_OPTIONS = [
 
 export function ProfileMetaFields() {
   const { register, formState: { errors } } = useFormContext();
+  const { t } = useTranslation();
   return (
     <div className="space-y-4">
       <div>
-        <label htmlFor="first_name" className="block text-sm font-medium mb-1">Vorname</label>
+        <label htmlFor="first_name" className="block text-sm font-medium mb-1">{t("profile.first_name", "Vorname")}</label>
         <Input
           id="first_name"
-          placeholder="Vorname"
+          placeholder={t("profile.first_name", "Vorname")}
           {...register("first_name", { required: true })}
         />
-        {errors.first_name && <span className="text-destructive text-xs">Vorname ist erforderlich</span>}
+        {errors.first_name && <span className="text-destructive text-xs">{t("profile.first_name_error", "Vorname ist erforderlich")}</span>}
       </div>
       <div>
-        <label htmlFor="last_name" className="block text-sm font-medium mb-1">Nachname</label>
+        <label htmlFor="last_name" className="block text-sm font-medium mb-1">{t("profile.last_name", "Nachname")}</label>
         <Input
           id="last_name"
-          placeholder="Nachname"
+          placeholder={t("profile.last_name", "Nachname")}
           {...register("last_name", { required: true })}
         />
-        {errors.last_name && <span className="text-destructive text-xs">Nachname ist erforderlich</span>}
+        {errors.last_name && <span className="text-destructive text-xs">{t("profile.last_name_error", "Nachname ist erforderlich")}</span>}
       </div>
       <div>
-        <label htmlFor="language" className="block text-sm font-medium mb-1">Sprache</label>
+        <label htmlFor="language" className="block text-sm font-medium mb-1">{t("profile.language_label")}</label>
         <select
           id="language"
           className="block w-full border rounded-md px-3 py-2 bg-background"
           {...register("language", { required: true })}
         >
-          {LANG_OPTIONS.map((opt) => (
-            <option key={opt.value} value={opt.value}>{opt.label}</option>
-          ))}
+          <option value="de">Deutsch</option>
+          <option value="en">English</option>
+          <option value="es">Español</option>
+          <option value="fr">Français</option>
         </select>
-        {errors.language && <span className="text-destructive text-xs">Bitte Sprache wählen</span>}
+        {errors.language && <span className="text-destructive text-xs">{t("profile.language_error", "Bitte Sprache wählen")}</span>}
       </div>
     </div>
   );

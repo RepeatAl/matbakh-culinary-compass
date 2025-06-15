@@ -1,4 +1,3 @@
-
 import React, { useEffect } from "react";
 import { useForm, FormProvider } from "react-hook-form";
 import { useTranslation } from "react-i18next";
@@ -118,7 +117,7 @@ export default function ProfilePage() {
   // Keine eigenen Formularkomponenten/Markup mehr, nur noch Container
   return (
     <div className="max-w-lg mx-auto px-4 py-8">
-      <h1 className="text-2xl font-bold mb-6">{t("profile.title", "Mein Profil")}</h1>
+      <h1 className="text-2xl font-bold mb-6">{t("profile.title")}</h1>
       <FormProvider {...methods}>
         <form className="space-y-6" onSubmit={methods.handleSubmit(onSubmit)}>
           <AvatarUploader
@@ -130,7 +129,7 @@ export default function ProfilePage() {
           <ProfileConsentCheckboxes />
           <ChangePasswordButton />
           <Button type="submit" className="w-full mt-4">
-            {t("profile.save", "Speichern")}
+            {t("profile.save")}
           </Button>
         </form>
       </FormProvider>
