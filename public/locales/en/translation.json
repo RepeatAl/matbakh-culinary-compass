@@ -162,6 +162,11 @@
     }
   },
   "profile": {
+    "title": "My Profile",
+    "save": "Save",
+    "saved": "Profile saved",
+    "save_failed": "Could not save profile.",
+    "loading": "Loading personal data ...",
     "allergies": {
       "label": "Allergies",
       "gluten": "Gluten",
@@ -176,12 +181,8 @@
       "nightshades": "Nightshades",
       "histamine": "Histamine"
     },
-    "favorite_foods": {
-      "label": "Favorite Foods"
-    },
-    "disliked_foods": {
-      "label": "Disliked Foods"
-    },
+    "favorite_foods": { "label": "Favorite Foods" },
+    "disliked_foods": { "label": "Disliked Foods" },
     "goals": {
       "label": "Nutrition Goals",
       "weight_loss": "Weight Loss",

@@ -168,14 +168,6 @@
     "saved": "Profil enregistré",
     "save_failed": "Impossible d'enregistrer le profil.",
     "loading": "Chargement des données personnelles ...",
-    "health": {
-      "allergies_label": "Allergies",
-      "favorite_foods_label": "Aliments préférés",
-      "disliked_foods_label": "Aliments non appréciés",
-      "goals_label": "Objectifs nutritionnels"
-    }
-  },
-  "profile": {
     "allergies": {
       "label": "Allergies",
       "gluten": "Gluten",
@@ -190,12 +182,8 @@
       "nightshades": "Solanacées",
       "histamine": "Histamine"
     },
-    "favorite_foods": {
-      "label": "Aliments préférés"
-    },
-    "disliked_foods": {
-      "label": "Aliments non appréciés"
-    },
+    "favorite_foods": { "label": "Aliments préférés" },
+    "disliked_foods": { "label": "Aliments non appréciés" },
     "goals": {
       "label": "Objectifs nutritionnels",
       "weight_loss": "Perte de poids",
