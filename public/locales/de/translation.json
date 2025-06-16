@@ -225,6 +225,12 @@
         "desc": "Finde die besten Proteinquellen für deinen Bedarf."
       }
     },
+    "season": {
+      "info": "Saison auswählen",
+      "wholeyear": "Ganzjährig",
+      "seasonal": "Saisonal",
+      "heading": "Saisonauswahl"
+    },
     "personalization": {
       "filters": "Deine Ernährungsfilter"
     },

@@ -37,19 +37,23 @@ const NutritionPage = () => {
   return (
     <div className="container mx-auto px-4 py-8 max-w-3xl">
       {/* Hero / Intro */}
-      <div className="mb-8 text-center">
+      <section className="mb-8 text-center">
         <h1 className="text-3xl font-bold mb-2">{t('nutrition.hero.title', 'Nutrition')}</h1>
         <p className="text-lg text-muted-foreground mb-1">
           {t("nutrition.hero.body", "Discover personalized nutrition insights and seasonal ingredients for your healthy lifestyle.")}
         </p>
         <p className="mt-2 text-xs text-destructive">{t("nutrition.disclaimer", "Important: This app is not a substitute for medical advice.")}</p>
-      </div>
+      </section>
 
       {/* Profil Multiselect-Filter */}
-      {user && <NutritionProfileMultiselect />}
+      {user && (
+        <section className="mb-8">
+          <NutritionProfileMultiselect />
+        </section>
+      )}
 
       {/* Empfehlungen */}
-      <div className="mb-8">
+      <section className="mb-8">
         <h2 className="text-lg font-semibold mb-2">{t("nutrition.recommendations.title", "Personalized Recommendations")}</h2>
         {profile ? (
           <div>
@@ -74,28 +78,32 @@ const NutritionPage = () => {
         ) : (
           <span className="text-muted-foreground text-sm">{t("nutrition.recommendations.noData", "Sign in to see personalized recommendations.")}</span>
         )}
-      </div>
+      </section>
 
       {/* Infokacheln */}
-      <NutritionInfoTiles />
+      <section className="mb-8">
+        <NutritionInfoTiles />
+      </section>
 
-      {/* Saison-Toggle */}
-      <div className="flex justify-center">
-        <SaisonToggle />
-      </div>
+      {/* Saison-Auswahl Section - verbesserte Zentrierung und Abstände */}
+      <section className="my-10">
+        <div className="flex justify-center">
+          <SaisonToggle />
+        </div>
+      </section>
 
       {/* Demo-Calculator */}
-      <div className="my-10">
-        <div className="mb-2 text-center">
-          <span className="inline-block rounded px-3 py-1 bg-secondary text-xs font-medium mb-2">
+      <section className="my-10">
+        <div className="mb-4 text-center">
+          <span className="inline-block rounded px-3 py-1 bg-secondary text-xs font-medium">
             {t("nutrition.calc.demo.hint", "Demo: Quick calculator for calories and macros")}
           </span>
         </div>
         <NutritionCalculatorForm />
-      </div>
+      </section>
 
       {/* CTA-Bereich */}
-      <div className="flex flex-col items-center mt-8 mb-2">
+      <section className="flex flex-col items-center mt-8 mb-2">
         <Button
           className="w-full md:w-auto"
           size="lg"
@@ -106,7 +114,7 @@ const NutritionPage = () => {
         <span className="text-xs text-muted-foreground mt-2">
           {t("nutrition.cta.info", "Get personalized recommendations based on your goals.")}
         </span>
-      </div>
+      </section>
     </div>
   );
 };

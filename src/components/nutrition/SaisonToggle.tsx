@@ -1,21 +1,46 @@
 
 import { useState } from "react";
-import { useTranslation } from "react-i18next";
-import { Switch } from "@/components/ui/switch";
+import { useSafeT } from "@/hooks/useSafeT";
 
 /**
- * Saisonaler Toggle: Placeholder (State & Handler können später genutzt werden)
+ * Saisonaler Toggle: Verbesserte UI mit Card-Design und responsivem Layout
  */
 export default function SaisonToggle() {
-  const { t } = useTranslation();
+  const { t } = useSafeT();
   const [isSeasonal, setIsSeasonal] = useState(true);
 
   return (
-    <div className="flex items-center gap-4 py-2">
-      <span className={"text-sm font-medium"}>{t("nutrition.season.wholeyear")}</span>
-      <Switch checked={isSeasonal} onCheckedChange={setIsSeasonal} />
-      <span className={"text-sm font-medium"}>{t("nutrition.season.seasonal")}</span>
-      <span className="ml-2 text-xs text-muted-foreground">{t("nutrition.season.info")}</span>
+    <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-sm border p-6 flex flex-col sm:flex-row justify-center items-center space-y-4 sm:space-y-0 sm:space-x-6">
+      {/* Beschriftung */}
+      <span className="text-base font-medium text-gray-700 dark:text-gray-200">
+        {t('nutrition.season.info', 'Saison auswählen')}
+      </span>
+      
+      {/* Toggle-Optionen */}
+      <div className="flex space-x-4">
+        <button
+          type="button"
+          onClick={() => setIsSeasonal(false)}
+          className={`px-4 py-2 rounded-lg transition-all ${
+            !isSeasonal 
+              ? 'bg-primary text-primary-foreground shadow-sm' 
+              : 'bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 text-gray-700 dark:text-gray-200'
+          }`}
+        >
+          {t('nutrition.season.wholeyear', 'Ganzjährig')}
+        </button>
+        <button
+          type="button"
+          onClick={() => setIsSeasonal(true)}
+          className={`px-4 py-2 rounded-lg transition-all ${
+            isSeasonal 
+              ? 'bg-primary text-primary-foreground shadow-sm' 
+              : 'bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 text-gray-700 dark:text-gray-200'
+          }`}
+        >
+          {t('nutrition.season.seasonal', 'Saisonal')}
+        </button>
+      </div>
     </div>
   );
 }

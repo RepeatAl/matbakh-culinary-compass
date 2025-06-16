@@ -220,6 +220,12 @@
         "title": "Quality Protein",
         "desc": "Find the best protein sources for your needs."
       }
+    },
+    "season": {
+      "info": "Select season",
+      "wholeyear": "All year",
+      "seasonal": "Seasonal",
+      "heading": "Season Selection"
     }
   },
   "myRecipes": {
