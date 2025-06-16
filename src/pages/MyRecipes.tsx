@@ -67,7 +67,7 @@ export default function MyRecipes() {
             <li key={r.id} className="border rounded shadow-sm px-4 py-2 flex items-center justify-between">
               <div>
                 <div className="font-semibold">{r.title}</div>
-                <span className="text-muted-foreground text-xs">{t("myRecipes.servings", { count: r.servings, defaultValue: `${r.servings} servings` })}</span>
+                <span className="text-muted-foreground text-xs">{r.servings} {t("myRecipes.servings", "servings")}</span>
                 {r.publish && (
                   <span className="ml-2 inline-block px-2 py-0.5 rounded text-xs bg-green-100 text-green-700">{t("myRecipes.published", "Published")}</span>
                 )}

@@ -2,6 +2,7 @@
 import React from "react";
 import { useSafeT } from "@/hooks/useSafeT";
 import Select from "react-select";
+import type { TranslationKey } from "@/types/i18n";
 
 const GOAL_KEYS = [
   "weight_loss",
@@ -20,7 +21,7 @@ const GOAL_KEYS = [
   "sustainable_eating",
   "flexitarian",
   "other"
-];
+] as const;
 
 interface GoalsMultiSelectProps {
   selected: string[];
@@ -33,7 +34,7 @@ export const GoalsMultiSelect: React.FC<GoalsMultiSelectProps> = ({ selected, on
 
   const options = GOAL_KEYS.map(key => ({
     value: key,
-    label: t(`profile.goals.${key}`, key.replace('_', ' '))
+    label: t(`profile.goals.${key}` as TranslationKey, key.replace('_', ' '))
   }));
 
   const valueOptions = options.filter(opt => selected?.includes(opt.value));

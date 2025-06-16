@@ -18,7 +18,6 @@ i18n
       order: ['localStorage', 'cookie', 'sessionStorage', 'querystring', 'navigator', 'htmlTag'],
       caches: ['localStorage', 'cookie'],
       lookupLocalStorage: 'i18nextLng',
-      checkWhitelist: true, // Nur unterstützte Sprachen verwenden
     },
     
     interpolation: {

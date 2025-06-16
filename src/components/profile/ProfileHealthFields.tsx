@@ -7,6 +7,7 @@ import { FoodMultiSelect } from "./FoodMultiSelect";
 import { GoalsMultiSelect } from "./GoalsMultiSelect";
 import { useFoods } from "@/hooks/useFoods";
 import Select from "react-select";
+import type { TranslationKey } from "@/types/i18n";
 
 export const ProfileHealthFields: React.FC = () => {
   const { t, i18n } = useSafeT();
@@ -22,11 +23,11 @@ export const ProfileHealthFields: React.FC = () => {
     "weight_loss", "weight_maintenance", "muscle_gain", "high_protein", "low_carb",
     "vegan", "vegetarian", "keto", "paleo", "diabetic_friendly", "heart_health",
     "gut_health", "anti_inflammatory", "sustainable_eating", "flexitarian", "other"
-  ];
+  ] as const;
   
   const goalOptions = GOAL_KEYS.map(key => ({
     value: key,
-    label: t(`profile.goals.${key}`, key.replace('_', ' ')),
+    label: t(`profile.goals.${key}` as TranslationKey, key.replace('_', ' ')),
   }));
 
   function handleMultiChange(name: string, value: any) {

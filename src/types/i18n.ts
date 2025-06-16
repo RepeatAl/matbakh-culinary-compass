@@ -48,6 +48,24 @@ export type TranslationKey =
   | 'profile.goals.label'
   | 'profile.health.disclaimer'
   
+  // Profile Goals (dynamische Keys)
+  | 'profile.goals.weight_loss'
+  | 'profile.goals.weight_maintenance'
+  | 'profile.goals.muscle_gain'
+  | 'profile.goals.high_protein'
+  | 'profile.goals.low_carb'
+  | 'profile.goals.vegan'
+  | 'profile.goals.vegetarian'
+  | 'profile.goals.keto'
+  | 'profile.goals.paleo'
+  | 'profile.goals.diabetic_friendly'
+  | 'profile.goals.heart_health'
+  | 'profile.goals.gut_health'
+  | 'profile.goals.anti_inflammatory'
+  | 'profile.goals.sustainable_eating'
+  | 'profile.goals.flexitarian'
+  | 'profile.goals.other'
+  
   // Nutrition
   | 'nutrition.hero.title'
   | 'nutrition.hero.body'
