@@ -106,8 +106,8 @@ const handler = async (req: Request): Promise<Response> => {
       );
     }
 
-    // Get target email from environment variable with fallback
-    const targetEmail = Deno.env.get("CONTACT_TARGET_EMAIL") || "write@rabibskii.com";
+    // Use correct target email
+    const targetEmail = "write@rabibskii.com";
 
     // Send email to target address
     const emailResponse = await resend.emails.send({

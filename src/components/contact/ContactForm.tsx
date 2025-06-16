@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
@@ -83,7 +82,7 @@ const ContactForm = () => {
     } catch (error: any) {
       console.error('Failed to send contact message:', error);
       
-      // Show fallback option in error toast
+      // Show fallback option in error toast with correct email
       const fallbackEmail = 'write@rabibskii.com';
       const mailtoLink = `mailto:${fallbackEmail}?subject=${encodeURIComponent(data.subject)}&body=${encodeURIComponent(data.message)}`;
       
