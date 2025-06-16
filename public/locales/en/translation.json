@@ -1,6 +1,8 @@
-
 {
   "appTitle": "Matbakh",
+  "common": {
+    "select": "Select..."
+  },
   "navigation": {
     "sidebarHeader": "Navigation",
     "profile": "My Profile",

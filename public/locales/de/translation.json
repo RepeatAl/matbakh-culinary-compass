@@ -1,6 +1,8 @@
-
 {
   "appTitle": "Matbakh",
+  "common": {
+    "select": "Auswählen..."
+  },
   "navigation": {
     "sidebarHeader": "Navigation",
     "profile": "Mein Profil",
@@ -225,6 +227,5 @@
         "placeholder": "Ernährungsziele auswählen..."
       }
     }
-  },
-  "Auswählen...": "Auswählen..."
+  }
 }

@@ -10,7 +10,7 @@ i18n
   .use(initReactI18next) // Übergibt i18n Instanz an react-i18next
   .init({
     supportedLngs: ['de', 'en', 'es', 'fr'],
-    fallbackLng: ['en', 'de'], // Fallback-Reihenfolge: erst Englisch, dann Deutsch
+    fallbackLng: 'en', // Einfacher String statt Array
     debug: import.meta.env.DEV, // Debug-Ausgaben im Entwicklungsmodus
     detection: {
       order: ['localStorage', 'cookie', 'querystring', 'sessionStorage', 'navigator', 'htmlTag'],

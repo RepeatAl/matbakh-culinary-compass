@@ -90,7 +90,7 @@ export const NutritionProfileMultiselect: React.FC = () => {
               }
               className="react-select-container"
               classNamePrefix="react-select"
-              placeholder={String(t(placeholder))}
+              placeholder={String(t("common.select", "Select..."))}
               menuPortalTarget={typeof window !== "undefined" ? document.body : undefined}
               styles={{
                 menuPortal: base => ({ ...base, zIndex: 9999 })
@@ -105,4 +105,3 @@ export const NutritionProfileMultiselect: React.FC = () => {
     </div>
   );
 }
-

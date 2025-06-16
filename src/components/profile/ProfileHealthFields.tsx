@@ -62,7 +62,7 @@ export const ProfileHealthFields: React.FC = () => {
           value={foodOptions.filter(o => (watch("favorite_foods") || []).includes(o.value))}
           onChange={val => handleMultiChange("favorite_foods", val)}
           classNamePrefix="react-select"
-          placeholder={safeT("Auswählen...", "Auswählen...")}
+          placeholder={safeT("common.select", "Select...")}
         />
       </div>
 
@@ -76,7 +76,7 @@ export const ProfileHealthFields: React.FC = () => {
           value={foodOptions.filter(o => (watch("disliked_foods") || []).includes(o.value))}
           onChange={val => handleMultiChange("disliked_foods", val)}
           classNamePrefix="react-select"
-          placeholder={safeT("Auswählen...", "Auswählen...")}
+          placeholder={safeT("common.select", "Select...")}
         />
       </div>
 
@@ -90,7 +90,7 @@ export const ProfileHealthFields: React.FC = () => {
           value={goalOptions.filter(o => (watch("goals") || []).includes(o.value))}
           onChange={val => handleMultiChange("goals", val)}
           classNamePrefix="react-select"
-          placeholder={safeT("Auswählen...", "Auswählen...")}
+          placeholder={safeT("common.select", "Select...")}
         />
       </div>
 

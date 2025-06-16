@@ -33,7 +33,7 @@ export const FoodMultiSelect: React.FC<FoodMultiSelectProps> = ({ selected, onCh
         onChange={(selected) => onChange(Array.isArray(selected) ? selected.map(item => item.value) : [])}
         className="react-select-container"
         classNamePrefix="react-select"
-        placeholder={t("Auswählen...", "Auswählen...")}
+        placeholder={t("common.select", "Select...")}
         isLoading={isLoading}
       />
     </div>
