@@ -1,8 +1,8 @@
 
 /**
- * Automatisch generierte TypeScript-Typen für i18n Keys
+ * Multi-Namespace TypeScript-Typen für i18n Keys
  * 
- * Basiert auf der Struktur von en/translation.json und stellt sicher,
+ * Unterstützt mehrere JSON-Namespaces und stellt sicher,
  * dass nur existierende Translation-Keys verwendet werden können.
  */
 
@@ -17,8 +17,35 @@ type RecursiveKeyOfHandleValue<TValue, Text extends string> = TValue extends any
   ? Text | `${Text}.${RecursiveKeyOf<TValue>}`
   : Text;
 
-// Base Translation Interface - spiegelt die Struktur von en/translation.json wider
-interface TranslationStructure {
+// Legal Namespace Interface
+interface LegalNamespace {
+  imprint: {
+    title: string;
+    body: string;
+  };
+  privacy: {
+    title: string;
+    body: string;
+  };
+  terms: {
+    title: string;
+    body: string;
+  };
+}
+
+// Footer Namespace Interface
+interface FooterNamespace {
+  headquarters: string;
+  legalTitle: string;
+  imprint: string;
+  privacy: string;
+  terms: string;
+  gdprTitle: string;
+  gdprCopy: string;
+}
+
+// Main Translation Namespace Interface
+interface TranslationNamespace {
   // App-weite Keys
   appTitle: string;
   common: {
@@ -254,33 +281,6 @@ interface TranslationStructure {
     searchLink: string;
   };
   
-  // Footer
-  footer: {
-    headquarters: string;
-    legalTitle: string;
-    imprint: string;
-    privacy: string;
-    terms: string;
-    gdprTitle: string;
-    gdprCopy: string;
-  };
-  
-  // Legal pages
-  legal: {
-    imprint: {
-      title: string;
-      body: string;
-    };
-    privacy: {
-      title: string;
-      body: string;
-    };
-    terms: {
-      title: string;
-      body: string;
-    };
-  };
-  
   // Language switcher
   languageSwitcher: {
     label: string;
@@ -301,8 +301,22 @@ interface TranslationStructure {
   };
 }
 
-// Generierter Union-Type für alle möglichen Translation-Keys
-export type TranslationKey = RecursiveKeyOf<TranslationStructure>;
+// Multi-Namespace Struktur
+interface MultiNamespaceStructure {
+  translation: TranslationNamespace;
+  legal: LegalNamespace;
+  footer: FooterNamespace;
+}
+
+// Namespace-aware Translation Keys
+type NamespaceKeys<T extends keyof MultiNamespaceStructure> = `${T}:${RecursiveKeyOf<MultiNamespaceStructure[T]>}`;
+
+// Union aller möglichen Translation-Keys (mit und ohne Namespace-Präfix)
+export type TranslationKey = 
+  | RecursiveKeyOf<TranslationNamespace>  // Backward-compatible keys (defaultNS)
+  | NamespaceKeys<'legal'>               // legal:imprint.title, legal:privacy.body, etc.
+  | NamespaceKeys<'footer'>              // footer:headquarters, footer:gdprCopy, etc.
+  | NamespaceKeys<'translation'>;        // Explizit: translation:navigation.home, etc.
 
 // Safe-T Function Interface mit TypeScript-Sicherheit
 export interface SafeTFunction {

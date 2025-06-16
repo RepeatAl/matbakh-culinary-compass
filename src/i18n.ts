@@ -40,7 +40,7 @@ i18n
     },
     
     backend: {
-      loadPath: '/locales/{{lng}}/translation.json', // Pfad zu den Übersetzungsdateien
+      loadPath: '/locales/{{lng}}/{{ns}}.json', // Multi-Namespace Support
       
       // Force-Reload für Development + Cache-Buster
       requestOptions: {
@@ -65,9 +65,19 @@ i18n
     load: 'languageOnly', // Lädt nur 'en' statt 'en-US', 'en-GB' etc.
     preload: import.meta.env.DEV ? ['en'] : ['en', 'de'], // Dev: nur Basis-Sprache vorladen
     
-    // Verhindert leere Namespaces
-    defaultNS: 'translation',
-    ns: ['translation'],
+    // Multi-Namespace Konfiguration (Future-Proof)
+    defaultNS: 'translation', // Backward-Compatibility für bestehende t() calls
+    ns: [
+      'translation',    // Hauptnamespace (bestehende Komponenten)
+      'legal',         // Legal-Pages (Imprint, Privacy, Terms)  
+      'footer',        // Footer-spezifische Texte
+      'navigation',    // Navigation & Sidebar
+      'profile',       // Profil-bezogene Inhalte
+      'nutrition',     // Ernährungs-spezifische Texte
+      'recipes',       // Rezept-bezogene Inhalte
+      'restaurants',   // Restaurant-bezogene Inhalte
+      'common'         // Gemeinsame UI-Elemente (Buttons, etc.)
+    ],
     
     // Development: Aggressives Error-Handling
     saveMissing: false,
