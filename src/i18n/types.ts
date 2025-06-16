@@ -1,8 +1,8 @@
 
 /**
- * Multi-Namespace TypeScript-Typen für i18n Keys (Hot-Fix Version)
+ * Multi-Namespace TypeScript-Typen für i18n Keys (Extended Version)
  * 
- * Reduziert auf die drei existierenden Namespaces: translation, legal, footer
+ * Erweitert um contact namespace für das Kontaktformular
  */
 
 // Rekursiver Typ-Generator für verschachtelte JSON-Strukturen
@@ -41,6 +41,29 @@ interface FooterNamespace {
   terms: string;
   gdprTitle: string;
   gdprCopy: string;
+}
+
+// Contact Namespace Interface
+interface ContactNamespace {
+  form: {
+    title: string;
+    name: string;
+    nameError: string;
+    email: string;
+    emailError: string;
+    subject: string;
+    subjectError: string;
+    message: string;
+    messageError: string;
+    messageMinError: string;
+    submit: string;
+    sending: string;
+    toastSuccess: string;
+    toastError: string;
+    toastRateLimit: string;
+    fallbackText: string;
+    fallbackLink: string;
+  };
 }
 
 // Main Translation Namespace Interface
@@ -300,11 +323,12 @@ interface TranslationNamespace {
   };
 }
 
-// Reduced Multi-Namespace Structure (only existing namespaces)
+// Extended Multi-Namespace Structure (contact namespace added)
 interface MultiNamespaceStructure {
   translation: TranslationNamespace;
   legal: LegalNamespace;
   footer: FooterNamespace;
+  contact: ContactNamespace;
 }
 
 // Namespace-aware Translation Keys
@@ -315,6 +339,7 @@ export type TranslationKey =
   | RecursiveKeyOf<TranslationNamespace>  // Backward-compatible keys (defaultNS)
   | NamespaceKeys<'legal'>               // legal:imprint.title, legal:privacy.body, etc.
   | NamespaceKeys<'footer'>              // footer:headquarters, footer:gdprCopy, etc.
+  | NamespaceKeys<'contact'>             // contact:form.title, contact:form.submit, etc.
   | NamespaceKeys<'translation'>;        // Explizit: translation:navigation.home, etc.
 
 // Safe-T Function Interface mit TypeScript-Sicherheit

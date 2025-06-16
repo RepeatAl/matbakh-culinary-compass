@@ -1,0 +1,22 @@
+
+{
+  "form": {
+    "title": "Contacto",
+    "name": "Nombre",
+    "nameError": "El nombre es obligatorio",
+    "email": "Dirección de correo electrónico",
+    "emailError": "Se requiere una dirección de correo electrónico válida",
+    "subject": "Asunto",
+    "subjectError": "El asunto es obligatorio",
+    "message": "Mensaje",
+    "messageError": "El mensaje es obligatorio",
+    "messageMinError": "El mensaje debe tener al menos 10 caracteres",
+    "submit": "Enviar mensaje",
+    "sending": "Enviando...",
+    "toastSuccess": "¡Mensaje enviado con éxito! Nos pondremos en contacto pronto.",
+    "toastError": "Error al enviar el mensaje. Por favor, inténtelo de nuevo.",
+    "toastRateLimit": "Demasiadas solicitudes. Por favor, espere un momento.",
+    "fallbackText": "¿Falló el intento?",
+    "fallbackLink": "Haga clic aquí para contacto directo por correo"
+  }
+}

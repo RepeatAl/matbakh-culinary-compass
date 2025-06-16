@@ -1,0 +1,22 @@
+
+{
+  "form": {
+    "title": "Contact",
+    "name": "Name",
+    "nameError": "Name is required",
+    "email": "Email Address",
+    "emailError": "Valid email address is required",
+    "subject": "Subject",
+    "subjectError": "Subject is required",
+    "message": "Message",
+    "messageError": "Message is required",
+    "messageMinError": "Message must be at least 10 characters long",
+    "submit": "Send Message",
+    "sending": "Sending...",
+    "toastSuccess": "Message sent successfully! We'll get back to you soon.",
+    "toastError": "Error sending message. Please try again.",
+    "toastRateLimit": "Too many requests. Please wait a moment.",
+    "fallbackText": "Attempt failed?",
+    "fallbackLink": "Click here for direct email contact"
+  }
+}

@@ -1,0 +1,22 @@
+
+{
+  "form": {
+    "title": "Kontakt",
+    "name": "Name",
+    "nameError": "Name ist erforderlich",
+    "email": "E-Mail-Adresse",
+    "emailError": "Gültige E-Mail-Adresse ist erforderlich",
+    "subject": "Betreff",
+    "subjectError": "Betreff ist erforderlich",
+    "message": "Nachricht",
+    "messageError": "Nachricht ist erforderlich",
+    "messageMinError": "Nachricht muss mindestens 10 Zeichen lang sein",
+    "submit": "Nachricht senden",
+    "sending": "Wird gesendet...",
+    "toastSuccess": "Nachricht erfolgreich gesendet! Wir melden uns bald bei Ihnen.",
+    "toastError": "Fehler beim Senden der Nachricht. Bitte versuchen Sie es erneut.",
+    "toastRateLimit": "Zu viele Anfragen. Bitte warten Sie einen Moment.",
+    "fallbackText": "Versuch fehlgeschlagen?",
+    "fallbackLink": "Klicken Sie hier für direkten E-Mail-Kontakt"
+  }
+}

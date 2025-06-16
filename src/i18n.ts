@@ -65,12 +65,13 @@ i18n
     load: 'languageOnly', // Lädt nur 'en' statt 'en-US', 'en-GB' etc.
     preload: import.meta.env.DEV ? ['en'] : ['en', 'de'], // Dev: nur Basis-Sprache vorladen
     
-    // Reduced Namespace Configuration (only existing ones)
+    // Extended Namespace Configuration (contact namespace added)
     defaultNS: 'translation', // Backward-Compatibility für bestehende t() calls
     ns: [
       'translation',    // Hauptnamespace (bestehende Komponenten)
       'legal',         // Legal-Pages (Imprint, Privacy, Terms)  
-      'footer'         // Footer-spezifische Texte
+      'footer',        // Footer-spezifische Texte
+      'contact'        // Contact-Form spezifische Texte
     ],
     
     // Development: Aggressives Error-Handling
