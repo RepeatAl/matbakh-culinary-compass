@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { useTranslation } from 'react-i18next';
+import { useSafeT } from '@/hooks/useSafeT';
 import {
   Select,
   SelectContent,
@@ -18,7 +18,7 @@ const languages = [
 ];
 
 const LanguageSwitcher: React.FC = () => {
-  const { i18n, t } = useTranslation();
+  const { t, i18n } = useSafeT();
 
   const changeLanguage = (lng: string) => {
     i18n.changeLanguage(lng);
@@ -26,15 +26,15 @@ const LanguageSwitcher: React.FC = () => {
 
   return (
     <div className="flex flex-col items-start space-y-2 my-4">
-      <Label htmlFor="language-select">{t('languageSwitcher.label')}</Label>
+      <Label htmlFor="language-select">{t('languageSwitcher.label', 'Choose language')}</Label>
       <Select value={i18n.language} onValueChange={changeLanguage}>
         <SelectTrigger id="language-select" className="w-[180px]">
-          <SelectValue placeholder={t('languageSwitcher.selectedLabel')} />
+          <SelectValue placeholder={t('languageSwitcher.selectedLabel', 'Language')} />
         </SelectTrigger>
         <SelectContent>
           {languages.map((lang) => (
             <SelectItem key={lang.code} value={lang.code}>
-              {t(lang.nameKey)}
+              {t(lang.nameKey, lang.code.toUpperCase())}
             </SelectItem>
           ))}
         </SelectContent>

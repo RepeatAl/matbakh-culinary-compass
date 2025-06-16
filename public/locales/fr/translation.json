@@ -1,6 +1,9 @@
 
 {
   "appTitle": "Matbakh",
+  "common": {
+    "select": "Sélectionner..."
+  },
   "navigation": {
     "sidebarHeader": "Navigation",
     "profile": "Mon Profil",
@@ -183,7 +186,7 @@
         "gender": "Veuillez sélectionner le genre.",
         "activity": "Veuillez sélectionner le niveau d'activité.",
         "units": "Veuillez sélectionner l'unité.",
-        "fallback": "Erreur lors du calcul.",
+        "fallback": "Erreur lors du calcul."
       },
       "demo": {
         "hint": "Démo : calculateur rapide de calories et macronutriments – anonyme et sans inscription"
@@ -198,6 +201,33 @@
         "macroFat": "Lipides",
         "units": "Données en {{units}} par jour"
       }
+    },
+    "tiles": {
+      "fresh": {
+        "title": "Ingrédients frais",
+        "desc": "Découvrez quels aliments sont de saison dans votre région."
+      },
+      "energy": {
+        "title": "Équilibre énergétique",
+        "desc": "Calculez vos besoins caloriques quotidiens personnalisés."
+      },
+      "variety": {
+        "title": "Variété nutritionnelle",
+        "desc": "Combinez différents groupes d'aliments pour une alimentation équilibrée."
+      },
+      "protein": {
+        "title": "Protéines de qualité",
+        "desc": "Trouvez les meilleures sources de protéines pour vos objectifs."
+      }
     }
+  },
+  "myRecipes": {
+    "title": "Mes Recettes",
+    "btnNew": "Nouvelle Recette",
+    "btnEdit": "Modifier",
+    "loading": "Chargement...",
+    "errorLoading": "Erreur lors du chargement des recettes",
+    "servings": "portions",
+    "published": "Publié"
   }
 }

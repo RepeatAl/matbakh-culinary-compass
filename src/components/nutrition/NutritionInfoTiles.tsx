@@ -1,30 +1,30 @@
 
-import { useTranslation } from "react-i18next";
+import { useSafeT } from "@/hooks/useSafeT";
 import { Sprout, Flame, Apple, Egg } from "lucide-react";
 
 export default function NutritionInfoTiles() {
-  const { t } = useTranslation();
+  const { t } = useSafeT();
 
   const tiles = [
     {
       icon: Sprout,
-      title: t("nutrition.tiles.fresh.title"),
-      desc: t("nutrition.tiles.fresh.desc"),
+      title: t("nutrition.tiles.fresh.title", "Fresh Ingredients"),
+      desc: t("nutrition.tiles.fresh.desc", "Discover which foods are in season in your region."),
     },
     {
       icon: Flame,
-      title: t("nutrition.tiles.energy.title"),
-      desc: t("nutrition.tiles.energy.desc"),
+      title: t("nutrition.tiles.energy.title", "Energy Balance"),
+      desc: t("nutrition.tiles.energy.desc", "Calculate your personalized daily caloric needs."),
     },
     {
       icon: Apple,
-      title: t("nutrition.tiles.variety.title"),
-      desc: t("nutrition.tiles.variety.desc"),
+      title: t("nutrition.tiles.variety.title", "Nutritional Variety"),
+      desc: t("nutrition.tiles.variety.desc", "Combine different food groups for a balanced diet."),
     },
     {
       icon: Egg,
-      title: t("nutrition.tiles.protein.title"),
-      desc: t("nutrition.tiles.protein.desc"),
+      title: t("nutrition.tiles.protein.title", "Quality Proteins"),
+      desc: t("nutrition.tiles.protein.desc", "Find the best protein sources for your goals."),
     },
   ];
 
