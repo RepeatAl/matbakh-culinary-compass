@@ -229,5 +229,14 @@
     "errorLoading": "Error loading recipes",
     "servings": "servings",
     "published": "Published"
+  },
+  "footer": {
+    "headquarters": "Headquarters: Munich, Germany",
+    "legalTitle": "Legal",
+    "imprint": "Imprint",
+    "privacy": "Privacy Policy",
+    "terms": "Terms & Conditions",
+    "gdprTitle": "GDPR Notice",
+    "gdprCopy": "Matbakh uses Google Maps for the restaurant search. The map is only loaded after you give consent in the cookie banner."
   }
 }

@@ -14,12 +14,16 @@ import RestaurantsPage from "./pages/RestaurantsPage";
 import ContactPage from "./pages/ContactPage";
 import AuthPage from "./pages/AuthPage";
 import NotFound from "./pages/NotFound";
+import Imprint from "./pages/Imprint";
+import Privacy from "./pages/Privacy";
+import Terms from "./pages/Terms";
 import LanguageSwitcher from "@/components/LanguageSwitcher";
 import { AuthProvider } from "@/contexts/AuthContext";
 import ProfilePage from "./pages/ProfilePage";
 import BusinessProfileSearchPage from "./pages/BusinessProfileSearchPage";
 import DiscoverPage from "./pages/DiscoverPage";
 import CookieConsent from "react-cookie-consent";
+import AppFooter from "@/components/footer/AppFooter";
 
 // NEU:
 import PrivateRoute from "@/routes/PrivateRoute";
@@ -82,11 +86,15 @@ const App = () => (
                     />
                     <Route path="/business-search" element={<BusinessProfileSearchPage />} />
                     <Route path="/restaurant-suche" element={<DiscoverPage />} />
+                    <Route path="/imprint" element={<Imprint />} />
+                    <Route path="/privacy" element={<Privacy />} />
+                    <Route path="/terms" element={<Terms />} />
                     <Route path="*" element={<NotFound />} />
                   </Routes>
                 </div>
               </SidebarInset>
             </div>
+            <AppFooter />
           </SidebarProvider>
         </AuthProvider>
       </BrowserRouter>

@@ -1,4 +1,3 @@
-
 {
   "appTitle": "Matbakh",
   "common": {
@@ -246,5 +245,14 @@
         "placeholder": "Ernährungsziele auswählen..."
       }
     }
+  },
+  "footer": {
+    "headquarters": "Hauptsitz: München, Deutschland",
+    "legalTitle": "Rechtliches",
+    "imprint": "Impressum",
+    "privacy": "Datenschutzerklärung",
+    "terms": "AGB",
+    "gdprTitle": "DSGVO-Hinweis",
+    "gdprCopy": "Matbakh verwendet Google Maps für die Restaurantsuche. Die Karte wird erst geladen, nachdem du im Cookie-Banner zugestimmt hast."
   }
 }
