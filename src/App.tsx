@@ -42,8 +42,8 @@ const App = () => (
           <SidebarProvider defaultOpen={true}>
             <div className="flex min-h-screen w-full bg-background">
               <AppSidebar />
-              <SidebarInset>
-                <div className="p-4">
+              <SidebarInset className="flex flex-col flex-1">
+                <div className="p-4 flex-1">
                   <div className="flex justify-between items-center mb-4">
                     <SidebarTrigger className="md:hidden" />
                     <div className="ml-auto">
@@ -92,9 +92,9 @@ const App = () => (
                     <Route path="*" element={<NotFound />} />
                   </Routes>
                 </div>
+                <AppFooter />
               </SidebarInset>
             </div>
-            <AppFooter />
           </SidebarProvider>
         </AuthProvider>
       </BrowserRouter>

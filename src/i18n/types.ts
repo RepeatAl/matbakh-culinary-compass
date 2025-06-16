@@ -254,6 +254,17 @@ interface TranslationStructure {
     searchLink: string;
   };
   
+  // Footer
+  footer: {
+    headquarters: string;
+    legalTitle: string;
+    imprint: string;
+    privacy: string;
+    terms: string;
+    gdprTitle: string;
+    gdprCopy: string;
+  };
+  
   // Language switcher
   languageSwitcher: {
     label: string;
