@@ -1,6 +1,6 @@
 
 import { useSafeT } from "@/hooks/useSafeT";
-import { Sprout, Lightning, Layers, Barbell } from "lucide-react";
+import { Sprout, Zap, Layers, Dumbbell } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 
 export default function NutritionInfoTiles() {
@@ -13,7 +13,7 @@ export default function NutritionInfoTiles() {
       desc: t("nutrition.tiles.fresh.desc"),
     },
     {
-      icon: Lightning,
+      icon: Zap,
       title: t("nutrition.tiles.energy.title"),
       desc: t("nutrition.tiles.energy.desc"),
     },
@@ -23,7 +23,7 @@ export default function NutritionInfoTiles() {
       desc: t("nutrition.tiles.variety.desc"),
     },
     {
-      icon: Barbell,
+      icon: Dumbbell,
       title: t("nutrition.tiles.protein.title"),
       desc: t("nutrition.tiles.protein.desc"),
     },
