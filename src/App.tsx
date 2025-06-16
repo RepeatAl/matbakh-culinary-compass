@@ -29,6 +29,7 @@ import AppFooter from "@/components/footer/AppFooter";
 import PrivateRoute from "@/routes/PrivateRoute";
 import MyRecipes from "@/pages/MyRecipes";
 import MealPlan from "@/pages/MealPlan";
+import DevDashboard from "@/pages/DevDashboard";
 
 const queryClient = new QueryClient();
 
@@ -67,6 +68,14 @@ const App = () => (
                       element={
                         <PrivateRoute>
                           <MealPlan />
+                        </PrivateRoute>
+                      }
+                    />
+                    <Route
+                      path="/dev-dashboard"
+                      element={
+                        <PrivateRoute>
+                          <DevDashboard />
                         </PrivateRoute>
                       }
                     />

@@ -1,0 +1,98 @@
+
+{
+  "devDashboard": {
+    "title": "Entwicklungs-Dashboard",
+    "description": "Verfolge deinen Entwicklungsfortschritt und Erkenntnisse",
+    "addLog": "Log hinzufügen",
+    "loading": "Lade Entwicklungslogs...",
+    "tabs": {
+      "overview": "Übersicht",
+      "logs": "Alle Logs",
+      "export": "Export"
+    },
+    "form": {
+      "createTitle": "Entwicklungslog erstellen",
+      "editTitle": "Entwicklungslog bearbeiten",
+      "description": "Dokumentiere deinen Entwicklungsfortschritt und Erkenntnisse",
+      "date": "Datum",
+      "title": "Titel",
+      "titlePlaceholder": "Gib einen aussagekräftigen Titel ein",
+      "content": "Inhalt",
+      "contentPlaceholder": "Beschreibe deine Entwicklungsaktivitäten und Erkenntnisse...",
+      "successes": "Erfolge",
+      "successPlaceholder": "Erfolg hinzufügen...",
+      "challenges": "Herausforderungen",
+      "challengePlaceholder": "Herausforderung hinzufügen...",
+      "solutions": "Lösungen",
+      "solutionPlaceholder": "Lösung hinzufügen...",
+      "nextSteps": "Nächste Schritte",
+      "nextStepsPlaceholder": "Was muss als nächstes getan werden?",
+      "stakeholderSummary": "Stakeholder-Zusammenfassung",
+      "stakeholderPlaceholder": "Zusammenfassung für Stakeholder und Business Development...",
+      "cancel": "Abbrechen",
+      "save": "Log speichern",
+      "saving": "Speichere..."
+    },
+    "table": {
+      "noLogs": "Noch keine Entwicklungslogs",
+      "noLogsDescription": "Beginne mit dem Erstellen deines ersten Entwicklungslog-Eintrags.",
+      "date": "Datum",
+      "title": "Titel",
+      "content": "Inhalt",
+      "metrics": "Metriken",
+      "actions": "Aktionen",
+      "nextSteps": "Nächste",
+      "successes": "Erfolge",
+      "challenges": "Herausforderungen",
+      "solutions": "Lösungen",
+      "confirmDelete": "Bist du sicher, dass du dieses Log löschen möchtest?"
+    },
+    "stats": {
+      "totalLogs": "Gesamt Logs",
+      "last30Days": "in den letzten 30 Tagen",
+      "successes": "Erfolge",
+      "avgPerLog": "Ø pro Log",
+      "challenges": "Herausforderungen",
+      "solutionRate": "Lösungsrate",
+      "totalSolutions": "Lösungen dokumentiert",
+      "recentActivity": "Neueste Aktivitäten",
+      "recentActivityDescription": "Letzte Entwicklungslog-Einträge",
+      "noRecentActivity": "Keine neuesten Aktivitäten",
+      "insights": "Erkenntnisse",
+      "insightsDescription": "Wichtige Entwicklungserkenntnisse",
+      "productivityTrend": "Produktivitätstrend",
+      "positive": "Positiv",
+      "needsAttention": "Benötigt Aufmerksamkeit",
+      "problemSolving": "Problemlösung",
+      "logsWithSolutions": "Logs mit Lösungen",
+      "consistency": "Konsistenz",
+      "excellent": "Ausgezeichnet",
+      "good": "Gut",
+      "needsImprovement": "Verbesserungsbedarf"
+    },
+    "export": {
+      "export": "Exportieren",
+      "csvDescription": "Tabellenformat für Datenanalyse",
+      "downloadCSV": "CSV herunterladen",
+      "jsonDescription": "Strukturiertes Datenformat für Entwickler",
+      "downloadJSON": "JSON herunterladen",
+      "reportDescription": "Formatierter Bericht für Stakeholder",
+      "downloadReport": "Bericht herunterladen"
+    },
+    "allLogs": {
+      "title": "Entwicklungslogs",
+      "description": "Alle deine Entwicklungslogs anzeigen und verwalten"
+    },
+    "success": {
+      "saveTitle": "Log gespeichert",
+      "saveDescription": "Entwicklungslog wurde erfolgreich gespeichert.",
+      "deleteTitle": "Log gelöscht",
+      "deleteDescription": "Entwicklungslog wurde erfolgreich gelöscht."
+    },
+    "error": {
+      "fetchTitle": "Fehler beim Laden der Logs",
+      "saveTitle": "Fehler beim Speichern des Logs",
+      "deleteTitle": "Fehler beim Löschen des Logs"
+    }
+  }
+}

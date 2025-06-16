@@ -1,0 +1,98 @@
+
+{
+  "devDashboard": {
+    "title": "Development Dashboard",
+    "description": "Track your development progress and insights",
+    "addLog": "Add Log",
+    "loading": "Loading development logs...",
+    "tabs": {
+      "overview": "Overview",
+      "logs": "All Logs",
+      "export": "Export"
+    },
+    "form": {
+      "createTitle": "Create Development Log",
+      "editTitle": "Edit Development Log",
+      "description": "Document your development progress and insights",
+      "date": "Date",
+      "title": "Title",
+      "titlePlaceholder": "Enter a descriptive title",
+      "content": "Content",
+      "contentPlaceholder": "Describe your development activities and insights...",
+      "successes": "Successes",
+      "successPlaceholder": "Add success...",
+      "challenges": "Challenges",
+      "challengePlaceholder": "Add challenge...",
+      "solutions": "Solutions",
+      "solutionPlaceholder": "Add solution...",
+      "nextSteps": "Next Steps",
+      "nextStepsPlaceholder": "What needs to be done next?",
+      "stakeholderSummary": "Stakeholder Summary",
+      "stakeholderPlaceholder": "Summary for stakeholders and business development...",
+      "cancel": "Cancel",
+      "save": "Save Log",
+      "saving": "Saving..."
+    },
+    "table": {
+      "noLogs": "No development logs yet",
+      "noLogsDescription": "Start by creating your first development log entry.",
+      "date": "Date",
+      "title": "Title",
+      "content": "Content",
+      "metrics": "Metrics",
+      "actions": "Actions",
+      "nextSteps": "Next",
+      "successes": "Successes",
+      "challenges": "Challenges",
+      "solutions": "Solutions",
+      "confirmDelete": "Are you sure you want to delete this log?"
+    },
+    "stats": {
+      "totalLogs": "Total Logs",
+      "last30Days": "in last 30 days",
+      "successes": "Successes",
+      "avgPerLog": "avg per log",
+      "challenges": "Challenges",
+      "solutionRate": "Solution Rate",
+      "totalSolutions": "solutions documented",
+      "recentActivity": "Recent Activity",
+      "recentActivityDescription": "Latest development log entries",
+      "noRecentActivity": "No recent activity",
+      "insights": "Insights",
+      "insightsDescription": "Key development insights",
+      "productivityTrend": "Productivity Trend",
+      "positive": "Positive",
+      "needsAttention": "Needs Attention",
+      "problemSolving": "Problem Solving",
+      "logsWithSolutions": "logs with solutions",
+      "consistency": "Consistency",
+      "excellent": "Excellent",
+      "good": "Good",
+      "needsImprovement": "Needs Improvement"
+    },
+    "export": {
+      "export": "Export",
+      "csvDescription": "Spreadsheet format for data analysis",
+      "downloadCSV": "Download CSV",
+      "jsonDescription": "Structured data format for developers",
+      "downloadJSON": "Download JSON",
+      "reportDescription": "Formatted report for stakeholders",
+      "downloadReport": "Download Report"
+    },
+    "allLogs": {
+      "title": "Development Logs",
+      "description": "View and manage all your development logs"
+    },
+    "success": {
+      "saveTitle": "Log saved",
+      "saveDescription": "Development log has been saved successfully.",
+      "deleteTitle": "Log deleted",
+      "deleteDescription": "Development log has been deleted successfully."
+    },
+    "error": {
+      "fetchTitle": "Error loading logs",
+      "saveTitle": "Error saving log",
+      "deleteTitle": "Error deleting log"
+    }
+  }
+}

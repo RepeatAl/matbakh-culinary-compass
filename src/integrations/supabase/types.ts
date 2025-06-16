@@ -9,6 +9,51 @@ export type Json =
 export type Database = {
   public: {
     Tables: {
+      dev_logs: {
+        Row: {
+          challenges: string[] | null
+          content: string | null
+          created_at: string | null
+          date: string
+          id: string
+          next_steps: string | null
+          solutions: string[] | null
+          stakeholder_summary: string | null
+          successes: string[] | null
+          title: string
+          updated_at: string | null
+          user_id: string
+        }
+        Insert: {
+          challenges?: string[] | null
+          content?: string | null
+          created_at?: string | null
+          date: string
+          id?: string
+          next_steps?: string | null
+          solutions?: string[] | null
+          stakeholder_summary?: string | null
+          successes?: string[] | null
+          title: string
+          updated_at?: string | null
+          user_id: string
+        }
+        Update: {
+          challenges?: string[] | null
+          content?: string | null
+          created_at?: string | null
+          date?: string
+          id?: string
+          next_steps?: string | null
+          solutions?: string[] | null
+          stakeholder_summary?: string | null
+          successes?: string[] | null
+          title?: string
+          updated_at?: string | null
+          user_id?: string
+        }
+        Relationships: []
+      }
       foods: {
         Row: {
           category: string
