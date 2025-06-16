@@ -161,7 +161,7 @@
         "light": "Lightly active (1–3x/week)",
         "moderate": "Moderately active (3–5x/week)",
         "active": "Active (daily sports)",
-        "very_active": "Very active (hard training daily)",
+        "very_active": "Very active (hard training daily)"
       },
       "weight": {
         "label": "Weight (kg)",
@@ -186,7 +186,7 @@
         "gender": "Please select gender.",
         "activity": "Please select activity.",
         "units": "Please select units.",
-        "fallback": "Error while calculating.",
+        "fallback": "Error while calculating."
       },
       "demo": {
         "hint": "Demo: Quick calculator for calories and macros – anonymous & no sign up"
