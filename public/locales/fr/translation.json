@@ -208,16 +208,16 @@
         "desc": "Découvrez quels aliments sont de saison dans votre région."
       },
       "energy": {
-        "title": "Équilibre énergétique",
-        "desc": "Calculez vos besoins caloriques quotidiens personnalisés."
+        "title": "Énergie soutenue",
+        "desc": "Apprenez à équilibrer les macronutriments pour un carburant durable."
       },
       "variety": {
-        "title": "Variété nutritionnelle",
-        "desc": "Combinez différents groupes d'aliments pour une alimentation équilibrée."
+        "title": "Variété alimentaire",
+        "desc": "Explorez divers groupes d'aliments pour une nutrition complète."
       },
       "protein": {
         "title": "Protéines de qualité",
-        "desc": "Trouvez les meilleures sources de protéines pour vos objectifs."
+        "desc": "Trouvez les meilleures sources de protéines pour vos besoins."
       }
     }
   },

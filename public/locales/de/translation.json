@@ -1,3 +1,4 @@
+
 {
   "appTitle": "Matbakh",
   "common": {
@@ -203,6 +204,24 @@
         "macroProtein": "Protein",
         "macroFat": "Fett",
         "units": "Angaben in {{units}} pro Tag"
+      }
+    },
+    "tiles": {
+      "fresh": {
+        "title": "Frische Zutaten",
+        "desc": "Entdecke, welche Lebensmittel gerade Saison haben."
+      },
+      "energy": {
+        "title": "Anhaltende Energie",
+        "desc": "Lerne, wie du Makros für länger anhaltende Energie ausbalancierst."
+      },
+      "variety": {
+        "title": "Vielfalt in der Ernährung",
+        "desc": "Erforsche verschiedene Lebensmittelgruppen für vollständige Nährstoffe."
+      },
+      "protein": {
+        "title": "Hochwertiges Protein",
+        "desc": "Finde die besten Proteinquellen für deinen Bedarf."
       }
     },
     "personalization": {

@@ -1,6 +1,7 @@
 
 import { useSafeT } from "@/hooks/useSafeT";
-import { Sprout, Flame, Apple, Egg } from "lucide-react";
+import { Sprout, Lightning, Layers, Barbell } from "lucide-react";
+import { Card, CardContent } from "@/components/ui/card";
 
 export default function NutritionInfoTiles() {
   const { t } = useSafeT();
@@ -8,36 +9,38 @@ export default function NutritionInfoTiles() {
   const tiles = [
     {
       icon: Sprout,
-      title: t("nutrition.tiles.fresh.title", "Fresh Ingredients"),
-      desc: t("nutrition.tiles.fresh.desc", "Discover which foods are in season in your region."),
+      title: t("nutrition.tiles.fresh.title"),
+      desc: t("nutrition.tiles.fresh.desc"),
     },
     {
-      icon: Flame,
-      title: t("nutrition.tiles.energy.title", "Energy Balance"),
-      desc: t("nutrition.tiles.energy.desc", "Calculate your personalized daily caloric needs."),
+      icon: Lightning,
+      title: t("nutrition.tiles.energy.title"),
+      desc: t("nutrition.tiles.energy.desc"),
     },
     {
-      icon: Apple,
-      title: t("nutrition.tiles.variety.title", "Nutritional Variety"),
-      desc: t("nutrition.tiles.variety.desc", "Combine different food groups for a balanced diet."),
+      icon: Layers,
+      title: t("nutrition.tiles.variety.title"),
+      desc: t("nutrition.tiles.variety.desc"),
     },
     {
-      icon: Egg,
-      title: t("nutrition.tiles.protein.title", "Quality Proteins"),
-      desc: t("nutrition.tiles.protein.desc", "Find the best protein sources for your goals."),
+      icon: Barbell,
+      title: t("nutrition.tiles.protein.title"),
+      desc: t("nutrition.tiles.protein.desc"),
     },
   ];
 
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 gap-4 my-6">
       {tiles.map(({ icon: Icon, title, desc }, i) => (
-        <div key={i} className="flex items-start gap-4 bg-muted rounded-lg p-4 shadow-sm">
-          <Icon className="w-8 h-8 text-primary mt-1" />
-          <div>
-            <div className="font-semibold mb-1">{title}</div>
-            <div className="text-sm text-muted-foreground">{desc}</div>
-          </div>
-        </div>
+        <Card key={i} className="bg-muted shadow-sm">
+          <CardContent className="flex items-start gap-4 p-4">
+            <Icon className="w-8 h-8 text-primary mt-1 flex-shrink-0" />
+            <div>
+              <h3 className="font-semibold mb-1">{title}</h3>
+              <p className="text-sm text-muted-foreground">{desc}</p>
+            </div>
+          </CardContent>
+        </Card>
       ))}
     </div>
   );

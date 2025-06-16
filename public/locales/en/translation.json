@@ -1,3 +1,4 @@
+
 {
   "appTitle": "Matbakh",
   "common": {
@@ -200,6 +201,33 @@
         "macroFat": "Fat",
         "units": "Values in {{units}} per day"
       }
+    },
+    "tiles": {
+      "fresh": {
+        "title": "Fresh Ingredients",
+        "desc": "Discover which foods are in season in your region."
+      },
+      "energy": {
+        "title": "Sustained Energy",
+        "desc": "Learn how to balance macros for lasting fuel."
+      },
+      "variety": {
+        "title": "Dietary Variety",
+        "desc": "Explore diverse food groups for complete nutrition."
+      },
+      "protein": {
+        "title": "Quality Protein",
+        "desc": "Find the best protein sources for your needs."
+      }
     }
+  },
+  "myRecipes": {
+    "title": "My Recipes",
+    "btnNew": "New Recipe",
+    "btnEdit": "Edit",
+    "loading": "Loading...",
+    "errorLoading": "Error loading recipes",
+    "servings": "servings",
+    "published": "Published"
   }
 }
