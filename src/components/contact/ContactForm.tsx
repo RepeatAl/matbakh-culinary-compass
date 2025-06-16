@@ -73,7 +73,7 @@ const ContactForm = () => {
       reset();
 
       // Analytics event (only if GTM is loaded and consent given)
-      if (typeof window !== 'undefined' && window.dataLayer && window.gtag) {
+      if (typeof window !== 'undefined' && window.dataLayer) {
         window.dataLayer.push({
           event: 'contact_submit',
           contact_method: 'form'
