@@ -1,5 +1,5 @@
 
-import { useTranslation } from 'react-i18next';
+import { useSafeT } from '@/hooks/useSafeT';
 import { Button } from "@/components/ui/button";
 import NutritionInfoTiles from "@/components/nutrition/NutritionInfoTiles";
 import SaisonToggle from "@/components/nutrition/SaisonToggle";
@@ -12,22 +12,11 @@ import { useProfileExt } from "@/hooks/useUserNutritionProfile";
 import { NutritionProfileMultiselect } from "@/components/nutrition/NutritionProfileMultiselect";
 
 const NutritionPage = () => {
-  const { t, i18n } = useTranslation();
+  const { t, i18n } = useSafeT();
   const navigate = useNavigate();
   const { user } = useAuth();
   const { data: foods = [] } = useFoods();
   const { data: profile } = useProfileExt();
-
-  const safeT = (key: string, fallback?: string) => {
-    const translation = t(key);
-    
-    if (import.meta.env.DEV && translation === key && fallback) {
-      console.warn(`🔍 i18n: Missing translation for "${key}" in language "${i18n.language}"`);
-      return `${fallback} [${key}]`;
-    }
-    
-    return translation !== key ? translation : fallback || key;
-  };
 
   // Filter: Allergene & disliked
   let filteredFoods = foods;
@@ -49,11 +38,11 @@ const NutritionPage = () => {
     <div className="container mx-auto px-4 py-8 max-w-3xl">
       {/* Hero / Intro */}
       <div className="mb-8 text-center">
-        <h1 className="text-3xl font-bold mb-2">{safeT('nutrition.hero.title', 'Ernährung')}</h1>
+        <h1 className="text-3xl font-bold mb-2">{t('nutrition.hero.title', 'Nutrition')}</h1>
         <p className="text-lg text-muted-foreground mb-1">
-          {safeT("nutrition.hero.body", "Entdecke personalisierte Ernährungseinblicke und saisonale Zutaten für deinen gesunden Lebensstil.")}
+          {t("nutrition.hero.body", "Discover personalized nutrition insights and seasonal ingredients for your healthy lifestyle.")}
         </p>
-        <p className="mt-2 text-xs text-destructive">{safeT("nutrition.disclaimer", "Wichtig: Diese App ersetzt keine medizinische Beratung.")}</p>
+        <p className="mt-2 text-xs text-destructive">{t("nutrition.disclaimer", "Important: This app is not a substitute for medical advice.")}</p>
       </div>
 
       {/* Profil Multiselect-Filter */}
@@ -61,7 +50,7 @@ const NutritionPage = () => {
 
       {/* Empfehlungen */}
       <div className="mb-8">
-        <h2 className="text-lg font-semibold mb-2">{safeT("nutrition.recommendations.title", "Personalisierte Empfehlungen")}</h2>
+        <h2 className="text-lg font-semibold mb-2">{t("nutrition.recommendations.title", "Personalized Recommendations")}</h2>
         {profile ? (
           <div>
             {favoriteFoodObjs.length > 0 || filteredFoods.length > 0 ? (
@@ -79,14 +68,12 @@ const NutritionPage = () => {
                   ))}
               </ul>
             ) : (
-              <span className="text-muted-foreground text-sm">{safeT("nutrition.recommendations.noData", "Keine Daten verfügbar")}</span>
+              <span className="text-muted-foreground text-sm">{t("nutrition.recommendations.noData", "No data available")}</span>
             )}
           </div>
         ) : (
-          <span className="text-muted-foreground text-sm">{safeT("nutrition.recommendations.noData", "Melde dich an, um personalisierte Empfehlungen zu sehen.")}</span>
+          <span className="text-muted-foreground text-sm">{t("nutrition.recommendations.noData", "Sign in to see personalized recommendations.")}</span>
         )}
-        {/* Optional: Alle Empfehlungen anzeigen */}
-        {/* <Button className="mt-3">{safeT("nutrition.recommendations.seeAll", "Alle Empfehlungen anzeigen")}</Button> */}
       </div>
 
       {/* Infokacheln */}
@@ -101,7 +88,7 @@ const NutritionPage = () => {
       <div className="my-10">
         <div className="mb-2 text-center">
           <span className="inline-block rounded px-3 py-1 bg-secondary text-xs font-medium mb-2">
-            {safeT("nutrition.calc.demo.hint", "Demo: Schnellrechner für Kalorien und Makros")}
+            {t("nutrition.calc.demo.hint", "Demo: Quick calculator for calories and macros")}
           </span>
         </div>
         <NutritionCalculatorForm />
@@ -114,10 +101,10 @@ const NutritionPage = () => {
           size="lg"
           onClick={() => navigate("/profile")}
         >
-          {safeT("nutrition.cta.createProfile", "Erstelle dein Ernährungsprofil")}
+          {t("nutrition.cta.createProfile", "Create your nutrition profile")}
         </Button>
         <span className="text-xs text-muted-foreground mt-2">
-          {safeT("nutrition.cta.info", "Erhalte personalisierte Empfehlungen basierend auf deinen Zielen.")}
+          {t("nutrition.cta.info", "Get personalized recommendations based on your goals.")}
         </span>
       </div>
     </div>

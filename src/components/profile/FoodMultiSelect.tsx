@@ -1,6 +1,6 @@
 
 import React from "react";
-import { useTranslation } from "react-i18next";
+import { useSafeT } from "@/hooks/useSafeT";
 import Select from "react-select";
 import { useFoods } from "@/hooks/useFoods";
 
@@ -11,7 +11,7 @@ interface FoodMultiSelectProps {
 }
 
 export const FoodMultiSelect: React.FC<FoodMultiSelectProps> = ({ selected, onChange, label }) => {
-  const { t, i18n } = useTranslation();
+  const { t, i18n } = useSafeT();
   const { data: foods = [], isLoading } = useFoods();
 
   // food.name is { de, en, es, fr }

@@ -1,6 +1,6 @@
 
 import React from "react";
-import { useTranslation } from "react-i18next";
+import { useSafeT } from "@/hooks/useSafeT";
 import Select from "react-select";
 
 const GOAL_KEYS = [
@@ -29,11 +29,11 @@ interface GoalsMultiSelectProps {
 }
 
 export const GoalsMultiSelect: React.FC<GoalsMultiSelectProps> = ({ selected, onChange, label }) => {
-  const { t } = useTranslation();
+  const { t } = useSafeT();
 
   const options = GOAL_KEYS.map(key => ({
     value: key,
-    label: t(`profile.goals.${key}`)
+    label: t(`profile.goals.${key}`, key.replace('_', ' '))
   }));
 
   const valueOptions = options.filter(opt => selected?.includes(opt.value));

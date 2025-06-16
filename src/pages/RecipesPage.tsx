@@ -1,12 +1,12 @@
 
-import { useTranslation } from 'react-i18next';
+import { useSafeT } from '@/hooks/useSafeT';
 
 const RecipesPage = () => {
-  const { t } = useTranslation();
+  const { t } = useSafeT();
   return (
     <div className="container mx-auto px-4 py-8">
-      <h1 className="text-3xl font-bold">{t('navigation.recipes')}</h1>
-      <p className="mt-4">{t('recipes.description')}</p>
+      <h1 className="text-3xl font-bold">{t('navigation.recipes', 'Recipes')}</h1>
+      <p className="mt-4">{t('recipes.description', 'Discover amazing recipes from our community.')}</p>
     </div>
   );
 };

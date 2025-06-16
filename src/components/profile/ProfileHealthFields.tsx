@@ -1,7 +1,7 @@
 
 import React from "react";
 import { useFormContext } from "react-hook-form";
-import { useTranslation } from "react-i18next";
+import { useSafeT } from "@/hooks/useSafeT";
 import { AllergiesCheckboxGroup } from "./AllergiesCheckboxGroup";
 import { FoodMultiSelect } from "./FoodMultiSelect";
 import { GoalsMultiSelect } from "./GoalsMultiSelect";
@@ -9,20 +9,9 @@ import { useFoods } from "@/hooks/useFoods";
 import Select from "react-select";
 
 export const ProfileHealthFields: React.FC = () => {
-  const { t, i18n } = useTranslation();
+  const { t, i18n } = useSafeT();
   const { data: foods = [] } = useFoods();
   const { setValue, watch } = useFormContext();
-
-  const safeT = (key: string, fallback?: string) => {
-    const translation = t(key);
-    
-    if (import.meta.env.DEV && translation === key && fallback) {
-      console.warn(`🔍 i18n: Missing translation for "${key}" in language "${i18n.language}"`);
-      return `${fallback} [${key}]`;
-    }
-    
-    return translation !== key ? translation : fallback || key;
-  };
 
   const foodOptions = foods.map(f => ({
     value: f.slug || f.id,
@@ -37,7 +26,7 @@ export const ProfileHealthFields: React.FC = () => {
   
   const goalOptions = GOAL_KEYS.map(key => ({
     value: key,
-    label: safeT(`profile.goals.${key}`, key.replace('_', ' ')),
+    label: t(`profile.goals.${key}`, key.replace('_', ' ')),
   }));
 
   function handleMultiChange(name: string, value: any) {
@@ -47,14 +36,14 @@ export const ProfileHealthFields: React.FC = () => {
   return (
     <div className="space-y-6">
       <AllergiesCheckboxGroup
-        label={safeT("profile.allergies.label", "Allergien")}
+        label={t("profile.allergies.label", "Allergies")}
         selected={watch("allergies") || []}
         onChange={(value) => setValue("allergies", value)}
       />
 
       <div>
         <label className="block text-sm font-medium mb-1">
-          {safeT("profile.favorite_foods.label", "Lieblingslebensmittel")}
+          {t("profile.favorite_foods.label", "Favorite Foods")}
         </label>
         <Select
           isMulti
@@ -62,13 +51,13 @@ export const ProfileHealthFields: React.FC = () => {
           value={foodOptions.filter(o => (watch("favorite_foods") || []).includes(o.value))}
           onChange={val => handleMultiChange("favorite_foods", val)}
           classNamePrefix="react-select"
-          placeholder={safeT("common.select", "Select...")}
+          placeholder={t("common.select", "Select...")}
         />
       </div>
 
       <div>
         <label className="block text-sm font-medium mb-1">
-          {safeT("profile.disliked_foods.label", "Nicht bevorzugte Lebensmittel")}
+          {t("profile.disliked_foods.label", "Disliked Foods")}
         </label>
         <Select
           isMulti
@@ -76,13 +65,13 @@ export const ProfileHealthFields: React.FC = () => {
           value={foodOptions.filter(o => (watch("disliked_foods") || []).includes(o.value))}
           onChange={val => handleMultiChange("disliked_foods", val)}
           classNamePrefix="react-select"
-          placeholder={safeT("common.select", "Select...")}
+          placeholder={t("common.select", "Select...")}
         />
       </div>
 
       <div>
         <label className="block text-sm font-medium mb-1">
-          {safeT("profile.goals.label", "Ernährungsziele")}
+          {t("profile.goals.label", "Nutrition Goals")}
         </label>
         <Select
           isMulti
@@ -90,12 +79,12 @@ export const ProfileHealthFields: React.FC = () => {
           value={goalOptions.filter(o => (watch("goals") || []).includes(o.value))}
           onChange={val => handleMultiChange("goals", val)}
           classNamePrefix="react-select"
-          placeholder={safeT("common.select", "Select...")}
+          placeholder={t("common.select", "Select...")}
         />
       </div>
 
       <div className="rounded bg-yellow-50 border-l-4 border-yellow-600 px-3 py-2 text-yellow-900 text-sm mt-2">
-        {safeT("profile.health.disclaimer", "Diese App ist kein Ersatz für medizinische Beratung.")}
+        {t("profile.health.disclaimer", "This app is not a substitute for medical advice.")}
       </div>
     </div>
   );

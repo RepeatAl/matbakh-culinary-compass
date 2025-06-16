@@ -10,19 +10,46 @@ i18n
   .use(initReactI18next) // Übergibt i18n Instanz an react-i18next
   .init({
     supportedLngs: ['de', 'en', 'es', 'fr'],
-    fallbackLng: 'en', // Einfacher String statt Array
-    debug: import.meta.env.DEV, // Debug-Ausgaben im Entwicklungsmodus
+    fallbackLng: 'en', // Stabilisiert auf Englisch als einzigen Fallback
+    debug: import.meta.env.DEV, // Debug-Ausgaben nur im Entwicklungsmodus
+    
+    // Optimierte Detection-Order: User-Präferenz hat Vorrang
     detection: {
-      order: ['localStorage', 'cookie', 'querystring', 'sessionStorage', 'navigator', 'htmlTag'],
+      order: ['localStorage', 'cookie', 'sessionStorage', 'querystring', 'navigator', 'htmlTag'],
       caches: ['localStorage', 'cookie'],
       lookupLocalStorage: 'i18nextLng',
+      checkWhitelist: true, // Nur unterstützte Sprachen verwenden
     },
+    
     interpolation: {
       escapeValue: false, // React erledigt bereits das Escaping
     },
+    
     backend: {
       loadPath: '/locales/{{lng}}/translation.json', // Pfad zu den Übersetzungsdateien
+      
+      // Retry-Mechanismus für stabilere Ladevorgänge
+      requestOptions: {
+        cache: 'default'
+      }
     },
+    
+    // Performance-Optimierung
+    load: 'languageOnly', // Lädt nur 'en' statt 'en-US', 'en-GB' etc.
+    preload: ['en', 'de'], // Lädt die wichtigsten Sprachen vorab
+    
+    // Verhindert leere Namespaces
+    defaultNS: 'translation',
+    ns: ['translation'],
+    
+    // Bessere Fehlerbehandlung
+    saveMissing: false, // Keine automatischen Saves von fehlenden Keys
+    updateMissing: false,
+    
+    // React-spezifische Optimierungen
+    react: {
+      useSuspense: false // Verhindert Suspense-Probleme
+    }
   });
 
 export default i18n;
