@@ -28,3 +28,6 @@ verify_jwt = false
 
 [functions.nutrition-calc]
 verify_jwt = false
+
+[functions.send-contact-email]
+verify_jwt = false
