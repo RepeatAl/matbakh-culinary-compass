@@ -1,6 +1,7 @@
 
 import React from 'react';
 import { useSafeT } from '@/hooks/useSafeT';
+import type { TranslationKey } from '@/i18n/types';
 import {
   Select,
   SelectContent,
@@ -34,7 +35,7 @@ const LanguageSwitcher: React.FC = () => {
         <SelectContent>
           {languages.map((lang) => (
             <SelectItem key={lang.code} value={lang.code}>
-              {t(lang.nameKey, lang.code.toUpperCase())}
+              {t(lang.nameKey as TranslationKey, lang.code.toUpperCase())}
             </SelectItem>
           ))}
         </SelectContent>

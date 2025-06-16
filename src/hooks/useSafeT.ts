@@ -1,6 +1,6 @@
 
 import { useTranslation } from 'react-i18next';
-import type { TranslationKey, SafeTFunction } from '@/types/i18n';
+import type { TranslationKey, SafeTFunction } from '@/i18n/types';
 
 /**
  * Globaler Hook für sichere Übersetzungen mit einheitlichen Fallbacks

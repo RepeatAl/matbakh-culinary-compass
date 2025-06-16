@@ -1,6 +1,7 @@
 
 import { FC } from "react";
 import { useSafeT } from "@/hooks/useSafeT";
+import type { TranslationKey } from "@/i18n/types";
 import { Controller, UseFormReturn } from "react-hook-form";
 import { Input } from "@/components/ui/input";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
@@ -24,7 +25,7 @@ export const NutritionFormFields: FC<Props> = ({ form }) => {
         />
         {errors.weight && (
           <span className="text-xs text-destructive mt-1 block">
-            {errors.weight?.message ? t(errors.weight.message as string, "Please enter a valid weight.") : ""}
+            {errors.weight?.message ? t(errors.weight.message as TranslationKey, "Please enter a valid weight.") : ""}
           </span>
         )}
       </label>
@@ -39,7 +40,7 @@ export const NutritionFormFields: FC<Props> = ({ form }) => {
         />
         {errors.height && (
           <span className="text-xs text-destructive mt-1 block">
-            {errors.height?.message ? t(errors.height.message as string, "Please enter a valid height.") : ""}
+            {errors.height?.message ? t(errors.height.message as TranslationKey, "Please enter a valid height.") : ""}
           </span>
         )}
       </label>
@@ -54,7 +55,7 @@ export const NutritionFormFields: FC<Props> = ({ form }) => {
         />
         {errors.age && (
           <span className="text-xs text-destructive mt-1 block">
-            {errors.age?.message ? t(errors.age.message as string, "Please enter a valid age.") : ""}
+            {errors.age?.message ? t(errors.age.message as TranslationKey, "Please enter a valid age.") : ""}
           </span>
         )}
       </label>
@@ -80,7 +81,7 @@ export const NutritionFormFields: FC<Props> = ({ form }) => {
         />
         {errors.gender && (
           <span className="text-xs text-destructive mt-1 block">
-            {errors.gender?.message ? t(errors.gender.message as string, "Please select gender.") : ""}
+            {errors.gender?.message ? t(errors.gender.message as TranslationKey, "Please select gender.") : ""}
           </span>
         )}
       </label>
@@ -99,7 +100,7 @@ export const NutritionFormFields: FC<Props> = ({ form }) => {
               <SelectContent>
                 {["sedentary","light","moderate","active","very_active"].map((lvl) => (
                   <SelectItem key={lvl} value={lvl}>
-                    {t(`nutrition.calc.activity.${lvl}`, lvl.replace('_', ' '))}
+                    {t(`nutrition.calc.activity.${lvl}` as TranslationKey, lvl.replace('_', ' '))}
                   </SelectItem>
                 ))}
               </SelectContent>
@@ -108,7 +109,7 @@ export const NutritionFormFields: FC<Props> = ({ form }) => {
         />
         {errors.activityLevel && (
           <span className="text-xs text-destructive mt-1 block">
-            {errors.activityLevel?.message ? t(errors.activityLevel.message as string, "Please select activity level.") : ""}
+            {errors.activityLevel?.message ? t(errors.activityLevel.message as TranslationKey, "Please select activity level.") : ""}
           </span>
         )}
       </label>
@@ -133,7 +134,7 @@ export const NutritionFormFields: FC<Props> = ({ form }) => {
         />
         {errors.units && (
           <span className="text-xs text-destructive mt-1 block">
-            {errors.units?.message ? t(errors.units.message as string, "Please select units.") : ""}
+            {errors.units?.message ? t(errors.units.message as TranslationKey, "Please select units.") : ""}
           </span>
         )}
       </label>
