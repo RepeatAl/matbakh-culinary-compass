@@ -111,7 +111,7 @@ const handler = async (req: Request): Promise<Response> => {
 
     // Send email to target address
     const emailResponse = await resend.emails.send({
-      from: "Matbakh Contact <no-reply@whatsgonow.com>",
+      from: "Matbakh Contact <write@rabibskii.com>",
       to: [targetEmail],
       subject: `[Matbakh Contact] ${subject}`,
       html: `
@@ -141,7 +141,7 @@ const handler = async (req: Request): Promise<Response> => {
 
     // Send confirmation email to sender
     await resend.emails.send({
-      from: "Matbakh <no-reply@whatsgonow.com>",
+      from: "Matbakh <write@rabibskii.com>",
       to: [email],
       subject: "Ihre Nachricht wurde empfangen - Your message was received",
       html: `
