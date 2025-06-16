@@ -2,9 +2,21 @@
 import { useSafeT } from "@/hooks/useSafeT";
 import { Sprout, Zap, Layers, Dumbbell } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
+import { Skeleton } from "@/components/ui/skeleton";
 
 export default function NutritionInfoTiles() {
-  const { t } = useSafeT();
+  const { t, ready } = useSafeT();
+
+  // Guard: Show skeleton while i18n is loading
+  if (!ready) {
+    return (
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4 my-6">
+        {Array.from({ length: 4 }).map((_, i) => (
+          <Skeleton key={i} className="h-32 rounded-lg" />
+        ))}
+      </div>
+    );
+  }
 
   const tiles = [
     {
