@@ -6,7 +6,7 @@ const Terms = () => {
   
   return (
     <main className="container mx-auto px-4 py-8 prose dark:prose-invert">
-      <h1>{t("footer.terms", "Allgemeine Geschäftsbedingungen")}</h1>
+      <h1>{t("legal:terms.title", "Allgemeine Geschäftsbedingungen")}</h1>
       
       <h2>§ 1 Geltungsbereich</h2>
       <p>

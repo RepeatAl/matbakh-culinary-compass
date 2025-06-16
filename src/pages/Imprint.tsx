@@ -6,7 +6,7 @@ const Imprint = () => {
   
   return (
     <main className="container mx-auto px-4 py-8 prose dark:prose-invert">
-      <h1>{t("footer.imprint", "Impressum")}</h1>
+      <h1>{t("legal:imprint.title", "Impressum")}</h1>
       <p>
         Matbakh UG (haftungsbeschränkt)<br />
         Hauptsitz: München, Deutschland<br />

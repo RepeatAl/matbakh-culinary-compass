@@ -6,7 +6,7 @@ const Privacy = () => {
   
   return (
     <main className="container mx-auto px-4 py-8 prose dark:prose-invert">
-      <h1>{t("footer.privacy", "Datenschutzerklärung")}</h1>
+      <h1>{t("legal:privacy.title", "Datenschutzerklärung")}</h1>
       <h2>Verantwortliche Stelle</h2>
       <p>
         Matbakh UG (haftungsbeschränkt)<br />
