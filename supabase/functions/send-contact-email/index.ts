@@ -2,7 +2,8 @@
 import { serve } from "https://deno.land/std@0.190.0/http/server.ts";
 import { Resend } from "npm:resend@2.0.0";
 
-const resend = new Resend(Deno.env.get("RESEND_API_KEY"));
+// Use the project-specific Resend API key
+const resend = new Resend(Deno.env.get("MATBAKH_RESEND_API_KEY"));
 
 const corsHeaders = {
   "Access-Control-Allow-Origin": "*",
@@ -109,7 +110,7 @@ const handler = async (req: Request): Promise<Response> => {
     // Use correct target email
     const targetEmail = "write@rabibskii.com";
 
-    // Send email to target address
+    // Send email to target address with improved error handling
     const emailResponse = await resend.emails.send({
       from: "Matbakh Contact <write@rabibskii.com>",
       to: [targetEmail],
@@ -138,6 +139,26 @@ const handler = async (req: Request): Promise<Response> => {
         </div>
       `,
     });
+
+    // Check for Resend errors
+    if (emailResponse.error) {
+      console.error('Resend API Error:', JSON.stringify({
+        event: 'resend_api_error',
+        error: emailResponse.error,
+        timestamp: new Date().toISOString()
+      }));
+
+      return new Response(
+        JSON.stringify({ 
+          error: "Failed to send email via Resend",
+          details: emailResponse.error 
+        }),
+        {
+          status: 500,
+          headers: { "Content-Type": "application/json", ...corsHeaders },
+        }
+      );
+    }
 
     // Send confirmation email to sender
     await resend.emails.send({
