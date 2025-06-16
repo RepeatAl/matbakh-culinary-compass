@@ -1,4 +1,3 @@
-
 {
   "appTitle": "Matbakh",
   "common": {
@@ -17,7 +16,9 @@
     "restaurants": "Restaurants",
     "contact": "Kontakt",
     "login": "Anmelden",
-    "logout": "Abmelden"
+    "logout": "Abmelden",
+    "development": "Entwicklung",
+    "devDashboard": "Dev-Dashboard"
   },
   "profile": {
     "title": "Mein Profil",

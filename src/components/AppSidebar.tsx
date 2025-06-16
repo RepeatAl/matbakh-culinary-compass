@@ -2,7 +2,7 @@
 import React from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { useSafeT } from '@/hooks/useSafeT';
-import { Home, Info, BookOpenText, Leaf, Store, Mail, LogIn, LogOut, Calendar } from 'lucide-react';
+import { Home, Info, BookOpenText, Leaf, Store, Mail, LogIn, LogOut, Calendar, BarChart3 } from 'lucide-react';
 import {
   Sidebar,
   SidebarContent,
@@ -124,6 +124,28 @@ export const AppSidebar: React.FC = () => {
                 </SidebarMenuItem>
               )}
             </SidebarMenu>
+            {/* Development Dashboard - nur für eingeloggte User */}
+            {session && (
+              <>
+                <SidebarGroupLabel className="mt-4">
+                  {t('navigation.development', 'Entwicklung')}
+                </SidebarGroupLabel>
+                <SidebarMenu>
+                  <SidebarMenuItem>
+                    <SidebarMenuButton
+                      asChild
+                      isActive={location.pathname === '/dev-dashboard'}
+                      tooltip={t('navigation.devDashboard', 'Dev-Dashboard')}
+                    >
+                      <Link to="/dev-dashboard">
+                        <BarChart3 className="h-4 w-4" />
+                        <span>{t('navigation.devDashboard', 'Dev-Dashboard')}</span>
+                      </Link>
+                    </SidebarMenuButton>
+                  </SidebarMenuItem>
+                </SidebarMenu>
+              </>
+            )}
             {/* ... weitere bestehende Links, z.B. Nutrition, Restaurants, Contact ... */}
             <SidebarMenuItem>
               <SidebarMenuButton
