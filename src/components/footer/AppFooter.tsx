@@ -5,48 +5,36 @@ import { useSafeT } from "@/hooks/useSafeT";
 const AppFooter = () => {
   const { t } = useSafeT();
 
-  const year = new Date().getFullYear();
-
   return (
-    <footer className="bg-muted text-muted-foreground border-t mt-16">
-      <div className="container mx-auto px-4 py-8 grid gap-6 md:grid-cols-3">
-        {/* Spalte 1: Copyright */}
-        <div>
-          <p className="font-semibold">
-            © {year} Matbakh UG (haftungsbeschränkt)
-          </p>
-          <p>{t("footer.headquarters", "Headquarters: Munich, Germany")}</p>
+    <footer className="border-t mt-8 px-4 py-6 text-sm text-muted-foreground">
+      <div className="container mx-auto flex flex-col md:flex-row gap-4 md:items-start">
+        {/* Block 1 – Headquarter */}
+        <div className="flex-1">
+          <h2 className="font-semibold">
+            {t("footer.headquarters", "Headquarters")}
+          </h2>
+          <p>Matbakh UG (haftungsbeschränkt)<br/>Munich, Germany</p>
         </div>
 
-        {/* Spalte 2: Rechtliches */}
-        <div className="space-y-2">
-          <h3 className="font-semibold">
+        {/* Block 2 – Links */}
+        <div className="flex-1">
+          <h2 className="font-semibold">
             {t("footer.legalTitle", "Legal")}
-          </h3>
-          <nav className="flex flex-col space-y-1">
-            <Link to="/imprint" className="hover:underline">
-              {t("footer.imprint", "Impressum")}
-            </Link>
-            <Link to="/privacy" className="hover:underline">
-              {t("footer.privacy", "Privacy Policy")}
-            </Link>
-            <Link to="/terms" className="hover:underline">
-              {t("footer.terms", "Terms & Conditions")}
-            </Link>
-          </nav>
+          </h2>
+          <ul className="space-y-1">
+            <li><Link to="/imprint" className="hover:underline">{t("footer.imprint", "Imprint")}</Link></li>
+            <li><Link to="/privacy" className="hover:underline">{t("footer.privacy", "Privacy")}</Link></li>
+            <li><Link to="/terms" className="hover:underline">{t("footer.terms", "Terms & Conditions")}</Link></li>
+          </ul>
         </div>
 
-        {/* Spalte 3: DSGVO-Hinweis */}
-        <div>
-          <h3 className="font-semibold">
-            {t("footer.gdprTitle", "GDPR Notice")}
-          </h3>
-          <p className="text-sm">
-            {t(
-              "footer.gdprCopy",
-              "Matbakh uses Google Maps for the restaurant search. The map is only loaded after you give consent in the cookie banner."
-            )}
-          </p>
+        {/* Block 3 – GDPR Hinweis */}
+        <div className="flex-1">
+          <h2 className="font-semibold">
+            {t("footer.gdprTitle", "GDPR")}
+          </h2>
+          <p>{t("footer.gdprCopy",
+            "This website stores only technically required cookies. No personal data is shared with third parties without consent.")}</p>
         </div>
       </div>
     </footer>

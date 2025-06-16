@@ -14,9 +14,9 @@ import RestaurantsPage from "./pages/RestaurantsPage";
 import ContactPage from "./pages/ContactPage";
 import AuthPage from "./pages/AuthPage";
 import NotFound from "./pages/NotFound";
-import Imprint from "./pages/Imprint";
-import Privacy from "./pages/Privacy";
-import Terms from "./pages/Terms";
+import ImprintPage from "./pages/ImprintPage";
+import PrivacyPage from "./pages/PrivacyPage";
+import TermsPage from "./pages/TermsPage";
 import LanguageSwitcher from "@/components/LanguageSwitcher";
 import { AuthProvider } from "@/contexts/AuthContext";
 import ProfilePage from "./pages/ProfilePage";
@@ -86,9 +86,9 @@ const App = () => (
                     />
                     <Route path="/business-search" element={<BusinessProfileSearchPage />} />
                     <Route path="/restaurant-suche" element={<DiscoverPage />} />
-                    <Route path="/imprint" element={<Imprint />} />
-                    <Route path="/privacy" element={<Privacy />} />
-                    <Route path="/terms" element={<Terms />} />
+                    <Route path="/imprint" element={<ImprintPage />} />
+                    <Route path="/privacy" element={<PrivacyPage />} />
+                    <Route path="/terms" element={<TermsPage />} />
                     <Route path="*" element={<NotFound />} />
                   </Routes>
                 </div>

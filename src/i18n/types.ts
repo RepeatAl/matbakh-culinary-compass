@@ -265,6 +265,22 @@ interface TranslationStructure {
     gdprCopy: string;
   };
   
+  // Legal pages
+  legal: {
+    imprint: {
+      title: string;
+      body: string;
+    };
+    privacy: {
+      title: string;
+      body: string;
+    };
+    terms: {
+      title: string;
+      body: string;
+    };
+  };
+  
   // Language switcher
   languageSwitcher: {
     label: string;
