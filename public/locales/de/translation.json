@@ -1,3 +1,4 @@
+
 {
   "appTitle": "Matbakh",
   "navigation": {
@@ -63,7 +64,11 @@
       "other": "Andere"
     },
     "health": {
-      "disclaimer": "Wichtiger Hinweis: Diese Angaben ersetzen keine medizinische/ärztliche Beratung. Im Zweifel wenden Sie sich bitte an Ihren Arzt oder Ihre Ärztin."
+      "disclaimer": "Wichtiger Hinweis: Diese Angaben ersetzen keine medizinische/ärztliche Beratung. Im Zweifel wenden Sie sich bitte an Ihren Arzt oder Ihre Ärztin.",
+      "allergies_label": "Allergien",
+      "favorite_foods_label": "Lieblingslebensmittel",
+      "disliked_foods_label": "Nicht gerne essen",
+      "goals_label": "Ernährungsziele"
     }
   },
   "about": {
@@ -88,14 +93,14 @@
         "metric": "Metrisch (kg, cm)",
         "imperial": "Imperial (lbs, inch)",
         "hintWeight": "Bitte Gewicht in Pfund (lbs) eingeben.",
-        "hintHeight": "Bitte Größe in Zoll (inch) eingeben.",
+        "hintHeight": "Bitte Größe in Zoll (inch) eingeben."
       },
       "gender": {
         "label": "Geschlecht",
         "placeholder": "Geschlecht wählen",
         "male": "Männlich",
         "female": "Weiblich",
-        "other": "Divers",
+        "other": "Divers"
       },
       "activity": {
         "label": "Aktivitätsniveau",
@@ -104,7 +109,7 @@
         "light": "Leicht aktiv (gelegentliche Bewegung)",
         "moderate": "Mäßig aktiv (Sport 1–3x/Woche)",
         "active": "Aktiv (Sport 3–5x/Woche)",
-        "very_active": "Sehr aktiv (tägliches Training)",
+        "very_active": "Sehr aktiv (tägliches Training)"
       },
       "weight": {
         "label": "Gewicht (kg)",
@@ -129,7 +134,7 @@
         "gender": "Bitte Geschlecht wählen.",
         "activity": "Bitte Aktivitätsniveau wählen.",
         "units": "Bitte Einheit wählen.",
-        "fallback": "Fehler bei der Berechnung.",
+        "fallback": "Fehler bei der Berechnung."
       },
       "demo": {
         "hint": "Demo: Schnellrechner für Kalorien und Makros – anonym & ohne Registrierung"
@@ -143,6 +148,28 @@
         "macroProtein": "Protein",
         "macroFat": "Fett",
         "units": "Angaben in {{units}} pro Tag"
+      }
+    },
+    "personalization": {
+      "filters": "Deine Ernährungsfilter"
+    },
+    "goals": {
+      "weight_loss": "Gewicht verlieren",
+      "muscle_gain": "Muskelaufbau",
+      "maintenance": "Gewicht halten"
+    },
+    "profile": {
+      "allergies": {
+        "placeholder": "Allergien auswählen..."
+      },
+      "favoriteFoods": {
+        "placeholder": "Lieblingslebensmittel auswählen..."
+      },
+      "dislikedFoods": {
+        "placeholder": "Nicht bevorzugte Lebensmittel auswählen..."
+      },
+      "goals": {
+        "placeholder": "Ernährungsziele auswählen..."
       }
     }
   },
@@ -164,5 +191,6 @@
     "point1": "Intelligentes Warenmanagement und Rezepturverwaltung.",
     "point2": "Effiziente Planung – weniger Food Waste, mehr Gewinn.",
     "point3": "Teamzugänge, digitale Abläufe und Community-Austausch."
-  }
+  },
+  "Auswählen...": "Auswählen..."
 }

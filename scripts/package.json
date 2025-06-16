@@ -1,0 +1,7 @@
+
+{
+  "type": "module",
+  "scripts": {
+    "validate": "node validate-i18n.js"
+  }
+}

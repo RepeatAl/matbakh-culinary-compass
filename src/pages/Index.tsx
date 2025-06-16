@@ -1,15 +1,16 @@
 
 import { useTranslation } from 'react-i18next';
-import LanguageSwitcher from '@/components/LanguageSwitcher'; // Importiere den LanguageSwitcher
-import { Button } from '@/components/ui/button'; // Beispiel für Button, falls benötigt
+import LanguageSwitcher from '@/components/LanguageSwitcher';
+import { I18nDebugger } from '@/components/i18n/I18nDebugger';
 
 const Index = () => {
   const { t, i18n, ready } = useTranslation();
 
-  // Debug: Log aktuelle Sprache und ob Übersetzungen geladen sind
-  console.log('Active language:', i18n.language);
-  console.log('i18n ready:', ready);
-  console.log('Translation welcome.title:', t('welcome.title'));
+  // Robuste Hilfsfunktion für Übersetzungen mit Fallback
+  const safeT = (key: string, fallback?: string) => {
+    const translation = t(key);
+    return translation !== key ? translation : fallback || key;
+  };
 
   // Helper für Fallback: Wenn noch nicht übersetzt, Ladeanzeige
   const isTranslated = (key: string) => {
@@ -30,7 +31,7 @@ const Index = () => {
           </p>
         </header>
 
-        <LanguageSwitcher /> {/* Füge den LanguageSwitcher hinzu */}
+        <LanguageSwitcher />
 
         <section className="my-16">
           <h2 className="text-3xl font-semibold mb-8 text-center">
@@ -72,6 +73,8 @@ const Index = () => {
           </div>
         </section>
       </div>
+      
+      <I18nDebugger />
     </div>
   );
 };

@@ -1,3 +1,4 @@
+
 import React, { useEffect } from "react";
 import { useForm, FormProvider } from "react-hook-form";
 import { useTranslation } from "react-i18next";
@@ -36,7 +37,20 @@ export default function ProfilePage() {
   const { user } = useAuth();
   const { data: foods = [] } = useFoods();
 
-  // Options für Foods
+  // Robuste Hilfsfunktion für Labels – prüft Übersetzung und zeigt Debug-Info im Dev-Mode
+  const safeT = (key: string, fallback?: string) => {
+    const translation = t(key);
+    
+    // Debug-Modus: Zeige fehlende Keys visuell an
+    if (import.meta.env.DEV && translation === key && fallback) {
+      console.warn(`🔍 i18n: Missing translation for "${key}" in language "${i18n.language}"`);
+      return `${fallback} [${key}]`;
+    }
+    
+    return translation !== key ? translation : fallback || key;
+  };
+
+  // Options für Foods mit robuster Name-Extraktion
   const foodOptions = foods.map(f => ({
     value: f.slug || f.id,
     label: f.name?.[i18n.language] || f.name?.en || f.name?.de || f.slug,
@@ -47,9 +61,10 @@ export default function ProfilePage() {
     "vegan", "vegetarian", "keto", "paleo", "diabetic_friendly", "heart_health",
     "gut_health", "anti_inflammatory", "sustainable_eating", "flexitarian", "other"
   ];
+  
   const goalOptions = GOAL_KEYS.map(key => ({
     value: key,
-    label: t(`profile.goals.${key}`),
+    label: safeT(`profile.goals.${key}`, key.replace('_', ' ')),
   }));
 
   const methods = useForm<ProfileFormValues>({
@@ -71,12 +86,6 @@ export default function ProfilePage() {
       goals: [],
     }
   });
-
-  // Hilfsfunktion für Labels – nutzt Übersetzung oder Fallback
-  const translatedLabel = (key: string, fallback: string) => {
-    const val = t(key);
-    return val && val !== key ? val : fallback;
-  };
 
   // Lade Daten on mount
   useEffect(() => {
@@ -143,7 +152,7 @@ export default function ProfilePage() {
       })
       .eq("user_id", user.id);
 
-    toast({ title: t("profile.saved", "Profil gespeichert") });
+    toast({ title: safeT("profile.saved", "Profil gespeichert") });
   }
 
   function handleAvatarUpload(url: string) {
@@ -155,10 +164,9 @@ export default function ProfilePage() {
     methods.setValue(name, value ? value.map((v: any) => v.value) : []);
   }
 
-  // ... Haupt-Renderfunktion, jetzt inkl. neuen Feldern für Lieblingsessen usw:
   return (
     <div className="max-w-lg mx-auto px-4 py-8">
-      <h1 className="text-2xl font-bold mb-6">{t("profile.title")}</h1>
+      <h1 className="text-2xl font-bold mb-6">{safeT("profile.title", "Mein Profil")}</h1>
       <FormProvider {...methods}>
         <form className="space-y-6" onSubmit={methods.handleSubmit(onSubmit)}>
           <AvatarUploader
@@ -170,7 +178,7 @@ export default function ProfilePage() {
           {/* Lieblingslebensmittel */}
           <div>
             <label className="block text-sm font-medium mb-1">
-              {translatedLabel("profile.favorite_foods.label", "Lebensmittel auswählen")}
+              {safeT("profile.favorite_foods.label", "Lieblingslebensmittel")}
             </label>
             <Select
               isMulti
@@ -178,14 +186,14 @@ export default function ProfilePage() {
               value={foodOptions.filter(o => (methods.watch("favorite_foods") || []).includes(o.value))}
               onChange={val => handleMultiChange("favorite_foods", val)}
               classNamePrefix="react-select"
-              placeholder={t("Auswählen...", "Auswählen...")}
+              placeholder={safeT("Auswählen...", "Auswählen...")}
             />
           </div>
 
           {/* Nicht gerne gegessen */}
           <div>
             <label className="block text-sm font-medium mb-1">
-              {translatedLabel("profile.disliked_foods.label", "Nicht bevorzugte Lebensmittel")}
+              {safeT("profile.disliked_foods.label", "Nicht bevorzugte Lebensmittel")}
             </label>
             <Select
               isMulti
@@ -193,14 +201,14 @@ export default function ProfilePage() {
               value={foodOptions.filter(o => (methods.watch("disliked_foods") || []).includes(o.value))}
               onChange={val => handleMultiChange("disliked_foods", val)}
               classNamePrefix="react-select"
-              placeholder={t("Auswählen...", "Auswählen...")}
+              placeholder={safeT("Auswählen...", "Auswählen...")}
             />
           </div>
 
           {/* Ernährungsziele */}
           <div>
             <label className="block text-sm font-medium mb-1">
-              {translatedLabel("profile.goals.label", "Ziele auswählen")}
+              {safeT("profile.goals.label", "Ernährungsziele")}
             </label>
             <Select
               isMulti
@@ -208,18 +216,15 @@ export default function ProfilePage() {
               value={goalOptions.filter(o => (methods.watch("goals") || []).includes(o.value))}
               onChange={val => handleMultiChange("goals", val)}
               classNamePrefix="react-select"
-              placeholder={t("Auswählen...", "Auswählen...")}
+              placeholder={safeT("Auswählen...", "Auswählen...")}
             />
           </div>
-
-          {/* Die restlichen Gesundheits-/Allergie-Felder */}
-          {/* Tipp: Wer nur Grund-Profilfelder pflegen will, kann die ProfileHealthFields-Komponente austragen */}
 
           {/* Consent Checkboxen & Passwort-Button */}
           <ProfileConsentCheckboxes />
           <ChangePasswordButton />
           <Button type="submit" className="w-full mt-4">
-            {t("profile.save")}
+            {safeT("profile.save", "Speichern")}
           </Button>
         </form>
       </FormProvider>
