@@ -1,3 +1,4 @@
+
 {
   "appTitle": "Matbakh",
   "navigation": {
@@ -98,7 +99,41 @@
     "point2": "Planificación eficiente – menos desperdicio, más beneficio.",
     "point3": "Acceso de equipo, procesos digitales y comunidad."
   },
+  "cookie": {
+    "message": "Utilizamos cookies para mejorar su experiencia. Al continuar navegando por este sitio, acepta el uso de cookies.",
+    "accept": "Aceptar",
+    "decline": "Rechazar"
+  },
+  "contact": {
+    "description": "El contenido de la página de contacto irá aquí. Email: admin [at] whatsgonow [dot] com"
+  },
+  "restaurants": {
+    "info": "Encuentra restaurantes basándote en sus menús. Comienza tu búsqueda de restaurantes ahora:",
+    "searchLink": "Ir a la búsqueda de restaurantes"
+  },
+  "recipes": {
+    "description": "El contenido de la página de recetas irá aquí."
+  },
+  "mealPlan": {
+    "title": "Mi Plan Semanal",
+    "loading": "Cargando...",
+    "error": "Error al cargar el plan de comidas"
+  },
   "nutrition": {
+    "hero": {
+      "title": "Nutrición",
+      "body": "Descubre información nutricional personalizada e ingredientes de temporada para tu estilo de vida saludable."
+    },
+    "disclaimer": "Importante: Esta aplicación no reemplaza el consejo médico. Consulta a tu médico para preguntas relacionadas con la salud.",
+    "recommendations": {
+      "title": "Recomendaciones personalizadas",
+      "noData": "Inicia sesión para ver recomendaciones personalizadas basadas en tu perfil.",
+      "seeAll": "Ver todas las recomendaciones"
+    },
+    "cta": {
+      "createProfile": "Crea tu perfil nutricional",
+      "info": "Obtén recomendaciones de comidas personalizadas basadas en tus preferencias y objetivos."
+    },
     "calc": {
       "title": "Calculadora Nutricional",
       "units": {

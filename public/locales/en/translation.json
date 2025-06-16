@@ -1,3 +1,4 @@
+
 {
   "appTitle": "Matbakh",
   "navigation": {
@@ -98,7 +99,41 @@
     "point2": "Efficient planning – less food waste, higher profit.",
     "point3": "Team access, digital process and community exchange."
   },
+  "cookie": {
+    "message": "We use cookies to enhance your experience. By continuing to visit this site you agree to our use of cookies.",
+    "accept": "Accept",
+    "decline": "Decline"
+  },
+  "contact": {
+    "description": "Content for the Contact page will go here. Email: admin [at] whatsgonow [dot] com"
+  },
+  "restaurants": {
+    "info": "Find restaurants based on their menus. Start your restaurant search now:",
+    "searchLink": "Go to Restaurant Search"
+  },
+  "recipes": {
+    "description": "Content for the Recipes page will go here."
+  },
+  "mealPlan": {
+    "title": "My Weekly Plan",
+    "loading": "Loading...",
+    "error": "Error loading meal plan"
+  },
   "nutrition": {
+    "hero": {
+      "title": "Nutrition",
+      "body": "Discover personalized nutrition insights and seasonal ingredients for your healthy lifestyle."
+    },
+    "disclaimer": "Important: This app does not replace medical advice. Please consult your doctor for health-related questions.",
+    "recommendations": {
+      "title": "Personalized Recommendations",
+      "noData": "Login to see personalized recommendations based on your profile.",
+      "seeAll": "See All Recommendations"
+    },
+    "cta": {
+      "createProfile": "Create Your Nutrition Profile",
+      "info": "Get personalized meal recommendations based on your preferences and goals."
+    },
     "calc": {
       "title": "Nutrition Calculator",
       "units": {

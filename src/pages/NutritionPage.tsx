@@ -1,3 +1,4 @@
+
 import { useTranslation } from 'react-i18next';
 import { Button } from "@/components/ui/button";
 import NutritionInfoTiles from "@/components/nutrition/NutritionInfoTiles";
@@ -11,11 +12,22 @@ import { useProfileExt } from "@/hooks/useUserNutritionProfile";
 import { NutritionProfileMultiselect } from "@/components/nutrition/NutritionProfileMultiselect";
 
 const NutritionPage = () => {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   const navigate = useNavigate();
   const { user } = useAuth();
   const { data: foods = [] } = useFoods();
   const { data: profile } = useProfileExt();
+
+  const safeT = (key: string, fallback?: string) => {
+    const translation = t(key);
+    
+    if (import.meta.env.DEV && translation === key && fallback) {
+      console.warn(`🔍 i18n: Missing translation for "${key}" in language "${i18n.language}"`);
+      return `${fallback} [${key}]`;
+    }
+    
+    return translation !== key ? translation : fallback || key;
+  };
 
   // Filter: Allergene & disliked
   let filteredFoods = foods;
@@ -37,11 +49,11 @@ const NutritionPage = () => {
     <div className="container mx-auto px-4 py-8 max-w-3xl">
       {/* Hero / Intro */}
       <div className="mb-8 text-center">
-        <h1 className="text-3xl font-bold mb-2">{t('nutrition.hero.title')}</h1>
+        <h1 className="text-3xl font-bold mb-2">{safeT('nutrition.hero.title', 'Ernährung')}</h1>
         <p className="text-lg text-muted-foreground mb-1">
-          {t("nutrition.hero.body")}
+          {safeT("nutrition.hero.body", "Entdecke personalisierte Ernährungseinblicke und saisonale Zutaten für deinen gesunden Lebensstil.")}
         </p>
-        <p className="mt-2 text-xs text-destructive">{t("nutrition.disclaimer")}</p>
+        <p className="mt-2 text-xs text-destructive">{safeT("nutrition.disclaimer", "Wichtig: Diese App ersetzt keine medizinische Beratung.")}</p>
       </div>
 
       {/* Profil Multiselect-Filter */}
@@ -49,7 +61,7 @@ const NutritionPage = () => {
 
       {/* Empfehlungen */}
       <div className="mb-8">
-        <h2 className="text-lg font-semibold mb-2">{t("nutrition.recommendations.title")}</h2>
+        <h2 className="text-lg font-semibold mb-2">{safeT("nutrition.recommendations.title", "Personalisierte Empfehlungen")}</h2>
         {profile ? (
           <div>
             {favoriteFoodObjs.length > 0 || filteredFoods.length > 0 ? (
@@ -57,24 +69,24 @@ const NutritionPage = () => {
                 {favoriteFoodObjs.map(f => (
                   <li key={f.slug} className="flex items-center gap-2 px-3 py-2 bg-green-100 text-green-900 rounded shadow">
                     <span>★</span>
-                    <span>{f.name?.[t("lng", "de")] ?? f.name?.de ?? f.slug}</span>
+                    <span>{f.name?.[i18n.language] ?? f.name?.de ?? f.slug}</span>
                   </li>
                 ))}
                 {filteredFoods
                   .filter(f => !profile.favorite_foods?.includes(f.slug))
                   .map(f => (
-                    <li key={f.slug} className="px-3 py-2 bg-muted text-foreground rounded">{f.name?.[t("lng", "de")] ?? f.name?.de ?? f.slug}</li>
+                    <li key={f.slug} className="px-3 py-2 bg-muted text-foreground rounded">{f.name?.[i18n.language] ?? f.name?.de ?? f.slug}</li>
                   ))}
               </ul>
             ) : (
-              <span className="text-muted-foreground text-sm">{t("nutrition.recommendations.noData")}</span>
+              <span className="text-muted-foreground text-sm">{safeT("nutrition.recommendations.noData", "Keine Daten verfügbar")}</span>
             )}
           </div>
         ) : (
-          <span className="text-muted-foreground text-sm">{t("nutrition.recommendations.noData")}</span>
+          <span className="text-muted-foreground text-sm">{safeT("nutrition.recommendations.noData", "Melde dich an, um personalisierte Empfehlungen zu sehen.")}</span>
         )}
         {/* Optional: Alle Empfehlungen anzeigen */}
-        {/* <Button className="mt-3">{t("nutrition.recommendations.seeAll")}</Button> */}
+        {/* <Button className="mt-3">{safeT("nutrition.recommendations.seeAll", "Alle Empfehlungen anzeigen")}</Button> */}
       </div>
 
       {/* Infokacheln */}
@@ -89,7 +101,7 @@ const NutritionPage = () => {
       <div className="my-10">
         <div className="mb-2 text-center">
           <span className="inline-block rounded px-3 py-1 bg-secondary text-xs font-medium mb-2">
-            {t("nutrition.calc.demo.hint")}
+            {safeT("nutrition.calc.demo.hint", "Demo: Schnellrechner für Kalorien und Makros")}
           </span>
         </div>
         <NutritionCalculatorForm />
@@ -102,10 +114,10 @@ const NutritionPage = () => {
           size="lg"
           onClick={() => navigate("/profile")}
         >
-          {t("nutrition.cta.createProfile")}
+          {safeT("nutrition.cta.createProfile", "Erstelle dein Ernährungsprofil")}
         </Button>
         <span className="text-xs text-muted-foreground mt-2">
-          {t("nutrition.cta.info")}
+          {safeT("nutrition.cta.info", "Erhalte personalisierte Empfehlungen basierend auf deinen Zielen.")}
         </span>
       </div>
     </div>
