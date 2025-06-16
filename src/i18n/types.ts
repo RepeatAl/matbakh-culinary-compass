@@ -1,9 +1,8 @@
 
 /**
- * Multi-Namespace TypeScript-Typen für i18n Keys
+ * Multi-Namespace TypeScript-Typen für i18n Keys (Hot-Fix Version)
  * 
- * Unterstützt mehrere JSON-Namespaces und stellt sicher,
- * dass nur existierende Translation-Keys verwendet werden können.
+ * Reduziert auf die drei existierenden Namespaces: translation, legal, footer
  */
 
 // Rekursiver Typ-Generator für verschachtelte JSON-Strukturen
@@ -301,7 +300,7 @@ interface TranslationNamespace {
   };
 }
 
-// Multi-Namespace Struktur
+// Reduced Multi-Namespace Structure (only existing namespaces)
 interface MultiNamespaceStructure {
   translation: TranslationNamespace;
   legal: LegalNamespace;

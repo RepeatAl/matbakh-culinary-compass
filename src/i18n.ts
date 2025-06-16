@@ -65,18 +65,12 @@ i18n
     load: 'languageOnly', // Lädt nur 'en' statt 'en-US', 'en-GB' etc.
     preload: import.meta.env.DEV ? ['en'] : ['en', 'de'], // Dev: nur Basis-Sprache vorladen
     
-    // Multi-Namespace Konfiguration (Future-Proof)
+    // Reduced Namespace Configuration (only existing ones)
     defaultNS: 'translation', // Backward-Compatibility für bestehende t() calls
     ns: [
       'translation',    // Hauptnamespace (bestehende Komponenten)
       'legal',         // Legal-Pages (Imprint, Privacy, Terms)  
-      'footer',        // Footer-spezifische Texte
-      'navigation',    // Navigation & Sidebar
-      'profile',       // Profil-bezogene Inhalte
-      'nutrition',     // Ernährungs-spezifische Texte
-      'recipes',       // Rezept-bezogene Inhalte
-      'restaurants',   // Restaurant-bezogene Inhalte
-      'common'         // Gemeinsame UI-Elemente (Buttons, etc.)
+      'footer'         // Footer-spezifische Texte
     ],
     
     // Development: Aggressives Error-Handling
