@@ -13,8 +13,9 @@ i18n
     fallbackLng: ['en', 'de'], // Fallback-Reihenfolge: erst Englisch, dann Deutsch
     debug: import.meta.env.DEV, // Debug-Ausgaben im Entwicklungsmodus
     detection: {
-      order: ['querystring', 'cookie', 'localStorage', 'sessionStorage', 'navigator', 'htmlTag'],
-      caches: ['cookie', 'localStorage'],
+      order: ['localStorage', 'cookie', 'querystring', 'sessionStorage', 'navigator', 'htmlTag'],
+      caches: ['localStorage', 'cookie'],
+      lookupLocalStorage: 'i18nextLng',
     },
     interpolation: {
       escapeValue: false, // React erledigt bereits das Escaping
